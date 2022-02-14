@@ -1,0 +1,34 @@
+project:
+  name: 'berkeley-reentry-student-program'
+  owner: 'Reentry Student Program'
+  teamId: 'berkeley-reentry-student-program'
+  identities:
+    pivotal: 'https://www.pivotaltracker.com/n/projects/2553425'
+    heroku: 'pending'
+    codeclimate: 'https://codeclimate.com/github/ryan-garay89/berkeley-reentry-student-program'
+  members:
+    member1:
+      name: 'Ryan'
+      surname: 'Garay'
+      githubUsername: 'ryan-garay89'  
+    member2:
+      name: 'Elizabeth'
+      surname: 'Herrmann'
+      githubUsername: 'eherrmann2023'  
+    member3:
+      name: 'Erin'
+      surname: 'Kraemer'
+      githubUsername: 'erinkraemer'  
+    member4:
+      name: 'Michelle'
+      surname: 'Kroll'
+      githubUsername: 'michellekroll'  
+    member5:
+      name: 'Kin Long'
+      surname: 'Lo'
+      githubUsername: 'KLongLo'  
+    member6:
+      name: 'Haolan'
+      surname: 'Mo'
+      githubUsername: 'HaolanMo'  
+   
