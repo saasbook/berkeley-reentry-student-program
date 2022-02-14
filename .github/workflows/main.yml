@@ -1,0 +1,25 @@
+name: build
+
+on: [push, pull_request]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      BUNDLE_WITHOUT: production
+      TZ: America/Los_Angeles
+    steps:
+    - uses: actions/checkout@v1
+    - name: Install Ruby (3.0)
+      uses: actions/setup-ruby@v1
+      with:
+        ruby-version: 3.0.3
+        bundler-cache: true
+    - name: Build and test with RSpec
+      run: |
+        bundle install --jobs 4 --retry 3
+        bundle exec rspec
+        
+    - name: run Cucumber tests and capture coverage
+      run: |
+        bundle exec cucumber --retry 2
