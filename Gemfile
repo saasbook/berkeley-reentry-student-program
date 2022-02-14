@@ -50,6 +50,7 @@ group :development, :test do
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
   # Use postgresql as the database for Active Record
   gem 'sqlite3'
+  gem 'simplecov', require: false
 end
 
 group :development do
@@ -70,7 +71,7 @@ group :test do
   gem "webdrivers"
   gem 'rspec-rails'
   gem 'guard-rspec'
-  gem 'cucumber-rails', :require => false
+  gem 'cucumber-rails' , :require => false
   gem 'cucumber-rails-training-wheels' # basic imperative step defs like "Then I should see..."
   gem 'database_cleaner' # required by Cucumber
 end
@@ -79,3 +80,5 @@ end
 group :production do
   gem 'pg'              # use PostgreSQL in production (Heroku)
 end
+
+
