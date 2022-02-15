@@ -37,9 +37,9 @@ jobs:
       run: |
         bundle exec rspec
 
-#    - name: run Cucumber tests and capture coverage
-#      run: |
-#        bundle exec cucumber --retry 2
+    - name: run Cucumber tests and capture coverage
+      run: |
+        bundle exec cucumber --retry 2
 
 #    - name: Build and test with RSpec
 #      run: |
