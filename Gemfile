@@ -6,8 +6,6 @@ ruby "3.0.3"
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 7.0.1"
 
-gem 'pg', '~> 1.1'
-
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem "sprockets-rails"
 
@@ -50,7 +48,6 @@ gem "bootsnap", require: false
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
-  # Use postgresql as the database for Active Record
   gem 'sqlite3'
   gem 'simplecov', require: false
 end
@@ -76,6 +73,10 @@ group :test do
   gem 'cucumber-rails' , :require => false
   gem 'cucumber-rails-training-wheels' # basic imperative step defs like "Then I should see..."
   gem 'database_cleaner' # required by Cucumber
+end
+
+group :production do
+  gem 'pg'              # use PostgreSQL in production (Heroku)
 end
 
 
