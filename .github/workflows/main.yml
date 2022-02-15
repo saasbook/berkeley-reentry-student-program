@@ -16,6 +16,12 @@ jobs:
       with:
         ruby-version: 3.0.3
         bundler-cache: true
+    - name: Setup CodeClimate test-reporter
+      run: |
+        curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > $CCTR
+        chmod +x $CCTR
+        $CCTR before-build
+
     - name: Build and test with RSpec
       run: |
         gem install bundler
@@ -26,12 +32,6 @@ jobs:
 #    - name: run Cucumber tests
 #      run: |
 #        bundle exec cucumber --retry 2
-
-    - name: Setup CodeClimate test-reporter
-      run: |
-        curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > $CCTR
-        chmod +x $CCTR
-        $CCTR before-build
 
     - name: Publish code coverage
       run: |
