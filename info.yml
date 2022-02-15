@@ -4,7 +4,7 @@ project:
   teamId: 'berkeley-reentry-student-program'
   identities:
     pivotal: 'https://www.pivotaltracker.com/n/projects/2553425'
-    heroku: 'pending'
+    heroku: 'https://berkeley-reentry.herokuapp.com/'
     codeclimate: 'https://codeclimate.com/github/ryan-garay89/berkeley-reentry-student-program'
   members:
     member1:
