@@ -6,6 +6,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     env:
+      BUNDLE_WITHOUT: production
       TZ: America/Los_Angeles
     steps:
     - uses: actions/checkout@v1
@@ -22,9 +23,7 @@ jobs:
         
     - name: run Cucumber tests
       run: |
-        gem install bundler
-        bundle install --jobs 4 --retry 3
-        bundle exec cucumber
+        bundle exec cucumber --retry 2
 
     - name: publish code coverage to code-climate
       uses: paambaati/codeclimate-action@v2.7.5
