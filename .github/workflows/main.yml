@@ -28,11 +28,11 @@ jobs:
       with:
         ruby-version: 3.0.3
         bundler-cache: true
-    - name: Setup CodeClimate test-reporter
-      run: |
-        curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > $CCTR
-        chmod +x $CCTR
-        $CCTR before-build
+#    - name: Setup CodeClimate test-reporter
+#      run: |
+#        curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > $CCTR
+#        chmod +x $CCTR
+#        $CCTR before-build
 
     - name: setup databases
       env:
