@@ -6,7 +6,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     env:
-      CCTR: ./cc-test-reporter
+#      CCTR: ./cc-test-reporter
       BUNDLE_WITHOUT: production
       TZ: America/Los_Angeles
     steps:
@@ -16,6 +16,12 @@ jobs:
       with:
         ruby-version: 3.0.3
         bundler-cache: true
+
+    - name: Set up PostgreSQL
+      run: |
+        sudo apt-get install postgresql libpq-dev
+        sudo service postgresql start
+        sudo -u postgres createuser --superuser "$USER"
 
     - name: setup the database
       run: |
