@@ -281,7 +281,7 @@ GEM
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2)
     shellany (0.0.1)
-    simplecov (0.16.1)
+    simplecov (0.17.0)
       docile (~> 1.1)
       json (>= 1.8, < 3)
       simplecov-html (~> 0.10.0)
@@ -341,7 +341,7 @@ DEPENDENCIES
   rails (~> 7.0.1)
   rspec-rails
   selenium-webdriver
-  simplecov (= 0.16.1)
+  simplecov (= 0.17)
   sprockets-rails
   sqlite3
   stimulus-rails
