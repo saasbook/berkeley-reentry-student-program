@@ -7,7 +7,6 @@ jobs:
     runs-on: ubuntu-latest
     env:
       CCTR: ./cc-test-reporter
-      CC_TEST_REPORTER_ID: secrets.CC_TEST_REPORTER_ID
       BUNDLE_WITHOUT: production
       TZ: America/Los_Angeles
     steps:
@@ -38,5 +37,5 @@ jobs:
       run: |
         export GIT_BRANCH="${GITHUB_REF/refs\/heads\//}"
         $CCTR sum-coverage coverage/codeclimate.*.json
-        $CCTR upload-coverage --id ${{ $CC_TEST_REPORTER_ID }}
-        $CCTR after-build --id ${{ $CC_TEST_REPORTER_ID }}
+        $CCTR upload-coverage --id ${{ secrets.CC_TEST_REPORTER_ID }}
+        $CCTR after-build --id ${{ secrets.CC_TEST_REPORTER_ID }}
