@@ -28,13 +28,13 @@ jobs:
         bundle install --jobs 4 --retry 3
         bundle exec rspec
 
-#    - name: run Cucumber tests
-#      run: |
-#        bundle exec cucumber --retry 2
-
-    - name: Publish code coverage
+    - name: run Cucumber tests
       run: |
-        export GIT_BRANCH="${GITHUB_REF/refs\/heads\//}"
-        $CCTR sum-coverage coverage/codeclimate.*.json
-        $CCTR upload-coverage --id ${{ secrets.CC_TEST_REPORTER_ID }}
-        $CCTR after-build --id ${{ secrets.CC_TEST_REPORTER_ID }}
+        bundle exec cucumber --retry 2
+
+#    - name: Publish code coverage
+#      run: |
+#        export GIT_BRANCH="${GITHUB_REF/refs\/heads\//}"
+#        $CCTR sum-coverage coverage/codeclimate.*.json
+#        $CCTR upload-coverage --id ${{ secrets.CC_TEST_REPORTER_ID }}
+#        $CCTR after-build --id ${{ secrets.CC_TEST_REPORTER_ID }}
