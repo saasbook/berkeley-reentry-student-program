@@ -66,12 +66,13 @@ end
 
 group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
-  gem "capybara"
   gem "selenium-webdriver"
   gem "webdrivers"
   gem 'rspec-rails'
   gem 'guard-rspec'
-  gem 'cucumber-rails' , :require => false
+  gem 'cucumber', '~> 3.0.0'
+  gem 'cucumber-rails', :require => false
+  gem 'capybara', '~> 3.0'
   gem 'cucumber-rails-training-wheels' # basic imperative step defs like "Then I should see..."
   gem 'database_cleaner' # required by Cucumber
   gem 'simplecov', '= 0.17', :require => false # version is for github actions to work
