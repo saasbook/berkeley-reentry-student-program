@@ -21,8 +21,19 @@ default: &default
   # https://guides.rubyonrails.org/configuring.html#database-pooling
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
 
+# SQLite version 3.x
+#   gem install sqlite3
+#
+#   Ensure the SQLite 3 gem is defined in your Gemfile
+#   gem 'sqlite3'
+#
+sqlite3: &sqlite3
+  adapter: sqlite3
+  pool: 5
+  timeout: 5000
+
 development:
-  <<: *default
+  <<: *sqlite3
   database: berkeley_reentry_student_program_development
 
   # The specified database role being used to connect to postgres.
