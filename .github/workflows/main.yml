@@ -27,8 +27,7 @@ jobs:
         gem install bundler
         bundle install --jobs 4 --retry 3
         bundle exec rspec
-        $CCTR format-coverage --output coverage/codeclimate.$SUITE.json --input-type simplecov
-        
+
 #    - name: run Cucumber tests
 #      run: |
 #        bundle exec cucumber --retry 2
