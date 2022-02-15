@@ -30,7 +30,9 @@ jobs:
 
     - name: run Cucumber tests
       run: |
-        bundle exec cucumber --retry 2
+        gem install bundler
+        bundle install --jobs 4 --retry 3
+        bundle exec cucumber
 
 #    - name: Publish code coverage
 #      run: |
