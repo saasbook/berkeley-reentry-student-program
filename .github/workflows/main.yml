@@ -28,11 +28,11 @@ jobs:
         bundle install --jobs 4 --retry 3
         bundle exec rspec
 
-    - name: run Cucumber tests
-      run: |
-        gem install bundler
-        bundle install --jobs 4 --retry 3
-        bundle exec cucumber
+#    - name: run Cucumber tests
+#      run: |
+#        gem install bundler
+#        bundle install --jobs 4 --retry 3
+#        bundle exec cucumber
 
 #    - name: Publish code coverage
 #      run: |
