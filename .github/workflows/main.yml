@@ -12,7 +12,7 @@ jobs:
     steps:
     - uses: actions/checkout@v1
     - name: Install Ruby (3.0)
-      uses: actions/setup-ruby@v1
+      uses: ruby/setup-ruby@v1
       with:
         ruby-version: 3.0.3
         bundler-cache: true
@@ -22,11 +22,19 @@ jobs:
         chmod +x $CCTR
         $CCTR before-build
 
-    - name: Build and test with RSpec
+    - name: run RSpec tests and capture coverage
       run: |
-        gem install bundler
-        bundle install --jobs 4 --retry 3
         bundle exec rspec
+
+    - name: run Cucumber tests and capture coverage
+      run: |
+        bundle exec cucumber --retry 2
+
+#    - name: Build and test with RSpec
+#      run: |
+#        gem install bundler
+#        bundle install --jobs 4 --retry 3
+#        bundle exec rspec
 
 #    - name: run Cucumber tests
 #      run: |
