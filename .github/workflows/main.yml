@@ -18,6 +18,7 @@ jobs:
         bundler-cache: true
 
     - name: setup the database
+      run: |
         bundle exec rake db:create db:migrate
 
     - name: Setup CodeClimate test-reporter
