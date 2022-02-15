@@ -6,6 +6,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     env:
+      CCTR: ./cc-test-reporter
       BUNDLE_WITHOUT: production
       TZ: America/Los_Angeles
     steps:
@@ -20,16 +21,21 @@ jobs:
         gem install bundler
         bundle install --jobs 4 --retry 3
         bundle exec rspec
+        $CCTR format-coverage --output coverage/codeclimate.$SUITE.json --input-type simplecov
         
 #    - name: run Cucumber tests
 #      run: |
 #        bundle exec cucumber --retry 2
 
-    - name: publish code coverage to code-climate
-      uses: paambaati/codeclimate-action@v2.7.5
-      env:
-        CC_TEST_REPORTER_ID: secrets.CC_TEST_REPORTER_ID
-      with:
-        coverageCommand: npm run coverage
-        debug: true
-      if: ${{ github.event_name == 'push' }}
+    - name: Setup CodeClimate test-reporter
+      run: |
+        curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > $CCTR
+        chmod +x $CCTR
+        $CCTR before-build
+
+    - name: Publish code coverage
+      run: |
+        export GIT_BRANCH="${GITHUB_REF/refs\/heads\//}"
+        $CCTR sum-coverage coverage/codeclimate.*.json
+        $CCTR upload-coverage --id ${{ secrets.CC_TEST_REPORTER_ID }}
+        $CCTR after-build --id ${{ secrets.CC_TEST_REPORTER_ID }}
