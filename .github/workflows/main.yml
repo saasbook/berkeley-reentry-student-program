@@ -6,6 +6,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     env:
+      CCTR: ./cc-test-reporter
       BUNDLE_WITHOUT: production
       TZ: America/Los_Angeles
     steps:
@@ -15,26 +16,19 @@ jobs:
       with:
         ruby-version: 3.0.3
         bundler-cache: true
-#    - name: Setup CodeClimate test-reporter
-#      run: |
-#        curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > $CCTR
-#        chmod +x $CCTR
-#        $CCTR before-build
-
-    - name: setup databases
-      env:
-        POSTGRES_PASSWORD: postgres
-        POSTGRES_USER: postgres
-        RAILS_ENV: test
-      run: bundle exec rake db:setup
+    - name: Setup CodeClimate test-reporter
+      run: |
+        curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > $CCTR
+        chmod +x $CCTR
+        $CCTR before-build
 
     - name: run RSpec tests and capture coverage
       run: |
         bundle exec rspec
 
-    - name: run Cucumber tests and capture coverage
-      run: |
-        bundle exec cucumber --retry 2
+#    - name: run Cucumber tests and capture coverage
+#      run: |
+#        bundle exec cucumber --retry 2
 
 #    - name: Build and test with RSpec
 #      run: |
