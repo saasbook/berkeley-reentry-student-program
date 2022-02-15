@@ -6,6 +6,8 @@ ruby "3.0.3"
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 7.0.1"
 
+gem 'pg'
+
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem "sprockets-rails"
 
@@ -73,11 +75,6 @@ group :test do
   gem 'cucumber-rails' , :require => false
   gem 'cucumber-rails-training-wheels' # basic imperative step defs like "Then I should see..."
   gem 'database_cleaner' # required by Cucumber
-end
-
-# make sure the following gems are in your production group:
-group :production do
-  gem 'pg'              # use PostgreSQL in production (Heroku)
 end
 
 
