@@ -21,9 +21,11 @@ jobs:
         bundle install --jobs 4 --retry 3
         bundle exec rspec
         
-    - name: run Cucumber tests and capture coverage
+    - name: run Cucumber tests
       run: |
-        bundle exec cucumber --retry 2
+        gem install bundler
+        bundle install --jobs 4 --retry 3
+        bundle exec cucumber
 
     - name: publish code coverage to code-climate
       uses: paambaati/codeclimate-action@v2.7.5
