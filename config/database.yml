@@ -57,6 +57,10 @@ development:
 # Do not set this db to the same as development or production.
 test: &test
   <<: *default
+  host: <%= ENV["localhost"] %>
+  encoding: unicode
+  username: <%= ENV["berkeley_reentry_student_program"] %>
+  password: <%= ENV["BERKELEY_REENTRY_STUDENT_PROGRAM_DATABASE_PASSWORD"] %>
   database: berkeley_reentry_student_program_test
 
 # As with config/credentials.yml, you never want to store sensitive information,
