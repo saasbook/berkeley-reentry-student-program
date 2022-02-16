@@ -33,11 +33,11 @@ jobs:
         chmod +x $CCTR
         $CCTR before-build
 
-    - name: run RSpec tests and capture coverage
+    - name: run RSpec tests #and capture coverage
       run: |
         bundle exec rspec
 
-    - name: run Cucumber tests and capture coverage
+    - name: run Cucumber tests #and capture coverage
       run: |
         bundle exec cucumber --retry 2
 
