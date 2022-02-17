@@ -14,7 +14,7 @@ gem 'pg'
 
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem "sprockets-rails"
-
+gem "sprockets", "~> 3.7.2"
 # Use the Puma web server [https://github.com/puma/puma]
 gem "puma", "~> 5.0"
 
@@ -22,10 +22,15 @@ gem "puma", "~> 5.0"
 #gem "importmap-rails"
 
 # Hotwire's SPA-like page accelerator [https://turbo.hotwired.dev]
-#gem "turbo-rails"
+gem "turbo-rails"
 
 # Hotwire's modest JavaScript framework [https://stimulus.hotwired.dev]
 #gem "stimulus-rails"
+# Bootstrap
+gem 'bootstrap', '~> 4.1.1'
+# Use SCSS for stylesheets
+gem 'sass-rails', '~> 5.0'
+
 
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 gem "jbuilder", "~> 2.10.1"
