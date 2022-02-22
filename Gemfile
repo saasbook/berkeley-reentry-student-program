@@ -61,6 +61,8 @@ group :development, :test do
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
   gem 'sqlite3'
   gem 'factory_bot_rails'
+  gem 'rspec-rails', "~> 4.1.2"
+  gem 'guard-rspec'
 end
 
 group :development do
@@ -78,8 +80,6 @@ group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
   gem "selenium-webdriver"
   gem "webdrivers"
-  gem 'rspec-rails', "~> 4.1.2"
-  gem 'guard-rspec'
   gem 'cucumber', '~> 3.0.0'
   gem 'cucumber-rails', '~> 1.7.0', :require => false
   gem 'capybara', '~> 3.0'
