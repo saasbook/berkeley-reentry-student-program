@@ -14,3 +14,46 @@
  *= require_tree .
  *= require_self
  */
+h1 {
+  font-family: 'Poppins', sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 32px;
+  line-height: 120%;
+  color: #04021D;
+}
+h3 {
+  font-family: 'Poppins', sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  text-align: center;
+}
+p {
+  font-family: 'Poppins', sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 24px;
+  /* Text / Dark - 60% */
+  color: #686777;
+}
+button {
+  font-family: 'Poppins', sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+}
+.btn-primary {
+  background: #554AF0;
+  border-radius: 12px;
+}
+.btn-secondary {
+  /* Background / Extra White */
+  background: #F8F8FA;
+  border-radius: 12px;
+  border-color: #F8F8FA;
+  color: #554AF0;
+}
