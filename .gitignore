@@ -33,3 +33,4 @@ coverage
 
 # Ignore locally installed gems
 /vendor/bundle
+/.idea/*
