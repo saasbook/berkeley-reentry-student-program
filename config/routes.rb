@@ -4,4 +4,6 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "articles#index"
   root to: 'pages#index'
+  # route GET /login to login controller and #index action
+  get "login", to: "login#index"
 end
