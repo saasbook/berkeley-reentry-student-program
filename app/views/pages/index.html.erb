@@ -6,7 +6,7 @@
       <p class="lead mb-4">Check-in using this application, find and make appointments with staff, find news and updates</p>
       <button type="button" class="btn btn-primary mt-1 btn-lg px-4 gap-3">Check into Berkeley <br/> Reentry Student Center</button>
       <div class="d-grid mt-2 gap-2 d-sm-flex justify-content-sm-center pt-2">
-        <button type="button" class="btn btn-secondary btn-lg px-4 gap-3">Login</button>
+        <%= button_to "Login", login_path, method: :get, class:"btn btn-secondary btn-lg px-4 gap-3" %>
         <button type="button" class="btn btn-secondary btn-lg px-4">Sign-up</button>
       </div>
     </div>
