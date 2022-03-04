@@ -1,3 +1,3 @@
-class Staff < ApplicationRecord
-  belongs_to :user
+class Staff < User
+
 end

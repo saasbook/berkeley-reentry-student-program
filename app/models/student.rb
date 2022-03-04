@@ -1,3 +1,3 @@
-class Student < ApplicationRecord
-  belongs_to :user
+class Student < User
+  
 end
