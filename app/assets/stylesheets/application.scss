@@ -49,6 +49,10 @@ button {
 .btn-primary {
   background: #554AF0;
   border-radius: 12px;
+
+}
+.btn-primary:hover {
+  background-color: #2112ee !important;
 }
 .btn-secondary {
   /* Background / Extra White */
