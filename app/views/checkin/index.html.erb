@@ -1,0 +1,22 @@
+<div class="container">
+  <div class="px-4 py-3 my-5 text-center">
+    <h2 class="display-5 fw-bold pb-4">Check-in to the Berkeley Reentry <br> Student Program Study Space</h2>
+    <form>
+        <div class="row mb-3">
+          <div class="col-md-6 offset-md-3">
+            <label for="checkinName" class="form-label">First & Last Name</label>
+            <input type="text" class="form-control" id="checkinName" placeholder="Oski Bear" aria-describedby="checkinName" aria-label="Name">
+          </div>
+        </div>
+        <div class="row mb-3">
+          <div class="col-md-6 offset-md-3">
+            <label for="checkinEmail" class="form-label">Email Address</label>
+            <input type="email" class="form-control" id="checkinEmail" placeholder="OskiBear@berkeley.edu" aria-describedby="checkinEmail" aria-label="Berkeley Email">
+            <div id="emailHelp" class="form-text">Please enter your <b>Berkeley Email</b>.</div>
+          </div>
+        </div>
+          <%= link_to "Back", root_path, method: :get, class: "btn btn-secondary btn-lg" %>
+          <button type="submit" class="btn btn-primary btn-lg ms-2" aria-label="Submit">Submit</button>
+    </form>
+  </div>
+</div>
