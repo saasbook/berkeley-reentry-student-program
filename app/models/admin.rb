@@ -1,3 +1,3 @@
-class Admin < ApplicationRecord
-  belongs_to :user
+class Admin < User
+  has_many :announcements
 end

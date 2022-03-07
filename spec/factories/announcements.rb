@@ -1,8 +1,9 @@
 FactoryBot.define do
   factory :announcement do
-    issued_date { "2022-02-28" }
-    title { "MyString" }
-    content { "MyString" }
-    admin { nil }
+    Time.zone = 'Pacific Time (US & Canada)'
+    sequence(:title) { |n| "Announcement #{n} Title" }
+    sequence(:content) { |n| "Announcement #{n} content" }
+    issued_date { DateTime.now.to_date }
+    association :admin, factory: :admin
   end
 end

@@ -1,3 +1,4 @@
-class Student < ApplicationRecord
-  belongs_to :user
+class Student < User
+  has_many :appointments
+  has_many :checkin_records
 end

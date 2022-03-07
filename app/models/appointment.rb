@@ -1,5 +1,4 @@
 class Appointment < ApplicationRecord
-  belongs_to :student
-  belongs_to :appointment_info
-  delegate :staff, to: :appointment_info
+  belongs_to :staff, class_name: :User, foreign_key: :staff_id
+  has_one :student
 end
