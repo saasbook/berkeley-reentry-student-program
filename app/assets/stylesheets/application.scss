@@ -22,6 +22,11 @@ h1 {
   line-height: 120%;
   color: #04021D;
 }
+h2 {
+  font-family: 'Poppins', sans-serif;
+  font-style: normal;
+  font-weight: 600;
+}
 h3 {
   font-family: 'Poppins', sans-serif;
   font-style: normal;
@@ -33,7 +38,7 @@ h3 {
 p {
   font-family: 'Poppins', sans-serif;
   font-style: normal;
-  font-weight: normal;
+  font-weight: 500;
   font-size: 16px;
   line-height: 24px;
   /* Text / Dark - 60% */
@@ -45,6 +50,12 @@ button {
   font-weight: 500;
   font-size: 16px;
   line-height: 24px;
+}
+b {
+  font-family: 'Poppins', sans-serif;
+  font-style: normal;
+  font-weight: bolder;
+  color: #262626;
 }
 .btn-primary {
   background: #554AF0;
@@ -60,4 +71,17 @@ button {
   border-radius: 12px;
   border-color: #F8F8FA;
   color: #554AF0;
+}
+.form-text {
+  font-family: 'Poppins', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+}
+.form-label {
+  font-family: 'Poppins', sans-serif;
+  font-style: normal;
+  font-weight: 500;
+}
+.button_to {
+
 }
