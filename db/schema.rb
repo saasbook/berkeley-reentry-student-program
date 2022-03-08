@@ -37,6 +37,9 @@ ActiveRecord::Schema.define(version: 2022_03_06_024126) do
   create_table "checkin_records", force: :cascade do |t|
     t.datetime "time"
     t.bigint "student_id", null: false
+    t.string "first_name", null:false
+    t.string "last_name", null:false
+    t.string "email", null:false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["student_id"], name: "index_checkin_records_on_student_id"
