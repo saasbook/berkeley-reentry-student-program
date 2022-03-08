@@ -18,7 +18,12 @@ RSpec.describe Student, type: :model do
 
   it 'checks-in' do
     student = create :student
+    expected_time = DateTime.parse("2022-03-08T12:00:00-08:00")
+    expect(DateTime).to receive(:now).and_return expected_time
     student.checkin
-    expect(!!(CheckinRecord.find_by student: student)).to be true
+    cr = CheckinRecord.find_by student: student
+    expect(!!cr).to be true
+    expect(cr.time).to eq expected_time
+    expect(cr.student).to eq student
   end
 end
