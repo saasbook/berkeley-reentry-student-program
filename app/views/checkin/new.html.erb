@@ -1,29 +1,38 @@
 <div class="container">
   <div class="px-4 py-3 my-5 text-center">
     <h2 class="display-5 fw-bold pb-4">Check-in to the Berkeley Reentry <br> Student Program Study Space</h2>
-    <%= form_with(model: @checkin_record, local: true) do |f| %>
+    <%= form_with(model: @checkin, local: true) do |f| %>
       <div class="row mb-3">
-        <div class="col-md-6 offset-md-3">
+        <div class="col-md-3 offset-md-3">
 <!--          <label for="checkinName" class="form-label">First & Last Name</label>-->
 <!--          <input type="text" class="form-control" id="checkinName" placeholder="Oski Bear" aria-describedby="checkinName" aria-label="Name">-->
+          <%= f.label :first_name, class: "form-label" %>
+          <%= f.text_field :first_name, value: @user.first_name, class: "form-control" %>
+        </div>
+        <div class="col-md-3 ">
+          <%= f.label :last_name, class: "form-label" %>
+          <%= f.text_field :last_name, value: @user.last_name, class: "form-control" %>
         </div>
       </div>
       <div class="row mb-3">
         <div class="col-md-6 offset-md-3">
 <!--          <label for="checkinEmail" class="form-label">Email Address</label>-->
 <!--          <input type="email" class="form-control" id="checkinEmail" placeholder="OskiBear@berkeley.edu" aria-describedby="checkinEmail" aria-label="Berkeley Email">-->
+          <%= f.label :email, class: "form-label" %>
+          <%= f.email_field :email, value: @user.email, class: "form-control" %>
           <div id="emailHelp" class="form-text">Please enter your <b>Berkeley Email</b>.</div>
         </div>
       </div>
       <div class="row mb-3">
         <div class="col-md-6 offset-md-3">
 <!--        SID Field    -->
-
+          <%= f.label :sid, "Student ID", class: "form-label" %>
+          <%= f.number_field :sid, value: @user.sid, class: "form-control" %>
         </div>
       </div>
       <%= link_to "Back", root_path, method: :get, class: "btn btn-secondary btn-lg" %>
-      <button type="submit" class="btn btn-primary btn-lg ms-2" aria-label="Submit">Submit</button>
-    <% end %>
+      <%= f.submit "Submit", class: "btn btn-primary btn-lg ms-2" %>
+  <% end %>
   </div>
 </div>
 
