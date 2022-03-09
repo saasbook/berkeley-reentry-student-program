@@ -4,5 +4,6 @@ FactoryBot.define do
     time { DateTime.now + 1.day}
     location { "ESS" }
     association :staff, factory: :staff
+    student { nil }
   end
 end
