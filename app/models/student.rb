@@ -11,8 +11,4 @@ class Student < User
     end
   end
 
-  def checkin
-    Time.zone = 'Pacific Time (US & Canada)'
-    CheckinRecord.create(time: DateTime.now, student: self)
-  end
 end
