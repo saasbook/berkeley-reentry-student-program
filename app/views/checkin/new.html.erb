@@ -1,4 +1,9 @@
 <div class="container">
+  <% flash.each do |key, value| %>
+    <div class="<%= flash_class(key) %>">
+      <%= value %>
+    </div>
+  <% end %>
   <div class="px-4 py-3 my-5 text-center">
     <h2 class="display-5 fw-bold pb-4">Check-in to the Berkeley Reentry <br> Student Program Study Space</h2>
     <%= form_with(model: @checkin, local: true) do |f| %>
