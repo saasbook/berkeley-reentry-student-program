@@ -31,7 +31,9 @@ ActiveRecord::Schema.define(version: 2022_03_09_224343) do
     t.bigint "staff_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "student_id"
     t.index ["staff_id"], name: "index_appointments_on_staff_id"
+    t.index ["student_id"], name: "index_appointments_on_student_id"
   end
 
   create_table "checkins", force: :cascade do |t|
@@ -61,6 +63,6 @@ ActiveRecord::Schema.define(version: 2022_03_09_224343) do
   end
 
   add_foreign_key "announcements", "users", column: "admin_id"
-  add_foreign_key "appointments", "users", column: "staff_id"
-  add_foreign_key "checkins", "users", column: "sid"
+  add_foreign_key "appointments", "users", column: "student_id"
+  add_foreign_key "checkins", "users", column: "student_id"
 end
