@@ -18,7 +18,7 @@ class CheckinController < ApplicationController
     # If cannot find user, then redirect to login
     # otherwise redirect to create
     # for testing
-    @user = User.create(first_name: "Jane", last_name: "Doe", student_id: 123456789, email: "janedoe@email.com", password: "password", is_student: true, is_admin: false, is_staff: false)
+    @user = User.create(first_name: "Jane", last_name: "Doe", sid: 123456789, email: "janedoe@email.com", password: "password", is_student: true, is_admin: false, is_staff: false)
     @checkin = Checkin.new
     @checkin.update(time: DateTime.now, student_id: @user.student_id, email: @user.email, first_name: @user.first_name, last_name: @user.last_name)
     if @checkin.save(validate: false)
