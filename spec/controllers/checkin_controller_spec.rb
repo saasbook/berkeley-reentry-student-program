@@ -7,7 +7,7 @@ describe CheckinController do
     @stu = create :student
     @expected_time = DateTime.parse("2022-03-08T12:00:00-08:00")
     allow(DateTime).to receive(:now).and_return @expected_time
-    controller.sessions[:user_id] = @stu.id
+    controller.session[:current_user_id] = @stu.id
   end
 
   describe "POST create" do
