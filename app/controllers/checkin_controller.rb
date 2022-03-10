@@ -19,7 +19,12 @@ class CheckinController < ApplicationController
     # otherwise redirect to create
     # for testing
     @user = User.create(first_name: "Jane", last_name: "Doe", sid: 123456789, email: "janedoe@email.com", password: "password", is_student: true, is_admin: false, is_staff: false)
-    @checkin = Checkin.create(time: DateTime.now, student_id: @user.sid, email: @user.email, first_name: @user.first_name, last_name: @user.last_name)
+    @checkin = Checkin.new
+    @checkin.first_name = @user.first_name
+    @checkin.last_name = @user.last_name
+    @checkin.student_id = @user.sid
+    @checkin.email = @user.email
+    @checkin.time = DateTime.now
     # validate false for manual testing
     if @checkin.save(validate: false)
       redirect_to root_path, flash: { :success => "Success! You've been checked in!" }
