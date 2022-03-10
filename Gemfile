@@ -63,6 +63,7 @@ group :development, :test do
   gem 'factory_bot_rails'
   gem 'rspec-rails', "~> 4.1.2"
   gem 'guard-rspec'
+  gem 'byebug'
 end
 
 group :development do
