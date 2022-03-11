@@ -1,8 +1,125 @@
 {
   "RSpec": {
     "coverage": {
+      "/Users/ryangaray/berkeley-reentry-student-program/app/helpers/application_helper.rb": {
+        "lines": [
+          1,
+          null
+        ]
+      },
+      "/Users/ryangaray/berkeley-reentry-student-program/app/models/admin.rb": {
+        "lines": [
+          1,
+          1,
+          null
+        ]
+      },
+      "/Users/ryangaray/berkeley-reentry-student-program/app/models/user.rb": {
+        "lines": [
+          1,
+          null
+        ]
+      },
+      "/Users/ryangaray/berkeley-reentry-student-program/app/models/application_record.rb": {
+        "lines": [
+          1,
+          1,
+          null
+        ]
+      },
+      "/Users/ryangaray/berkeley-reentry-student-program/app/models/announcement.rb": {
+        "lines": [
+          1,
+          1,
+          null
+        ]
+      },
+      "/Users/ryangaray/berkeley-reentry-student-program/app/models/appointment.rb": {
+        "lines": [
+          1,
+          1,
+          1,
+          null
+        ]
+      },
+      "/Users/ryangaray/berkeley-reentry-student-program/app/models/checkin_record.rb": {
+        "lines": [
+          1,
+          1,
+          null
+        ]
+      },
+      "/Users/ryangaray/berkeley-reentry-student-program/app/models/staff.rb": {
+        "lines": [
+          1,
+          1,
+          null
+        ]
+      },
+      "/Users/ryangaray/berkeley-reentry-student-program/app/models/student.rb": {
+        "lines": [
+          1,
+          1,
+          1,
+          null,
+          1,
+          1,
+          null,
+          1,
+          2,
+          1,
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      "/Users/ryangaray/berkeley-reentry-student-program/app/controllers/application_controller.rb": {
+        "lines": [
+          0,
+          0
+        ],
+        "branches": {
+        }
+      },
+      "/Users/ryangaray/berkeley-reentry-student-program/app/controllers/checkin_controller.rb": {
+        "lines": [
+          0,
+          null,
+          0,
+          null,
+          0,
+          null,
+          0
+        ],
+        "branches": {
+        }
+      },
+      "/Users/ryangaray/berkeley-reentry-student-program/app/controllers/login_controller.rb": {
+        "lines": [
+          0,
+          null,
+          0,
+          null,
+          0,
+          null,
+          0
+        ],
+        "branches": {
+        }
+      },
+      "/Users/ryangaray/berkeley-reentry-student-program/app/controllers/pages_controller.rb": {
+        "lines": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "branches": {
+        }
+      }
     },
-    "timestamp": 1644952444
+    "timestamp": 1647029972
   },
   "Cucumber Features": {
     "coverage": {

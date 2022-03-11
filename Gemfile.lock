@@ -270,7 +270,7 @@ GEM
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2)
     shellany (0.0.1)
-    simplecov (0.20.0)
+    simplecov (0.21.2)
       docile (~> 1.1)
       simplecov-html (~> 0.11)
       simplecov_json_formatter (~> 0.1)
@@ -331,7 +331,7 @@ DEPENDENCIES
   rspec-rails (~> 4.1.2)
   sass-rails (~> 5.0)
   selenium-webdriver
-  simplecov (= 0.20.0)
+  simplecov (~> 0.21.2)
   sprockets (~> 3.7.2)
   sprockets-rails
   sqlite3
