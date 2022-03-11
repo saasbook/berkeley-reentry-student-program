@@ -79,6 +79,7 @@ end
 group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
   gem 'simplecov', '~> 0.21.2', :require => false
+  gem 'simplecov_json_formatter', '~> 0.1.2', :require => false
   gem "selenium-webdriver"
   gem "webdrivers"
   gem 'cucumber', '~> 3.0.0'
