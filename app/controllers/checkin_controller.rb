@@ -8,8 +8,7 @@ class CheckinController < ApplicationController
     @checkin = Checkin.new
     @checkin.update(time: DateTime.now, student_id: @user.id)
     @checkin.student = @user
-    # validate false for manual testing
-    if @checkin.save(validate: false)
+    if @checkin.save
       redirect_to root_path, flash: { :success => "Success! You've been checked in!" }
     else
       redirect_to root_path, flash: { :error => "Something went wrong, please try again" }
