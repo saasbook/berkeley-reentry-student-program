@@ -17,6 +17,19 @@ jobs:
         ruby-version: 3.0.3
         bundler-cache: true
 
+    - name: Set up Code Climate test-reporter
+      run: |
+        curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+        chmod +x ./cc-test-reporter
+        ./cc-test-reporter before-build
+
+    - name: Install bundler
+      run: |
+        gem install bundler
+    - name: Install dependencies
+      run: |
+        bundle install
+
     - name: Set up PostgreSQL
       run: |
         sudo apt-get install postgresql libpq-dev
@@ -27,35 +40,19 @@ jobs:
       run: |
         bundle exec rake db:create db:migrate
 
-    - name: Setup CodeClimate test-reporter
-      run: |
-        curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > $CCTR
-        chmod +x $CCTR
-        $CCTR before-build
-
     - name: run RSpec tests #and capture coverage
       run: |
         bundle exec rspec
+        ./cc-test-reporter format-coverage --output coverage/codeclimate.$SUITE.json --input-type simplecov
 
     - name: run Cucumber tests #and capture coverage
       run: |
-        bundle exec cucumber --retry 2
+        bundle exec cucumber
+        ./cc-test-reporter format-coverage --output coverage/codeclimate.$SUITE.json --input-type simplecov
 
-#    - name: Build and test with RSpec
-#      run: |
-#        gem install bundler
-#        bundle install --jobs 4 --retry 3
-#        bundle exec rspec
-
-#    - name: run Cucumber tests
-#      run: |
-#        gem install bundler
-#        bundle install --jobs 4 --retry 3
-#        bundle exec cucumber
-
-#    - name: Publish code coverage
-#      run: |
-#        export GIT_BRANCH="${GITHUB_REF/refs\/heads\//}"
-#        $CCTR sum-coverage coverage/codeclimate.*.json
-#        $CCTR upload-coverage --id ${{ secrets.CC_TEST_REPORTER_ID }}
-#        $CCTR after-build --id ${{ secrets.CC_TEST_REPORTER_ID }}
+    - name: Publish code coverage
+      run: |
+        export GIT_BRANCH="${GITHUB_REF/refs\/heads\//}"
+        ./cc-test-reporter sum-coverage coverage/codeclimate.*.json
+        ./cc-test-reporter upload-coverage --id ${{ secrets.CC_TEST_REPORTER_ID }}
+        ./cc-test-reporter after-build --id ${{ secrets.CC_TEST_REPORTER_ID }}

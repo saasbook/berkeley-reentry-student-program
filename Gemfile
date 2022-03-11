@@ -78,6 +78,8 @@ end
 
 group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
+  gem 'simplecov', '~> 0.21.2', :require => false
+  gem 'simplecov_json_formatter', '~> 0.1.2', :require => false
   gem "selenium-webdriver"
   gem "webdrivers"
   gem 'cucumber', '~> 3.0.0'
@@ -85,5 +87,4 @@ group :test do
   gem 'capybara', '~> 3.0'
   gem 'cucumber-rails-training-wheels' # basic imperative step defs like "Then I should see..."
   gem 'database_cleaner', "~> 1.8.5" # required by Cucumber
-  gem 'simplecov', '= 0.20.0', :require => false # version is for github actions to work
 end
