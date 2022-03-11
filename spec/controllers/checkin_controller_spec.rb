@@ -14,7 +14,7 @@ describe CheckinController do
     before do
       @n_checkin_before = Checkin.all.size
       post :create
-      @new_checkin = Checkin.order(id: :desc).limit(1)[0]
+      @new_checkin = Checkin.order(id: :desc).first
     end
 
     it "should add 1 new checkin record to the table" do
