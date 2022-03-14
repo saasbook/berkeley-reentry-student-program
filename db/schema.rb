@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_03_08_215729) do
+ActiveRecord::Schema.define(version: 2022_03_10_222144) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,12 +36,12 @@ ActiveRecord::Schema.define(version: 2022_03_08_215729) do
     t.index ["student_id"], name: "index_appointments_on_student_id"
   end
 
-  create_table "checkin_records", force: :cascade do |t|
+  create_table "checkins", force: :cascade do |t|
     t.datetime "time"
     t.bigint "student_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["student_id"], name: "index_checkin_records_on_student_id"
+    t.index ["student_id"], name: "index_checkins_on_student_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -62,5 +62,5 @@ ActiveRecord::Schema.define(version: 2022_03_08_215729) do
   add_foreign_key "announcements", "users", column: "admin_id"
   add_foreign_key "appointments", "users", column: "staff_id"
   add_foreign_key "appointments", "users", column: "student_id"
-  add_foreign_key "checkin_records", "users", column: "student_id"
+  add_foreign_key "checkins", "users", column: "student_id"
 end

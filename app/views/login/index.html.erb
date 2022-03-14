@@ -1,1 +1,15 @@
-<h1>Login Page</h1>
+<div class="container">
+  <div class="<%=flash.empty? ? 'px-4 py-5 my-2 text-center' : 'px-4 pb-5 mb-5 text-center' %>">
+    <h1 class="display-5 fw-bold"><b>Hello there!</b> <br/> Let's get you signed-in first &#x1F929</h1>
+    <div class="col-lg-6 mt-4 mx-auto">
+      <p class="lead mb-4">Please log-in or sign-up below!</p>
+      <%= link_to "Login", login_path, method: :get, class:"btn btn-secondary btn-lg px-5 mt-4" %>
+      <p class="lead my-4">—OR—</p>
+      <button type="button" class="btn btn-primary btn-lg px-4">Sign-up</button>
+    </div>
+    <hr class="my-5 w-50 mx-auto"/>
+    <div class="col-lg-6 mt-5 mx-auto">
+      <%= link_to "Take me back", root_path, method: :get, class:"btn btn-secondary mt-2 btn-lg px-4 gap-3" %>
+    </div>
+    </div>
+</div>

@@ -5,3 +5,7 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
+for x in 1..10 do
+  FactoryBot.create(:student)
+  # create 10 students and save them
+end

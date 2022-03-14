@@ -1,12 +1,22 @@
 <div class="container">
-  <div class="px-4 py-5 my-5 text-center">
+  <div class="<%=flash.empty? ? 'px-4 py-5 my-2 text-center' : 'px-4 pb-5 mb-5 text-center' %>">
+    <% flash.each do |type, msg| %>
+      <div class="<%=type.to_s === "success" ? 'alert alert-success mt-2 mb-4' : 'alert alert-danger mt-2 mb-4'%>">
+        <%= msg %>
+      </div>
+    <% end %>
     <img class="d-block rounded mx-auto mb-4" src="/assets/reentry-owl.jpeg" alt="" width="130" height="130">
     <h1 class="display-5 fw-bold">Welcome to the Berkeley <br/> Reentry Student Center</h1>
     <div class="col-lg-6 mt-4 mx-auto">
-      <p class="lead mb-4">Check-in using this application, find and make appointments with staff, find news and updates</p>
-      <%= link_to "Check into Berkeley <br/> Reentry Student Center".html_safe, checkin_path, method: :get, class:"btn btn-primary mt-1 btn-lg px-4 gap-3" %>
+      <p class="lead mb-4">Check-in using this application, find and make appointments with staff, find news and updates &#x1F4AB</p>
+      <form class="button_to" method="post" action="/checkin">
+        <button type="submit" class="btn btn-primary mt-1 btn-lg px-4 gap-3">
+         Check-in to Berkeley <br> Reentry Student Center
+        </button>
+        <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+      </form>
       <div class="d-grid mt-2 gap-2 d-sm-flex justify-content-sm-center pt-2">
-        <%= link_to "Login", login_path, method: :get, class:"btn btn-secondary btn-lg px-4 gap-3" %>
+        <button type="button" class="btn btn-secondary btn-lg px-4 gap-3">Login</button>
         <button type="button" class="btn btn-secondary btn-lg px-4">Sign-up</button>
       </div>
     </div>

@@ -1,6 +1,6 @@
 class Student < User
   has_many :appointments
-  has_many :checkin_records
+  has_many :checkins
 
   validates :sid, presence: true
   validate :check_is_student

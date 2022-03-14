@@ -1,5 +1,5 @@
 FactoryBot.define do
-  factory :checkin_record do
+  factory :checkin do
     Time.zone = 'Pacific Time (US & Canada)'
     time { Time.now }
     association :student, factory: :student
