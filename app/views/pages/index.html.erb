@@ -6,7 +6,12 @@
       </div>
     <% end %>
     <%= image_tag("reentry-owl.jpg", width: 130, height: 130, class: "d-block rounded mx-auto mb-4") %>
+  <% if @logged_out %>
     <h1 class="display-5 fw-bold">Welcome to the Berkeley <br/> Reentry Student Center</h1>
+  <% else %>
+    <h1 class="display-5 fw-bold">Welcome to the Berkeley <br/> Reentry Student Center,</h1>
+    <h3 class="display-5 name-display mt-3"><%= @name.html_safe %></h3>
+  <% end %>
     <div class="col-lg-6 mt-4 mx-auto">
       <p class="lead mb-4">Check-in using this application, find and make appointments with staff, find news and updates &#x1F4AB</p>
       <form class="button_to" method="post" action="/checkin">
@@ -15,10 +20,12 @@
         </button>
         <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
       </form>
+      <% if @logged_out %>
       <div class="d-grid mt-2 gap-2 d-sm-flex justify-content-sm-center pt-2">
         <button type="button" class="btn btn-secondary btn-lg px-4 gap-3">Login</button>
         <button type="button" class="btn btn-secondary btn-lg px-4">Sign-up</button>
       </div>
+      <% end %>
     </div>
   </div>
 </div>
