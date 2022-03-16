@@ -7,9 +7,9 @@
     <% end %>
     <%= image_tag("reentry-owl.jpg", width: 130, height: 130, class: "d-block rounded mx-auto mb-4") %>
   <% if @logged_out %>
-    <h1 class="display-5 fw-bold">Welcome to the Berkeley <br/> Reentry Student Center</h1>
+    <h1 class="display-5 fw-bold">Welcome to the Berkeley <br/> Reentry Student Program</h1>
   <% else %>
-    <h1 class="display-5 fw-bold">Welcome to the Berkeley <br/> Reentry Student Center,</h1>
+    <h1 class="display-5 fw-bold">Welcome to the Berkeley <br/> Reentry Student Program,</h1>
     <h3 class="display-5 name-display mt-3"><%= @name.html_safe %></h3>
   <% end %>
     <div class="col-lg-6 mt-4 mx-auto">
