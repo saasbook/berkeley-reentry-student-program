@@ -8,12 +8,12 @@ describe CheckinController do
     @expected_time = DateTime.parse("2022-03-08T12:00:00-08:00")
     allow(DateTime).to receive(:now).and_return @expected_time
     controller.session[:current_user_id] = @stu.id
-    controller.params[:checkin] = {:reason => "Studying"}
   end
 
   describe "POST create" do
     before do
       @n_checkin_before = Checkin.all.size
+      controller.params[:checkin] = {:reason => "Studying"}
       get :new
       post :create
       @new_checkin = Checkin.order(id: :desc).first
