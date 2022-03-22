@@ -53,7 +53,7 @@ describe PagesController do
       expect(assigns(:user_type)).to include 'Admin'
     end
   
-    it "name should be saved in NAME" do
+    it "name should be saved" do
       expect(assigns(:name)).to be_truthy
     end
   end
