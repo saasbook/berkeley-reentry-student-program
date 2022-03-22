@@ -9,4 +9,7 @@ Rails.application.routes.draw do
   # route GET /check-in to login controller and #index action
   # get "checkin", to: "checkin#new"
   post "checkin", to: "checkin#create"
+  # the admin dashboard
+  get 'admins/index'
+  get 'admins/view_checkin_records'
 end
