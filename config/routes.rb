@@ -10,6 +10,6 @@ Rails.application.routes.draw do
   get "checkin", to: "checkin#new"
   post "checkin", to: "checkin#create"
   # the admin dashboard
-  get 'admins/index'
-  get 'admins/view_checkin_records'
+  get "admins/index"
+  get "admins/view_checkin_records"
 end
