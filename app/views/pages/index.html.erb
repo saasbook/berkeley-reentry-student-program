@@ -8,19 +8,31 @@
     <%= image_tag("reentry-owl.jpg", width: 130, height: 130, class: "d-block rounded mx-auto mb-4") %>
   <% if @logged_out %>
     <h1 class="display-5 fw-bold">Welcome to the Berkeley <br/> Reentry Student Program</h1>
+    <div class="d-grid mt-2 gap-2 d-sm-flex justify-content-sm-center pt-2">
+      <button type="button" class="btn btn-secondary btn-lg px-4 gap-3">Login</button>
+      <button type="button" class="btn btn-secondary btn-lg px-4">Sign-up</button>
+    </div>
   <% else %>
     <h1 class="display-5 fw-bold">Welcome to the Berkeley <br/> Reentry Student Program,</h1>
     <h3 class="display-5 name-display mt-3"><%= @name.html_safe %></h3>
-  <% end %>
-    <div class="col-lg-6 mt-4 mx-auto">
-      <p class="lead mb-4">Check-in using this application, find and make appointments with staff, find news and updates &#x1F4AB</p>
-      <%= link_to "Check-in to Berkeley </br> Reentry Student Center".html_safe, checkin_path, class: "btn btn-primary mt-1 btn-lg px-4 gap-3" %>
-      <% if @logged_out %>
-      <div class="d-grid mt-2 gap-2 d-sm-flex justify-content-sm-center pt-2">
-        <button type="button" class="btn btn-secondary btn-lg px-4 gap-3">Login</button>
-        <button type="button" class="btn btn-secondary btn-lg px-4">Sign-up</button>
+    <% if @user_type.include? 'Admin' %>
+      <%= link_to "Go to admin dashboard".html_safe, admin_dashboard_path, class: "btn btn-primary mt-1 btn-lg px-4 gap-3" %>
+    <% end %>
+    <% if @user_type.include? 'Staff' %>
+      <%# pending %>
+    <% end %>
+    <% if @user_type.include? 'Student' %>
+      <div class="col-lg-6 mt-4 mx-auto">
+        <p class="lead mb-4">Check-in using this application, find and make appointments with staff, find news and updates &#x1F4AB</p>
+        <form class="button_to" method="post" action="/checkin">
+          <button type="submit" class="btn btn-primary mt-1 btn-lg px-4 gap-3">
+          Check-in to Berkeley <br> Reentry Student Center
+          </button>
+          <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+        </form>
       </div>
-      <% end %>
-    </div>
+    <% end %>
+  <% end %>
+    
   </div>
 </div>
