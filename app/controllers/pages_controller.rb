@@ -9,9 +9,9 @@ class PagesController < ApplicationController
 
   def authenticate
     @user_type = Array.new
-    if session.has_key? :current_user_id and Student.find_by_id(session[:current_user_id])
+    user = User.find_by_id(session[:current_user_id])
+    if user
       @logged_out = false
-      user = User.find_by_id(session[:current_user_id])
       @name = user.first_name + " " + user.last_name   
       if user.is_admin
         @user_type.push 'Admin'
