@@ -13,7 +13,8 @@ describe CheckinController do
   describe "POST create" do
     before do
       @n_checkin_before = Checkin.all.size
-      post :create
+      get :new
+      post :create, params: {checkin: { reason: "Studying" }}
       @new_checkin = Checkin.order(id: :desc).first
     end
 

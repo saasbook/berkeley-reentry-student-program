@@ -7,6 +7,6 @@ Rails.application.routes.draw do
   # route GET /login to login controller and #index action
   get "login", to: "login#index"
   # route GET /check-in to login controller and #index action
-  # get "checkin", to: "checkin#new"
+  get "checkin", to: "checkin#new"
   post "checkin", to: "checkin#create"
 end
