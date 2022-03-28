@@ -1,7 +1,7 @@
 <div class="container ">
   <div class="px-4 py-3 my-5 text-center">
     <h2 class="display-5 fw-bold pb-4">Check-in to the Berkeley Reentry <br> Student Program Study Space</h2>
-    <%= form_with model: @checkin, url: checkin_path do |f| %>
+    <%= form_with model: Checkin.new, url: checkin_path do |f| %>
       <div class="row mb-3 justify-content-center">
         <div class="col-7 mb-5">
           <%= f.label :reason, "Please select a reason for check-in today &#x2705".html_safe, class: "form-label" %>
