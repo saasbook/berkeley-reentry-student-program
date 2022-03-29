@@ -5,6 +5,7 @@ class AdminsController < ApplicationController
   end
 
   def view_checkin_records
+    @checkin_records = Checkin.order(time: :desc).limit(10)
   end
 
   private
