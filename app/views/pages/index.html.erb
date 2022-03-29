@@ -16,7 +16,7 @@
       <h1 class="display-5 fw-bold">Welcome to the Berkeley <br/> Reentry Student Program,</h1>
       <h3 class="display-5 name-display mt-3"><%= @name.html_safe %></h3>
       <% if @user_type.include? 'Admin' %>
-        <%= link_to "Go to admin dashboard".html_safe, 'admins/index', class: "btn btn-primary mt-1 btn-lg px-4 gap-3" %>
+        <%= link_to "Go to admin dashboard".html_safe, '/admins/index', class: "btn btn-primary mt-1 btn-lg px-4 gap-3" %>
       <% end %>
       <% if @user_type.include? 'Staff' %>
         <%# pending %>
