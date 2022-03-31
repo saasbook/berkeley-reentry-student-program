@@ -20,7 +20,10 @@ SimpleCov.start 'rails' do
   add_filter "/app/jobs/"
   add_filter "/app/channels/"
 end
-SimpleCov.formatter = SimpleCov::Formatter::JSONFormatter
+SimpleCov.formatters = SimpleCov::Formatter::MultiFormatter.new([
+SimpleCov::Formatter::JSONFormatter,
+SimpleCov::Formatter::HTMLFormatter,
+])
 # See https://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 RSpec.configure do |config|
   # rspec-expectations config goes here. You can use an alternate
