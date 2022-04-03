@@ -291,6 +291,7 @@ GEM
     sqlite3 (1.4.2)
     thor (1.2.1)
     tilt (2.0.10)
+    timecop (0.9.5)
     turbo-rails (1.0.1)
       actionpack (>= 6.0.0)
       railties (>= 6.0.0)
@@ -343,6 +344,7 @@ DEPENDENCIES
   sprockets (~> 3.7.2)
   sprockets-rails
   sqlite3
+  timecop
   turbo-rails
   tzinfo-data
   web-console (~> 3.7.0)

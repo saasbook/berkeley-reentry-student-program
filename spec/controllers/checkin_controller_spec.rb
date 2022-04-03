@@ -6,8 +6,8 @@ describe CheckinController do
     # set precondition: sessions, datetime, checkin records
     @stu = create :student
     @expected_time = DateTime.parse("2022-03-08T12:00:00-08:00")
-    allow(DateTime).to receive(:now).and_return @expected_time
-    
+    Timecop.freeze(@expected_time)
+    controller.session[:current_user_id] = @stu.id
     @n_checkin_before = Checkin.all.size
   end
 
