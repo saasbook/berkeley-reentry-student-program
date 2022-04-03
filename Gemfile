@@ -88,10 +88,6 @@ group :test do
   gem 'capybara', '~> 3.0'
   gem 'cucumber-rails-training-wheels' # basic imperative step defs like "Then I should see..."
   gem 'database_cleaner', "~> 1.8.5" # required by Cucumber
-<<<<<<< HEAD
-  gem 'rails-controller-testing' 
-=======
   gem 'rails-controller-testing'
   gem 'timecop'
->>>>>>> main
 end
