@@ -31,6 +31,8 @@ gem 'bootstrap', '~> 5.0.0'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 
+#Use for Google Oauth 2.0
+gem 'omniauth-google-oauth2'
 
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 gem "jbuilder", "~> 2.10.1"
