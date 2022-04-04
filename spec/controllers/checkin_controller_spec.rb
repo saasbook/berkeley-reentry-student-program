@@ -30,6 +30,12 @@ describe CheckinController do
       it "the new checkin record should belongs to the student in session" do
         expect(@new_checkin.student).to eq(@stu)
       end
+
+      it "should clear flash when creating a new checkin" do
+        flash[:alert] = "This is an alert"
+        get :new
+        expect(flash).to be_empty
+      end
     end
     
     describe ": sad path: " do
@@ -38,6 +44,13 @@ describe CheckinController do
         controller.session[:current_user_id] = nil
         post :create, params: {checkin: { reason: "Studying" }}
         expect(response).to redirect_to login_path
+      end
+
+      it "should redirect user to landing page if record is not valid" do
+        controller.session[:current_user_id] = @stu.id
+        post :create, params: {checkin: { reason: nil }}
+        expect(response).to redirect_to root_path
+        expect(flash[:error]).to match(/Something went wrong, please try again/)
       end
     end
     
