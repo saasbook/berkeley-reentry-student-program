@@ -29,7 +29,7 @@
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
-coverage
+/coverage
 
 # Ignore locally installed gems
 /vendor/bundle
