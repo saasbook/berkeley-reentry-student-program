@@ -5,7 +5,15 @@ class AdminsController < ApplicationController
   end
 
   def view_checkin_records
-    @checkin_records = Checkin.order(time: :desc).limit(10)
+    if !params.has_key? :page || params[:page] < 1
+      redirect_to view_checkin_records_path(page: 1)
+      # return is needed here, otherwise the app will continue execute 
+      # the following instructions after redirect
+      return
+    end
+    n = params[:page].to_i - 1
+    @checkin_records = Checkin.get_20_checkin_records(n)
+    @has_next_page = @checkin_records.size == 20
   end
 
   private
