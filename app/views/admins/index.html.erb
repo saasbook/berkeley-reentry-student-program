@@ -1,2 +1,14 @@
-<h1>Admins#index</h1>
-<p>Find me in app/views/admins/index.html.erb</p>
+<div class="container">
+  <div class="<%=flash.empty? ? 'px-4 py-5 my-2 text-center' : 'px-4 pb-5 mb-5 text-center' %>">
+    <% flash.each do |type, msg| %>
+      <div class="<%=type.to_s === "success" ? 'alert alert-success mt-2 mb-4' : 'alert alert-danger mt-2 mb-4'%>">
+        <%= msg %>
+      </div>
+    <% end %>
+    <%= image_tag("reentry-owl.jpg", width: 130, height: 130, class: "d-block rounded mx-auto mb-4") %>
+    <h1 class=" display-5 fw-bold">Admin Dashboard</h1>
+    <div class="d-grid mt-2 gap-2 d-sm-flex justify-content-sm-center pt-2">
+      <%= link_to "view check-in records".html_safe, view_checkin_records_path, class: "btn btn-primary mt-1 btn-lg px-4 gap-3" %>
+    </div>
+  </div>
+</div>
