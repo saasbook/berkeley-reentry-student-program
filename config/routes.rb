@@ -12,4 +12,7 @@ Rails.application.routes.draw do
   # the admin dashboard
   get "admins", to: "admins#index"
   get "view_checkin_records", to: "admins#view_checkin_records"
+  # Routes for Google authentication
+  get "auth/google_oauth2/callback", to: "sessions#googleAuth", as: "google_login"
+  get "auth/failure", to: redirect('/')
 end

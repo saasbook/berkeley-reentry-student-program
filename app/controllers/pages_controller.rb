@@ -8,6 +8,9 @@ class PagesController < ApplicationController
   private
 
   def authenticate
+    user = User.where(is_student: true).first || FactoryBot.create(:student)
+    session[:current_user_id] = nil
+
     @user_type = Array.new
     user = User.find_by_id(session[:current_user_id])
     if user
