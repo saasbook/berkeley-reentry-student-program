@@ -1,4 +1,4 @@
-class LoginController < ApplicationController
+class SessionsController < ApplicationController
 
     def googleAuth
         # Get access tokens from the google server
