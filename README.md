@@ -7,3 +7,11 @@
 <a href="https://codeclimate.com/github/ryan-garay89/berkeley-reentry-student-program/maintainability"><img src="https://api.codeclimate.com/v1/badges/edec3c54a12ea7c8914c/maintainability" /></a>
 
 <a href="https://www.pivotaltracker.com/n/projects/2553425"><img src="https://user-images.githubusercontent.com/67244883/154180887-f803124e-0156-4322-899d-ba475139d60d.png" /></a>
+
+Instructions for setting Google Auth environment variables locally:
+1. run bundle install & bundle exec figaro install
+2. Navigate to config/application.yml
+3. Add the code below to the file:
+GOOGLE_CLIENT_ID: <secret>
+GOOGLE_CLIENT_SECRET: <secret>
+4. The environment variables are now set for you locally! These will not be pushed to GitHub since they are gitignored
