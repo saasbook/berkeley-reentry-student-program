@@ -12,6 +12,6 @@ Instructions for setting Google Auth environment variables locally:
 1. run bundle install & bundle exec figaro install
 2. Navigate to config/application.yml
 3. Add the code below to the file:
-GOOGLE_CLIENT_ID: <secret>
-GOOGLE_CLIENT_SECRET: <secret>
+GOOGLE_CLIENT_ID: SECRET
+GOOGLE_CLIENT_SECRET: SECRET
 4. The environment variables are now set for you locally! These will not be pushed to GitHub since they are gitignored
