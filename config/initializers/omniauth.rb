@@ -1,5 +1,5 @@
 Rails.application.config.middleware.use OmniAuth::Builder do
-  if Rails.env.test?
+  unless Rails.env.production?
     OmniAuth.config.test_mode = true
     OmniAuth.config.add_mock(
       :google_oauth2,
