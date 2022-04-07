@@ -10,7 +10,16 @@ class SessionsController < ApplicationController
         # Note: Refresh_token is only sent once during the first request
         refresh_token = access_token.credentials.refresh_token
         user.google_refresh_token = refresh_token if refresh_token.present?
-        user.save
-        redirect_to root_path
+        if user.save
+            session[:current_user_id] = user.id
+            redirect_to login_confirm_path
+        else
+            redirect_to root_path, flash: { :error => "Something went wrong, please try again" }
+        end
+    end
+
+    def googleAuthLogout
+        session.delete(:current_user_id)
+        redirect_to root_path, flash: { :success => "You've been successfully logged-out!" }
     end
 end 

@@ -8,14 +8,11 @@ class PagesController < ApplicationController
   private
 
   def authenticate
-    user = User.where(is_student: true).first || FactoryBot.create(:student)
-    session[:current_user_id] = nil
-
     @user_type = Array.new
     user = User.find_by_id(session[:current_user_id])
     if user
       @logged_out = false
-      @name = user.first_name + " " + user.last_name   
+      @name = user.first_name + " " + user.last_name
       if user.is_admin
         @user_type.push 'Admin'
       end
