@@ -14,19 +14,17 @@
     <% else %>
       <h1 class="display-5 fw-bold">Welcome to the Berkeley <br/> Reentry Student Program,</h1>
       <h3 class="display-5 name-display mt-3"><%= @name.html_safe %></h3>
-      <%= link_to "Logout", logout_path, class: "btn btn-secondary btn-lg my-4" %>
       <% if @user_type.include? 'Admin' %>
         <%= link_to "Go to admin dashboard".html_safe, admins_path, class: "btn btn-primary mt-1 btn-lg px-4 gap-3" %>
-      <% end %>
-      <% if @user_type.include? 'Staff' %>
+      <% elsif @user_type.include? 'Staff' %>
         <%# pending %>
-      <% end %>
-      <% if @user_type.include? 'Student' %>
+      <% else %>
         <div class="col-lg-6 mt-4 mx-auto">
           <p class="lead mb-4">Check-in using this application, find and make appointments with staff, find news and updates &#x1F4AB</p>
           <%= link_to "Check-in to Berkeley </br> Reentry Student Center".html_safe, checkin_path, class: "btn btn-primary mt-1 btn-lg px-4 gap-3" %>
         </div>
       <% end %>
-    <% end %>
+      <%= link_to "Logout", logout_path, class: "btn btn-secondary btn-lg my-4" %>
+  <% end %>
   </div>
 </div>
