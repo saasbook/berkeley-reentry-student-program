@@ -3,9 +3,9 @@ Given /^(?:|I )logged in as a "([^"]*)"$/ do |user_type|
   u = User.new(first_name: 'Google', last_name: 'Test Developer', email: 'google_test@example.com')
   if user_type == 'Student'
     u.is_student = true
-  else if user_type == 'Admin'
+  elsif user_type == 'Admin'
     u.is_admin = true
-  else if user_type == 'Staff'
+  elsif user_type == 'Staff'
     u.is_staff = true
   end
   u.save
@@ -18,9 +18,9 @@ When /^(?:|I )am a "([^"]*)"$/ do |user_type|
   u = User.new(first_name: 'Google', last_name: 'Test Developer', email: 'google_test@example.com')
   if user_type == 'Student'
     u.is_student = true
-  else if user_type == 'Admin'
+  elsif user_type == 'Admin'
     u.is_admin = true
-  else if user_type == 'Staff'
+  elsif user_type == 'Staff'
     u.is_staff = true
   end
   u.save
