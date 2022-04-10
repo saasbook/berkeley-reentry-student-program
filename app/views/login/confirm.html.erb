@@ -13,21 +13,21 @@
           <div class="col-md-6 offset-md-3">
             <div class="col-md-6 offset-md-3">
               <%= f.label :first_name, class: "form-label" %>
-              <%= f.text_field :first_name, value: @user.first_name, class: "form-control" %>
+              <%= f.text_field :first_name, value: @user.first_name, :required => true, class: "form-control" %>
             </div>
             <div class="col-md-6 offset-md-3">
               <%= f.label :last_name, class: "form-label" %>
-              <%= f.text_field :last_name, value: @user.last_name, class: "form-control" %>
+              <%= f.text_field :last_name, value: @user.last_name, :required => true, class: "form-control" %>
             </div>
           <div class="col-md-6 offset-md-3">
             <%= f.label :email, class: "form-label" %>
-            <%= f.email_field :email, value: @user.email, class: "form-control" %>
+            <%= f.email_field :email, value: @user.email, :required => true, class: "form-control" %>
             <div id="emailHelp" class="form-text">Please ensure this is your <b>Berkeley Email</b>.</div>
           </div>
             <% unless @user.sid %>
               <div class="col-md-6 offset-md-3 mt-3">
-                      <%=  f.label :sid, "Student ID", class: "form-label"  %>
-                <%= f.text_field :sid, value: @user.sid, class: "form-control" %>
+                <%=  f.label :sid, "Student ID", class: "form-label"  %>
+                <%= f.text_field :sid, value: @user.sid, :required => true, class: "form-control" %>
                 <div id="sidHelp" class="form-text">Please enter your SID as it appears on your CalID.</div>
               </div>
             <% end %>

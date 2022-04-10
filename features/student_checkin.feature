@@ -4,7 +4,7 @@ Feature: check in as a student
     so that I can access the study space.
 
 Background: logged in student, on landing page
-    Given I logged in as a "student"
+    Given I logged in as a "Student"
     And I am on the landing page
 
 Scenario: student should be able to check in
@@ -32,6 +32,6 @@ Scenario: student should be able to go back to landing page from checkin page
     Then I should be on the landing page
 
 Scenario: only student can checkin (admin can't access this feature)
-    Given I logged in as a "admin"
+    Given I logged in as a "Admin"
     And I am on the landing page
     Then I should not see "Check-in"
