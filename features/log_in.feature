@@ -7,7 +7,7 @@ Background: logged out user, on landing page (never logged in before)
     Given I am on the landing page
 
 Scenario: student should be able to log in
-    Then I should see "Login with Google"
+    Then I should got "Login with Google"
 
 Scenario: prompt to input more personal info only at first time log in
     When I click "Login with Google" 
@@ -17,13 +17,13 @@ Scenario: prompt to input more personal info only at first time log in
     When I fill in "Student ID" with "1234567890"
     And I click "Submit"
     Then I should be on the landing page
-    And I should see "Check-in"
+    And I should got "Check-in"
 
     When I click "Logout"
     Then I should be on the landing page
     When I click "Login with Google" 
     Then I should be on the landing page
-    And I should see "Check-in"
+    And I should got "Check-in"
 
 Scenario: clicking submit without filling out all fields in confirm page (sad path)
     When I click "Login with Google" 
@@ -35,4 +35,4 @@ Scenario: logging in as admin should direct to admin dashboard
     When I am a "Admin"
     And I click "Login with Google"
     Then I should be on the landing page
-    And I should see "Admin Dashboard"
+    And I should got "admin dashboard"
