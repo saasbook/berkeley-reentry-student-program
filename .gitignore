@@ -34,3 +34,9 @@
 # Ignore locally installed gems
 /vendor/bundle
 /.idea/*
+
+#Ignore byebug
+/.byebug_history
+
+#Ignore application.yml
+/config/application.yml
