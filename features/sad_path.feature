@@ -1,3 +1,8 @@
+Feature: Sad paths for various of cucumber tests
+
+    Those sad paths all have different setup than the background,
+    so they are combined in here.
+
 Scenario: student should not be able to see the link to admin dashboard
     Given I logged in as a "Student"
     And I am on the landing page
