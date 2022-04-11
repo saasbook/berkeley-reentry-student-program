@@ -23,9 +23,7 @@ Scenario: student should be able to fill in a reason and check-in (good path)
 
 Scenario: student should not be able to check-in without filling in a reason (sad path)
     When I click "Check-in"
-    And byebug
     And I click "Submit"
-    And byebug
     Then I should be on the checkin page
 
 Scenario: student should be able to go back to landing page from checkin page
