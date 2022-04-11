@@ -1,9 +1,8 @@
 Given /^(?:|I )logged in as a "([^"]*)"$/ do |user_type|
   # need to clear/delete previous created record in database before inserting
   steps %Q{
-    When I am a "#{user_type}"
-    When I am on the landing page
-    When I click "Login with Google"
+    Given I am a "#{user_type}"
+    And I log in
   }
 end
 
@@ -17,4 +16,11 @@ When /^(?:|I )am a "([^"]*)"$/ do |user_type|
     u.is_staff = true
   end
   u.save
+end
+
+When /^(?:|I )log in$/ do
+  steps %Q{
+    When I am on the landing page
+    When I click "Login with Google"
+  }
 end
