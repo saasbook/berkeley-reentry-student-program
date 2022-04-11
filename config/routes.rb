@@ -12,4 +12,7 @@ Rails.application.routes.draw do
   # the admin dashboard
   get "admins", to: "admins#index"
   get "view_checkin_records", to: "admins#view_checkin_records"
+  # user routes
+  get "users/profile/new", to: "users#profile_new"
+  patch "users/profile/update", to: "users#profile_update"
 end
