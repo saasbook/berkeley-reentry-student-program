@@ -16,14 +16,16 @@ Scenario: student should be redirect to the check-in page after clicking "Check-
 
 Scenario: student should be able to fill in a reason and check-in (good path)
     When I click "Check-in"
-    And I choose "Peer Support"
+    And I select "Peer Support" from "checkin_reason"
     And I press "Submit"
     Then I should be on the landing page
     And I should see "Success!"
 
 Scenario: student should not be able to check-in without filling in a reason (sad path)
     When I click "Check-in"
+    And byebug
     And I click "Submit"
+    And byebug
     Then I should be on the checkin page
 
 Scenario: student should be able to go back to landing page from checkin page
