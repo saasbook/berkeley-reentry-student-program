@@ -23,8 +23,8 @@ Scenario: student should be able to fill in a reason and check-in (good path)
 
 Scenario: student should not be able to check-in without filling in a reason (sad path)
     When I click "Check-in"
-    And I click "Submit"
-    Then I should be on the checkin page
+    And I click "Submit" in checkin
+    Then no checkin record should be created
 
 Scenario: student should be able to go back to landing page from checkin page
     When I click "Check-in"
