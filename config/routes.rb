@@ -13,6 +13,6 @@ Rails.application.routes.draw do
   get "admins", to: "admins#index"
   get "view_checkin_records", to: "admins#view_checkin_records"
   # user routes
-  get "users/profile/new", to: "users#profile_new"
-  patch "users/profile/update", to: "users#profile_update"
+  get "user/profile/new", to: "users#profile_new"
+  patch "user/profile/update", to: "users#profile_update", as: 'user_profile_update'
 end
