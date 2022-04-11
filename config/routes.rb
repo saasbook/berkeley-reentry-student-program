@@ -18,5 +18,5 @@ Rails.application.routes.draw do
   get "auth/failure", to: redirect('/')
   get "logout", to: "sessions#google_auth_logout"
   # routes for user
-  patch "user", to: "user#update"
+  patch "user", to: "users#update"
 end

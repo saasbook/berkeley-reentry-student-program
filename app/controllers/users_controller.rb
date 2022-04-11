@@ -1,4 +1,4 @@
-class UserController < ApplicationController
+class UsersController < ApplicationController
   def update
     flash.clear
     @user = User.find_by(id: session[:current_user_id])

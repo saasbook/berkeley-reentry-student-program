@@ -2,14 +2,17 @@
   <div class="<%=flash.empty? ? 'px-4 py-5 my-2 text-center' : 'px-4 pb-5 mb-5 text-center' %>">
     <% flash.each do |type, msg| %>
       <div class="<%=type.to_s === "success" ? 'alert alert-success mt-2 mb-4' : 'alert alert-danger mt-2 mb-4'%>">
-        <%= msg %>
+        <%= msg.html_safe %>
       </div>
     <% end %>
     <%= image_tag("reentry-owl.jpg", width: 130, height: 130, class: "d-block rounded mx-auto mb-4") %>
     <% if @logged_out %>
       <h1 class="display-5 fw-bold">Welcome to the Berkeley <br/> Reentry Student Program</h1>
       <div class="d-grid mt-2 gap-2 d-sm-flex justify-content-sm-center pt-2">
-      <%= button_to "Login with Google", '/auth/google_oauth2', class: "btn btn-primary btn-lg" %>
+      <%= button_to '/auth/google_oauth2', class: "btn btn-primary btn-lg" do %>
+          <img width="20px" style="margin-bottom:3px; margin-right:5px" alt="Google sign-in" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/512px-Google_%22G%22_Logo.svg.png" />
+          Login with Google
+      <% end %>
       </div>
     <% else %>
       <h1 class="display-5 fw-bold">Welcome to the Berkeley <br/> Reentry Student Program,</h1>
