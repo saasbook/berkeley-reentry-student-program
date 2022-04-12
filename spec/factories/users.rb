@@ -3,7 +3,6 @@ FactoryBot.define do
     sequence(:first_name) { |n| "User_first#{n}" }
     sequence(:last_name) { |n| "User_last#{n}" }
     sequence(:email) { |n| "User#{n}@berkeley.edu" }
-    password { "pass123" }
     sid { nil }
     is_student { true }
     is_admin { false }

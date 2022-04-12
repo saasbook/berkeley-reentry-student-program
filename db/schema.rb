@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_03_31_214012) do
+ActiveRecord::Schema.define(version: 2022_04_12_015500) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -50,7 +50,6 @@ ActiveRecord::Schema.define(version: 2022_03_31_214012) do
     t.string "first_name"
     t.string "last_name"
     t.string "email"
-    t.string "password"
     t.boolean "is_student"
     t.boolean "is_admin"
     t.boolean "is_staff"
@@ -58,6 +57,10 @@ ActiveRecord::Schema.define(version: 2022_03_31_214012) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "google_token"
     t.string "google_refresh_token"
+    t.string "major"
+    t.string "pronouns"
+    t.datetime "grad_year"
+    t.string "identities"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["sid"], name: "index_users_on_sid", unique: true
   end

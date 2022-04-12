@@ -7,8 +7,8 @@
 </div>
 <div class="px-4 py-3 my-5 text-center">
   <h1 class="display-5 fw-bold pb-3">Let's get to know you a bit more...</h1>
-  <p class="h2">You can fill out this information now, or at a later time &#x1f557</p>
-  <%= form_with url: user_profile_update_path do |f| %>
+  <p class="h2 mb-3">You can fill out this information now, or at a later time &#x1f557</p>
+  <%= form_with method: :patch, url: user_profile_update_path, scope: "profile" do |f| %>
     <div class="row mb-3">
       <div class="col-md-6 offset-md-3">
         <div class="col-md-6 offset-md-3 mb-3">
@@ -23,7 +23,7 @@
         </div>
         <div class="col-md-6 offset-md-3 mb-3">
           <%= f.label :grad_year, class: "form-label" %>
-          <%= f.date_select :year, {:order => [:year], :start_year => Time.now.year, :end_year => Time.now.year + 15, :prompt => {:year => "Select year"}}, {:class => "form-select form-select-md mb-3s"} %>
+          <%= f.date_select :grad_year, {:order => [:year], :start_year => Time.now.year, :end_year => Time.now.year + 15, :prompt => {:year => "Select year"}}, {:class => "form-select form-select-md mb-3s"} %>
           <div id="gradYearHelp" class="form-text">Provide your expected graduation year. <b>Optional</b></div>
         </div>
         <div class="col-md-6 offset-md-3 mb-3">
