@@ -9,24 +9,25 @@
     <% if @logged_out %>
       <h1 class="display-5 fw-bold">Welcome to the Berkeley <br/> Reentry Student Program</h1>
       <div class="d-grid mt-2 gap-2 d-sm-flex justify-content-sm-center pt-2">
-        <button type="button" class="btn btn-secondary btn-lg px-4 gap-3">Login</button>
-        <button type="button" class="btn btn-secondary btn-lg px-4">Sign-up</button>
+      <%= button_to '/auth/google_oauth2', class: "btn btn-primary btn-lg" do %>
+          <img width="20px" style="margin-bottom:3px; margin-right:5px" alt="Google sign-in" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/512px-Google_%22G%22_Logo.svg.png" />
+          Login with Google
+      <% end %>
       </div>
     <% else %>
       <h1 class="display-5 fw-bold">Welcome to the Berkeley <br/> Reentry Student Program,</h1>
       <h3 class="display-5 name-display mt-3"><%= @name.html_safe %></h3>
       <% if @user_type.include? 'Admin' %>
         <%= link_to "Go to admin dashboard".html_safe, admins_path, class: "btn btn-primary mt-1 btn-lg px-4 gap-3" %>
-      <% end %>
-      <% if @user_type.include? 'Staff' %>
+      <% elsif @user_type.include? 'Staff' %>
         <%# pending %>
-      <% end %>
-      <% if @user_type.include? 'Student' %>
+      <% else %>
         <div class="col-lg-6 mt-4 mx-auto">
           <p class="lead mb-4">Check-in using this application, find and make appointments with staff, find news and updates &#x1F4AB</p>
           <%= link_to "Check-in to Berkeley </br> Reentry Student Center".html_safe, checkin_path, class: "btn btn-primary mt-1 btn-lg px-4 gap-3" %>
         </div>
       <% end %>
-    <% end %>
+      <%= link_to "Logout", logout_path, class: "btn btn-secondary btn-lg my-4" %>
+  <% end %>
   </div>
 </div>
