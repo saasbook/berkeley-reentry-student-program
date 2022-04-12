@@ -1,11 +1,10 @@
 <div class="container">
+  <div class="<%=flash.empty? ? 'px-4 py-5 my-2 text-center' : 'px-4 pb-5 mb-5 text-center' %>">
   <% flash.each do |type, msg| %>
     <div class="<%=type.to_s === "success" ? 'alert alert-success mt-2 mb-4' : 'alert alert-danger mt-2 mb-4'%>">
       <%= msg.html_safe %>
     </div>
   <% end %>
-</div>
-<div class="px-4 py-3 my-5 text-center">
   <h1 class="display-5 fw-bold pb-3">Let's get to know you a bit more...</h1>
   <p class="h2 mb-3">You can fill out this information now, or at a later time &#x1f557</p>
   <%= form_with method: :patch, url: user_profile_update_path, scope: "profile" do |f| %>
@@ -33,9 +32,10 @@
         </div>
       </div>
       <div class="col-md-6 offset-md-3">
-        <%= link_to "Skip", root_path, class: "btn btn-secondary btn-lg ms-2 my-4" %>
-        <%= f.submit "Submit" , class: "btn btn-primary btn-lg ms-2 my-4"  %>
+        <%= f.submit "Skip", name: "skip", class: "btn btn-secondary btn-lg ms-2 my-4"  %>
+        <%= f.submit "Submit", name: "submit", class: "btn btn-primary btn-lg ms-2 my-4"  %>
       </div>
   <%  end %>
+    </div>
   </div>
 </div>

@@ -2,14 +2,16 @@ class UsersController < ApplicationController
   # before_action :require_login
 
   def profile_new
-
+    flash.clear
   end
 
   def profile_update
-    flash.clear
-    @user = Student.find_by_id(session[:current_user_id])
-    @user.update!(profile_params)
-    redirect_to root_path
+    skipped = params.has_key? :skip
+    unless skipped
+      @user = Student.find_by_id(session[:current_user_id])
+      @user.update!(profile_params)
+    end
+    redirect_to root_path, flash: { :success => "Success! You've been logged-in!" }
   end
 
   private
