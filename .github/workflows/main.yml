@@ -42,12 +42,12 @@ jobs:
 
     - name: run Cucumber tests #and capture coverage
       run: |
-        bundle exec rails cucumber
+        bundle exec cucumber
         ./cc-test-reporter format-coverage --output coverage/codeclimate.$SUITE.json --input-type simplecov
 
     - name: run RSpec tests #and capture coverage
       run: |
-        bundle exec rails spec
+        bundle exec rspec
         ./cc-test-reporter format-coverage --output coverage/codeclimate.$SUITE.json --input-type simplecov
 
     - name: Publish code coverage
