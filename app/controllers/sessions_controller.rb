@@ -11,15 +11,17 @@ class SessionsController < ApplicationController
         # Note: Refresh_token is only sent once during the first request
         refresh_token = access_token.credentials.refresh_token
         user.google_refresh_token = refresh_token if refresh_token.present?
-        if user.save
+        session[:current_user_id] = user.id
+        if existing_user
             session[:current_user_id] = user.id
-            if existing_user
-                redirect_to root_path, flash: { :success => "Success! You've been logged-in!" }
-            else
-                redirect_to login_confirm_path
-            end
+            redirect_to root_path, flash: { :success => "Success! You've been logged-in!" }
         else
-            redirect_to root_path, flash: { :error => "Something went wrong, please try again" }
+            if user.save
+                session[:current_user_id] = user.id
+                redirect_to login_confirm_path
+            else
+                redirect_to root_path, flash: { :error => "Something went wrong, please try again" }
+            end
         end
     end
 
