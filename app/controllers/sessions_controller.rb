@@ -1,17 +1,31 @@
 class SessionsController < ApplicationController
 
-    def googleAuth
+    def google_auth
         # Get access tokens from the google server
         access_token = request.env["omniauth.auth"]
+        existing_user = User.where(email: access_token.info.email).present?
         user = User.from_omniauth(access_token)
-        log_in(user)
         # Access_token is used to authenticate request made from the rails application to the google server
         user.google_token = access_token.credentials.token
         # Refresh_token to request new access_token
         # Note: Refresh_token is only sent once during the first request
         refresh_token = access_token.credentials.refresh_token
         user.google_refresh_token = refresh_token if refresh_token.present?
-        user.save
-        redirect_to root_path
+        if existing_user
+            session[:current_user_id] = user.id
+            redirect_to root_path, flash: { :success => "Success! You've been logged-in!" }
+        else
+            if user.save
+                session[:current_user_id] = user.id
+                redirect_to login_confirm_path
+            else
+                redirect_to root_path, flash: { :error => "Something went wrong, please try again" }
+            end
+        end
+    end
+
+    def google_auth_logout
+        session.delete(:current_user_id)
+        redirect_to root_path, flash: { :success => "You've been successfully logged-out!" }
     end
 end 
