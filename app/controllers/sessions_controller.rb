@@ -15,6 +15,7 @@ class SessionsController < ApplicationController
             session[:current_user_id] = user.id
             redirect_to root_path, flash: { :success => "Success! You've been logged-in!" }
         else
+            user.is_student = true  # new user is a student by default
             if user.save
                 session[:current_user_id] = user.id
                 redirect_to login_confirm_path
