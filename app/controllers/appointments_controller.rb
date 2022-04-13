@@ -1,4 +1,5 @@
-class AppointmentsController < ApplicationController
+class AppointmentsController < LoginController
+  before_action :confirm
   before_action :set_appointment, only: %w[ show edit update destroy ]
 
   # GET /appointments
