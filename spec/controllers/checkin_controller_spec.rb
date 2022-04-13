@@ -43,7 +43,7 @@ describe CheckinController do
       it "should redirect user to login if the user haven't log in" do
         controller.session[:current_user_id] = nil
         post :create, params: {checkin: { reason: "Studying" }}
-        expect(response).to redirect_to login_path
+        expect(response).to redirect_to root_path
       end
 
       it "should redirect user to landing page if record is not valid" do
