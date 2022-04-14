@@ -1,4 +1,4 @@
-class AppointmentsController < ActionController::Base
+class AppointmentsController < ApplicationController
     def advisors
     end
 end
