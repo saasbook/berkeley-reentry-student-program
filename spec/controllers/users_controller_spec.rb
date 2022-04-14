@@ -30,7 +30,13 @@ describe UsersController do
     it "should redirect on logged-out user" do
       controller.session[:current_user_id] = ""
       patch :profile_update, params: {profile: {major: "computer science", grad_year: DateTime.new(2022), pronouns: "He/Him/His", identities: "something", skip: "Skip"} }
-      expect(response).to redirect_to login_path
+      expect(response).to redirect_to root_path
+    end
+
+    it "should not say logged-in on profile edit" do
+      controller.session[:current_user_id] = @student.id
+      patch :profile_update, params: {profile: {major: "computer science", grad_year: DateTime.new(2022), pronouns: "He/Him/His", identities: "something"}, submit_edit: "submit_edit"}
+      expect(flash[:success]).to match(/Success! Your profile has been updated./)
     end
   end
 end
