@@ -5,7 +5,6 @@ Rails.application.routes.draw do
   # root "articles#index"
   root to: 'pages#index'
   # route GET /login to login controller and #index action
-  get "login", to: "login#index"
   get "login/confirm", to: "login#confirm"
   # route GET /check-in to login controller and #index action
   get "checkin", to: "checkin#new"
