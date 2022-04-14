@@ -43,10 +43,7 @@ class UsersController < ApplicationController
 
   def require_login
     unless session.has_key? :current_user_id and Student.find_by_id(session[:current_user_id]).present?
-      user = Student.find_by_id(session[:current_user_id])
-      unless user&.is_student
-        redirect_to root_path, flash: { :error => "Only students have access to profiles." }
-      end
+      redirect_to root_path, flash: { :error => "Only students have access to profiles." }
     end
   end
 
