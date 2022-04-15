@@ -5,12 +5,17 @@ class UsersController < ApplicationController
     flash.clear
     @user = User.find_by(id: session[:current_user_id])
     sid = params[:user][:sid]
+    email = params[:user][:email]
     if sid.blank? or sid.length != 10
-      redirect_to login_confirm_path, flash: { :error => "Invalid Student ID Number" }
+      redirect_to login_confirm_path, flash: { :error => "Invalid Student ID Number." }
+      return
+    end
+    if email.blank? or not email.match(/.+(@berkeley.edu)/)
+      redirect_to login_confirm_path, flash: { :error => "Please use your berkeley email to log-in." }
       return
     end
     if @user.update(user_params)
-      redirect_to root_path, flash: { :success => "Success! You've been logged-in!" }
+      redirect_to user_profile_new_path
     else
       redirect_to login_confirm_path, flash: { :error => "Something went wrong, please try again." }
     end

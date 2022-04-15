@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   get "view_checkin_records", to: "admins#view_checkin_records"
   # user routes
   patch "user", to: "users#update"
-  get "user/profile/new", to: "users#profile_new"
+  get "user/profile/new", to: "users#profile_new", as: 'user_profile_new'
   patch "user/profile/update", to: "users#profile_update", as: 'user_profile_update'
   get "user/profile/edit", to: "users#profile_edit", as: 'user_profile_edit'
   # Routes for Google authentication

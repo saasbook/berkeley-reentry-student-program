@@ -8,7 +8,7 @@ Rails.application.config.middleware.use OmniAuth::Builder do
         "uid" =>      '100000000000000000000',
         "info" =>     {
           "name" =>       'Google Test Developer',
-          "email" =>      'google_test@example.com',
+          "email" =>      'google_test@berkeley.edu',
           "first_name" => 'Google',
           "last_name" =>  'Test Developer'
         },
