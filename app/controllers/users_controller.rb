@@ -11,7 +11,7 @@ class UsersController < ApplicationController
       return
     end
     if email.blank? or not email.match(/.+(@berkeley.edu)/)
-      redirect_to login_confirm_path, flash: { :error => "Please enter you berkeley email." }
+      redirect_to login_confirm_path, flash: { :error => "Please use your berkeley email to log-in." }
       return
     end
     if @user.update(user_params)
