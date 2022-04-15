@@ -26,6 +26,7 @@
           <p class="lead mb-4">Check-in using this application, find and make appointments with staff, find news and updates &#x1F4AB</p>
           <%= link_to "Check-in to Berkeley </br> Reentry Student Center".html_safe, checkin_path, class: "btn btn-primary mt-1 btn-lg px-4 gap-3" %>
         </div>
+        <%= link_to "Edit Profile Information".html_safe, user_profile_edit_path(:edit_profile => true), class: "btn btn-secondary btn-lg px-4 my-4 gap-3" %>
       <% end %>
       <%= link_to "Logout", logout_path, class: "btn btn-secondary btn-lg my-4" %>
   <% end %>
