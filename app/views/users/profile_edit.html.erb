@@ -6,36 +6,6 @@
       </div>
     <% end %>
     <h1 class="display-5 fw-bold pb-3">Edit Your Profile &#x1f4dd</h1>
-    <p class="h2 mb-3">Keep in mind, this information is completely <b>optional!</b></p>
-    <%= form_with method: :patch, url: user_profile_update_path, scope: "profile" do |f| %>
-    <div class="row mb-3">
-        <div class="col-md-6 offset-md-3">
-          <div class="col-md-6 offset-md-3 mb-3">
-            <%= f.label :major, class: "form-label" %>
-            <%= f.text_field :major, value: @user.major.presence.try(:html_safe), class: "form-control" %>
-            <div id="majorHelp" class="form-text">If you have more than one separate using commas.</div>
-          </div>
-          <div class="col-md-6 offset-md-3 mb-3">
-            <%= f.label :identities, class: "form-label" %>
-            <%= f.text_field :identities, placeholder: "LGBTQIA+, First Generation, POC, ...", value: @user.identities.presence.try(:html_safe), class: "form-control" %>
-            <div id="identitiesHelp" class="form-text">Groups/communities that you identify with.</div>
-          </div>
-          <div class="col-md-6 offset-md-3 mb-3">
-            <%= f.label :grad_year, class: "form-label" %>
-            <%= f.date_select :grad_year, {:selected => @user.grad_year.presence, :order => [:year], :start_year => Time.now.year, :end_year => Time.now.year + 15, :prompt => {:year => "Select year"}}, {:class => "form-select form-select-md mb-3s"} %>
-            <div id="gradYearHelp" class="form-text">Your expected graduation year.</div>
-          </div>
-          <div class="col-md-6 offset-md-3 mb-3">
-            <%= f.label :pronouns, class: "form-label"  %>
-            <%= f.text_field :pronouns, placeholder: "They/Them/Theirs", value: @user.pronouns.presence.try(:html_safe), class: "form-control" %>
-            <div id="pronounsHelp" class="form-text">Your pronouns.</div>
-          </div>
-        </div>
-        <div class="col-md-6 offset-md-3">
-          <%= link_to "Back", root_path, class: "btn btn-secondary btn-lg ms-2 my-4" %>
-          <%= f.submit "Submit", name: "submit_edit", class: "btn btn-primary btn-lg ms-2 my-4"  %>
-        </div>
-    <%  end %>
-    </div>
+    <%= render 'profile_form' %>
   </div>
 </div>

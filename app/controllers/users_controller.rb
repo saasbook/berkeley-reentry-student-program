@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :require_login
+  # before_action :require_login
 
   def update
     flash.clear
@@ -18,6 +18,7 @@ class UsersController < ApplicationController
   
   def profile_new
     flash.clear
+    @user = Student.find_by_id(session[:current_user_id])
   end
 
   def profile_update
