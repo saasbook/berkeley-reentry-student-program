@@ -16,6 +16,10 @@ Scenario: prompt to input more personal info only at first time log in
 
     When I fill in "Student ID" with "1234567890"
     And I click "Submit"
+    Then I should be on the profile creation page
+    And I should see "Let's get to know you a bit more..."
+
+    When I click "Skip"
     Then I should be on the landing page
     And I should got "Check-in"
 
@@ -31,8 +35,8 @@ Scenario: clicking submit without filling out all fields in confirm page (sad pa
     When I click "Submit"
     Then I should be on the confirm page
 
-Scenario: logging in as admin should direct to admin dashboard
-    When I am a "Admin"
-    And I click "Login with Google"
-    Then I should be on the landing page
-    And I should got "admin dashboard"
+#Scenario: logging in as admin should direct to admin dashboard
+#    When I am a "Admin"
+#    And I click "Login with Google"
+#    Then I should be on the landing page
+#    And I should got "admin dashboard"
