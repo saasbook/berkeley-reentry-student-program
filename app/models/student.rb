@@ -11,4 +11,12 @@ class Student < User
     end
   end
 
+  def upcoming_appts
+    appointments.where("time >= ?", Time.current).order(time: :desc)
+  end
+
+  def past_appts
+    appointments.where("time < ?", Time.current).order(time: :desc)
+  end
+
 end
