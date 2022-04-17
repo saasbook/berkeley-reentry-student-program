@@ -8,4 +8,8 @@ class User < ApplicationRecord
           user.email = auth.info.email
         end
     end
+
+    def name
+      first_name + ' ' + last_name
+    end
 end
