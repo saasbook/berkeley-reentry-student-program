@@ -3,13 +3,12 @@ class AppointmentsController < ApplicationController
   before_action :set_appointment, only: %w[ show edit update destroy ]
 
   # GET /appointments
-  # GET /appointments.json
   def index
-    @appointments = Appointment.all
+    @upcoming = @user.upcoming_appts
+    @past = @user.past_appts.limit(5)
   end
 
   # GET /appointments/1
-  # GET /appointments/1.json
   def show
   end
 
@@ -23,17 +22,14 @@ class AppointmentsController < ApplicationController
   end
 
   # POST /appointments
-  # POST /appointments.json
   def create
   end
 
   # PATCH/PUT /appointments/1
-  # PATCH/PUT /appointments/1.json
   def update
   end
 
   # DELETE /appointments/1
-  # DELETE /appointments/1.json
   def destroy
   end
 
