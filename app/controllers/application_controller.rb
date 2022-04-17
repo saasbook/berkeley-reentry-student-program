@@ -3,6 +3,8 @@ class ApplicationController < ActionController::Base
     @user = nil
     if session.has_key? :current_user_id
       @user = User.find_by_id(session[:current_user_id])
+    end
+    if @user
       # change user's type so it can use student/admin/staff only methods
       if @user.is_student
         @user = Student.find_by_id(session[:current_user_id])
