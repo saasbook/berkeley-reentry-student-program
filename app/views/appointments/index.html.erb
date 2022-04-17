@@ -70,12 +70,6 @@
         </tbody>
       </table>
     <% end %>
-    <div class = "move-page">
-      <%= link_to "previous page".html_safe, view_checkin_records_path(page: params[:page].to_i - 1),
-      class: "btn btn-secondary mt-1 btn-lg px-4 gap-3 #{params[:page].to_i <= 1 ? 'disabled' : nil}" %>
-      <%= link_to "next page".html_safe, view_checkin_records_path(page: params[:page].to_i + 1), 
-        class: "btn btn-secondary mt-1 btn-lg px-4 gap-3 text-right #{!@has_next_page ? 'disabled' : nil}" %>
-    </div>
   </div>
   
   <div class="text-left">
