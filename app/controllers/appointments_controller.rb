@@ -33,6 +33,10 @@ class AppointmentsController < ApplicationController
   def destroy
   end
 
+  # GET /appointments_student_profile_check
+  def student_profile_check
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_appointment

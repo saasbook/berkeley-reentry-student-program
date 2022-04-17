@@ -38,7 +38,7 @@
     <% end %>
 
     <% if @user.is_student %>
-      <%= link_to "Book a new appointment".html_safe, checkin_path, class: "btn btn-primary mt-1 btn-lg px-4 gap-3" %>
+      <%= link_to "Book a new appointment".html_safe, appointments_student_profile_check_path, class: "btn btn-primary mt-1 btn-lg px-4 gap-3" %>
     <% end %>
 
     <h3 class="text-start fw-bold">Past Appointments</h3>

@@ -30,6 +30,7 @@ Scenario: student should see his/her upcoming appointment if he/she has none
 Scenario: clicking "book a new appointment" button
     Given I am on the appointment page
     When I click "Book a new appointment"
-    Then I should be on the appointment student profile check page
+    And byebug
+    Then I should be on the appointments student profile check page
 
 
