@@ -24,3 +24,7 @@ When /^(?:|I )log in$/ do
     When I click "Login with Google"
   }
 end
+
+Given /^(?:|I )logged out$/ do
+  visit logout_path
+end
