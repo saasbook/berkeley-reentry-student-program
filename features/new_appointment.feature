@@ -22,10 +22,20 @@ Scenario: student should see his/her upcoming appointment if he/she has one
     And I am on the appointment page
     Then I should see an appointment in "2" hours under upcoming appointments section
 
-Scenario: student should see his/her upcoming appointment if he/she has none
+Scenario: student should no upcoming appointment if he/she has none
     Given I have no upcoming appointment
     And I am on the appointment page
     Then I should see "You don't have any upcoming appointment!"
+
+Scenario: student should see his/her past appointments if he/she had them
+    Given I had appointments "10, 20, 30" hours ago
+    And I am on the appointment page
+    Then I should see appointments in "10, 20, 30" hours ago under past appointments section
+
+Scenario: student should see no past appointments if he/she had none
+    Given I had no past appointment
+    And I am on the appointment page
+    Then I should see "You don't have any appointment before!"
 
 Scenario: clicking "book a new appointment" button
     Given I am on the appointment page
