@@ -11,30 +11,7 @@
     <% if @upcoming.size == 0 %>
       <p class="lead mb-4">You don't have any upcoming appointment!</p>
     <% else %>
-      <table class="table table-striped col-md-12" id="checkin_records">
-        <thead>
-          <tr>
-            <th>Time</th>
-            <th>Counselor name</th>
-            <th>More info</th>
-          </tr>
-        </thead>
-        <tbody>
-          <% @upcoming.each do |u_appts| %>
-            <tr>
-              <td>
-                <%= u_appts.time.strftime("%Y-%m-%d %H:%M") %>
-              </td>
-              <td>
-                <%= u_appts.staff.name %>
-              </td>
-              <td>
-                <%= link_to "more info".html_safe, appointment_path(id: u_appts.id) %>
-              </td>
-            </tr>
-          <% end %>
-        </tbody>
-      </table>
+      <%= render "appointment_table", tid: "upcoming_appointments", appointments: @upcoming %>
     <% end %>
 
     <% if @user.is_student %>
@@ -45,31 +22,9 @@
     <% if @past.size == 0 %>
       <p class="lead mb-4">You don't have any appointment before!</p>
     <% else %>
-      <table class="table table-striped col-md-12" id="checkin_records">
-        <thead>
-          <tr>
-            <th>Time</th>
-            <th>Counselor name</th>
-            <th>More info</th>
-          </tr>
-        </thead>
-        <tbody>
-          <% @past.each do |p_appts| %>
-            <tr>
-              <td>
-                <%= p_appts.time.strftime("%Y-%m-%d %H:%M") %>
-              </td>
-              <td>
-                <%= p_appts.staff.name %>
-              </td>
-              <td>
-                <%= link_to "more info".html_safe, appointment_path(id: p_appts.id) %>
-              </td>
-            </tr>
-          <% end %>
-        </tbody>
-      </table>
+      <%= render "appointment_table", tid: "past_appointments", appointments: @past %>
     <% end %>
+    <%= link_to "view all past appointments".html_safe, view_all_past_appointments_path(page: 1) %>
   </div>
   
   <div class="text-left">
