@@ -6,6 +6,9 @@ require "active_support/core_ext/integer/time"
 # and recreated between test runs. Don't rely on the data there!
 
 Rails.application.configure do
+  # set testing ENV variables
+  ENV["ADMINS"] = "google_admin@berkeley.edu"
+  ENV["STAFF"] = "google_staff@berkeley.edu"
   # Settings specified here will take precedence over those in config/application.rb.
 
   # Turn false under Spring and add config.action_view.cache_template_loading = true.

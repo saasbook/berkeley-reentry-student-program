@@ -5,7 +5,7 @@ Rails.application.config.middleware.use OmniAuth::Builder do
       :google_oauth2,
       {
         "provider" => 'google_oauth2',
-        "uid" =>      '100000000000000000000',
+        "uid" =>      '1000000000',
         "info" =>     {
           "name" =>       'Google Test Developer',
           "email" =>      'google_test@berkeley.edu',
