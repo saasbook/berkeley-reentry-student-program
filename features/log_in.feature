@@ -5,12 +5,13 @@ Feature: Log in as different type of user
 
 Background: logged out user, on landing page (never logged in before)
     Given I am on the landing page
+    And I am a logged-out "Student"
 
 Scenario: student should be able to log in
     Then I should got "Login with Google"
 
 Scenario: prompt to input more personal info only at first time log in
-    When I click "Login with Google" 
+    When I click "Login with Google"
     Then I should be on the confirm page
     And I should see "Please Verify All the information below"
 
@@ -35,8 +36,8 @@ Scenario: clicking submit without filling out all fields in confirm page (sad pa
     When I click "Submit"
     Then I should be on the confirm page
 
-#Scenario: logging in as admin should direct to admin dashboard
-#    When I am a "Admin"
-#    And I click "Login with Google"
-#    Then I should be on the landing page
-#    And I should got "admin dashboard"
+Scenario: logging in as admin should direct to admin dashboard
+    When I am a "Admin"
+    And I click "Login with Google"
+    Then I should be on the landing page
+    And I should got "admin dashboard"
