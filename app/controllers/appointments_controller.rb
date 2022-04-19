@@ -3,13 +3,25 @@ class AppointmentsController < ApplicationController
   before_action :set_appointment, only: %w[ show edit update destroy ]
 
   # GET /appointments
-  # GET /appointments.json
   def index
-    @appointments = Appointment.all
+    @upcoming = @user.upcoming_appts
+    @past = @user.past_appts.limit(5)
+  end
+
+  def view_all_past_appointments
+    if !params.has_key? :page || params[:page] < 1
+      redirect_to view_all_past_appointments_path(page: 1)
+      # return is needed here, otherwise the app will continue execute 
+      # the following instructions after redirect
+      return
+    end
+    n = params[:page].to_i - 1
+    all_past_appointments = @user.past_appts
+    @past_appointments = ApplicationRecord.get_20_records(all_past_appointments, "time DESC", n)
+    @has_next_page = 20 * params[:page].to_i < all_past_appointments.all.size
   end
 
   # GET /appointments/1
-  # GET /appointments/1.json
   def show
   end
 
@@ -23,18 +35,19 @@ class AppointmentsController < ApplicationController
   end
 
   # POST /appointments
-  # POST /appointments.json
   def create
   end
 
   # PATCH/PUT /appointments/1
-  # PATCH/PUT /appointments/1.json
   def update
   end
 
   # DELETE /appointments/1
-  # DELETE /appointments/1.json
   def destroy
+  end
+
+  # GET /appointments_student_profile_check
+  def student_profile_check
   end
 
   private

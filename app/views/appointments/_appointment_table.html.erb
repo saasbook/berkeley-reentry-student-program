@@ -1,0 +1,24 @@
+<table class="table table-striped col-md-12" id="<%= tid %>">
+  <thead>
+    <tr>
+      <th>Time</th>
+      <th>Counselor name</th>
+      <th>More info</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% appointments.each do |appts| %>
+      <tr>
+        <td>
+          <%= appts.time.strftime("%Y-%m-%d %H:%M") %>
+        </td>
+        <td>
+          <%= appts.staff.name %>
+        </td>
+        <td>
+          <%= link_to "more info".html_safe, appointment_path(id: appts.id) %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

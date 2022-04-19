@@ -12,8 +12,8 @@ class AdminsController < ApplicationController
       return
     end
     n = params[:page].to_i - 1
-    @checkin_records = Checkin.get_20_checkin_records(n)
-    @has_next_page = @checkin_records.size == 20
+    @checkin_records = ApplicationRecord.get_20_records(Checkin, "time DESC", n)
+    @has_next_page = 20 * params[:page].to_i < Checkin.all.size
   end
 
   private

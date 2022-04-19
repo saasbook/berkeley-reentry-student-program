@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  resources :appointments
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")
@@ -22,4 +21,9 @@ Rails.application.routes.draw do
   get "auth/google_oauth2/callback", to: "sessions#google_auth", as: "google_login"
   get "auth/failure", to: redirect('/')
   get "logout", to: "sessions#google_auth_logout"
+
+  # appointments routes
+  resources :appointments
+  get "appointments_student_profile_check_path", to: "appointments#student_profile_check", as: "appointments_student_profile_check"
+  get "view_all_past_appointments", to: "appointments#view_all_past_appointments"
 end
