@@ -8,6 +8,19 @@ class AppointmentsController < ApplicationController
     @past = @user.past_appts.limit(5)
   end
 
+  def view_all_past_appointments
+    if !params.has_key? :page || params[:page] < 1
+      redirect_to view_all_past_appointments_path(page: 1)
+      # return is needed here, otherwise the app will continue execute 
+      # the following instructions after redirect
+      return
+    end
+    n = params[:page].to_i - 1
+    all_past_appointments = @user.past_appts
+    @past_appointments = ApplicationRecord.get_20_records(all_past_appointments, "time DESC", n)
+    @has_next_page = 20 * params[:page].to_i < all_past_appointments.all.size
+  end
+
   # GET /appointments/1
   def show
   end

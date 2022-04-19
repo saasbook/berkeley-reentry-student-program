@@ -25,4 +25,5 @@ Rails.application.routes.draw do
   # appointments routes
   resources :appointments
   get "appointments_student_profile_check_path", to: "appointments#student_profile_check", as: "appointments_student_profile_check"
+  get "view_all_past_appointments", to: "appointments#view_all_past_appointments"
 end
