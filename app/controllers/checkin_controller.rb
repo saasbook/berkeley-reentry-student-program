@@ -3,6 +3,7 @@ class CheckinController < ApplicationController
 
   def new
     flash.clear
+    @reasons = Checkin.reasons
   end
 
   def create

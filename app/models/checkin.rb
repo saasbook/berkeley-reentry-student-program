@@ -8,4 +8,8 @@ class Checkin < ApplicationRecord
     records = Checkin.all.order(time: :desc)[from_index, 20] || []
     records
   end
+
+  def self.reasons
+    ['Peer Support', 'Counseling Appointment', 'Studying', 'OWLs Meeting', 'Other']
+  end
 end
