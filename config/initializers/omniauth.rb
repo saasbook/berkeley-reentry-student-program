@@ -4,17 +4,17 @@ Rails.application.config.middleware.use OmniAuth::Builder do
     OmniAuth.config.add_mock(
       :google_oauth2,
       {
-        "provider" => 'google_oauth2',
-        "uid" =>      '1000000000',
-        "info" =>     {
-          "name" =>       'Google Test Developer',
-          "email" =>      'google_test@berkeley.edu',
-          "first_name" => 'Google',
-          "last_name" =>  'Test Developer'
+        'provider' => 'google_oauth2',
+        'uid' => '1000000000',
+        'info' => {
+          'name' => 'Google Test Developer',
+          'email' => 'google_test@berkeley.edu',
+          'first_name' => 'Google',
+          'last_name' => 'Test Developer'
         },
-        "credentials" => {
-          "token" => "credentials_token_1234567",
-          "refresh_token" => "credentials_refresh_token_45678"
+        'credentials' => {
+          'token' => 'credentials_token_1234567',
+          'refresh_token' => 'credentials_refresh_token_45678'
         }
       }
     )

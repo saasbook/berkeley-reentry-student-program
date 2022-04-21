@@ -10,63 +10,62 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_04_12_021220) do
-
+ActiveRecord::Schema.define(version: 20_220_412_021_220) do
   # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
+  enable_extension 'plpgsql'
 
-  create_table "announcements", force: :cascade do |t|
-    t.string "title"
-    t.text "content"
-    t.date "issued_date"
-    t.bigint "admin_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["admin_id"], name: "index_announcements_on_admin_id"
+  create_table 'announcements', force: :cascade do |t|
+    t.string 'title'
+    t.text 'content'
+    t.date 'issued_date'
+    t.bigint 'admin_id', null: false
+    t.datetime 'created_at', precision: 6, null: false
+    t.datetime 'updated_at', precision: 6, null: false
+    t.index ['admin_id'], name: 'index_announcements_on_admin_id'
   end
 
-  create_table "appointments", force: :cascade do |t|
-    t.datetime "time"
-    t.string "location"
-    t.bigint "staff_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.bigint "student_id"
-    t.index ["staff_id"], name: "index_appointments_on_staff_id"
-    t.index ["student_id"], name: "index_appointments_on_student_id"
+  create_table 'appointments', force: :cascade do |t|
+    t.datetime 'time'
+    t.string 'location'
+    t.bigint 'staff_id', null: false
+    t.datetime 'created_at', precision: 6, null: false
+    t.datetime 'updated_at', precision: 6, null: false
+    t.bigint 'student_id'
+    t.index ['staff_id'], name: 'index_appointments_on_staff_id'
+    t.index ['student_id'], name: 'index_appointments_on_student_id'
   end
 
-  create_table "checkins", force: :cascade do |t|
-    t.datetime "time"
-    t.bigint "student_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.string "reason"
-    t.index ["student_id"], name: "index_checkins_on_student_id"
+  create_table 'checkins', force: :cascade do |t|
+    t.datetime 'time'
+    t.bigint 'student_id', null: false
+    t.datetime 'created_at', precision: 6, null: false
+    t.datetime 'updated_at', precision: 6, null: false
+    t.string 'reason'
+    t.index ['student_id'], name: 'index_checkins_on_student_id'
   end
 
-  create_table "users", force: :cascade do |t|
-    t.bigint "sid"
-    t.string "first_name"
-    t.string "last_name"
-    t.string "email"
-    t.boolean "is_student"
-    t.boolean "is_admin"
-    t.boolean "is_staff"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.string "google_token"
-    t.string "google_refresh_token"
-    t.string "major"
-    t.string "identities"
-    t.string "pronouns"
-    t.datetime "grad_year"
-    t.index ["email"], name: "index_users_on_email", unique: true
-    t.index ["sid"], name: "index_users_on_sid", unique: true
+  create_table 'users', force: :cascade do |t|
+    t.bigint 'sid'
+    t.string 'first_name'
+    t.string 'last_name'
+    t.string 'email'
+    t.boolean 'is_student'
+    t.boolean 'is_admin'
+    t.boolean 'is_staff'
+    t.datetime 'created_at', precision: 6, null: false
+    t.datetime 'updated_at', precision: 6, null: false
+    t.string 'google_token'
+    t.string 'google_refresh_token'
+    t.string 'major'
+    t.string 'identities'
+    t.string 'pronouns'
+    t.datetime 'grad_year'
+    t.index ['email'], name: 'index_users_on_email', unique: true
+    t.index ['sid'], name: 'index_users_on_sid', unique: true
   end
 
-  add_foreign_key "announcements", "users", column: "admin_id"
-  add_foreign_key "appointments", "users", column: "staff_id"
-  add_foreign_key "appointments", "users", column: "student_id"
-  add_foreign_key "checkins", "users", column: "student_id"
+  add_foreign_key 'announcements', 'users', column: 'admin_id'
+  add_foreign_key 'appointments', 'users', column: 'staff_id'
+  add_foreign_key 'appointments', 'users', column: 'student_id'
+  add_foreign_key 'checkins', 'users', column: 'student_id'
 end

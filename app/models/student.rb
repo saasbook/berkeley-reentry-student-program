@@ -6,9 +6,6 @@ class Student < User
   validate :check_is_student
 
   def check_is_student
-    if is_student == false
-      raise "This user must be a student!!"
-    end
+    raise 'This user must be a student!!' if is_student == false
   end
-
 end
