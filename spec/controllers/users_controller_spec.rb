@@ -1,12 +1,11 @@
 # frozen_string_literal: true
 
 require 'rails_helper'
-include FactoryBot::Syntax::Methods
 
 describe UsersController do
   describe 'update profile' do
     before do
-      @student = create :student
+      @student = FactoryBot.create :student
       controller.session[:current_user_id] = @student.id
     end
 

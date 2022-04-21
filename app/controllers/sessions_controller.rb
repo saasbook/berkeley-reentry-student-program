@@ -50,9 +50,8 @@ class SessionsController < ApplicationController
     # Get the official admins
     admins = ENV['ADMINS'].split(',')
     staff = ENV['STAFF'].split(',')
-    if admins.blank? || staff.blank?
-      return nil
-    end
+    return nil if admins.blank? || staff.blank?
+
     user.is_admin = admins.include? email
     user.is_staff = staff.include? email
     user.is_student = !user.is_admin && !user.is_staff
