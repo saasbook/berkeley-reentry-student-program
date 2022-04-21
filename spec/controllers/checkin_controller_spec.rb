@@ -1,12 +1,11 @@
 # frozen_string_literal: true
 
 require 'rails_helper'
-include FactoryBot::Syntax::Methods
 
 describe CheckinController do
   before do
     # set precondition: sessions, datetime, checkin records
-    @stu = create :student
+    @stu = FactoryBot.create :student
     @expected_time = DateTime.parse('2022-03-08T12:00:00-08:00')
     Timecop.freeze(@expected_time)
     controller.session[:current_user_id] = @stu.id

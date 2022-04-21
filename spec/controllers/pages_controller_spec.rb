@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 require 'rails_helper'
-include FactoryBot::Syntax::Methods
 
 describe PagesController do
   describe 'logged out user' do
@@ -14,7 +13,7 @@ describe PagesController do
 
   describe 'logged in student' do
     before do
-      student = create :student
+      student = FactoryBot.create :student
       controller.session[:current_user_id] = student.id
       get :index
     end
@@ -30,7 +29,7 @@ describe PagesController do
 
   describe 'logged in staff' do
     before do
-      staff = create :staff
+      staff = FactoryBot.create :staff
       controller.session[:current_user_id] = staff.id
       get :index
     end
@@ -46,7 +45,7 @@ describe PagesController do
 
   describe 'logged in Admin' do
     before do
-      admin = create :admin
+      admin = FactoryBot.create :admin
       controller.session[:current_user_id] = admin.id
       get :index
     end

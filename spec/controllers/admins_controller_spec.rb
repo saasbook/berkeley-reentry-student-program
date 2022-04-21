@@ -1,19 +1,18 @@
 # frozen_string_literal: true
 
 require 'rails_helper'
-include FactoryBot::Syntax::Methods
 
 describe AdminsController do
   describe 'This following user types should be blocked from accessing admin dashboard: ' do
     it 'Student' do
-      @stu = create :student
+      @stu = FactoryBot.create :student
       session[:current_user_id] = @stu.id
       get :index
       expect(response).to redirect_to root_path
     end
 
     it 'Staff' do
-      @staff = create :staff
+      @staff = FactoryBot.create :staff
       session[:current_user_id] = @staff.id
       get :index
       expect(response).to redirect_to root_path
@@ -28,10 +27,10 @@ describe AdminsController do
 
   describe 'view checkin records' do
     before do
-      admin = create :admin
+      admin = FactoryBot.create :admin
       session[:current_user_id] = admin.id
       50.times do
-        create :checkin
+        FactoryBot.create :checkin
       end
     end
 

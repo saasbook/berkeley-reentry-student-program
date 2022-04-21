@@ -1,12 +1,11 @@
 # frozen_string_literal: true
 
 require 'rails_helper'
-include FactoryBot::Syntax::Methods
 
 RSpec.describe Checkin, type: :model do
   before do
     50.times do
-      create :checkin
+      FactoryBot.create :checkin
     end
     @all_sorted_records = Checkin.all.order(time: :desc)
   end
@@ -37,7 +36,7 @@ RSpec.describe Checkin, type: :model do
       n = 3
       Checkin.delete_all
       (20 * n).times do
-        create :checkin
+        FactoryBot.create :checkin
       end
       records_from_method = Checkin.get_20_checkin_records(n)
       expect(records_from_method).to eq []
