@@ -19,7 +19,9 @@ class SessionsController < ApplicationController
     user.google_refresh_token = refresh_token if refresh_token.present?
     # set appropriate permissions
     user = set_user_permission(user, access_token.info.email)
-    if user.save
+    if !user
+      redirect_to root_path, flash: { error: 'Something went wrong, please try again later.' }
+    elsif user.save
       user_first_login(user)
     else
       redirect_to root_path, flash: { error: 'Something went wrong, please try again' }
@@ -49,7 +51,7 @@ class SessionsController < ApplicationController
     admins = ENV['ADMINS'].split(',')
     staff = ENV['STAFF'].split(',')
     if admins.blank? || staff.blank?
-      redirect_to root_path, flash: { error: 'Something went wrong, please try again later.' }
+      return nil
     end
     user.is_admin = admins.include? email
     user.is_staff = staff.include? email
