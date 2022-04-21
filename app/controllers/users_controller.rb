@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class UsersController < ApplicationController
   before_action :require_login
 
@@ -6,11 +8,11 @@ class UsersController < ApplicationController
     @user = User.find_by(id: session[:current_user_id])
     sid = params[:user][:sid]
     email = params[:user][:email]
-    if sid.blank? or sid.length != 10
+    if sid.blank? || (sid.length != 10)
       redirect_to login_confirm_path, flash: { error: 'Invalid Student ID Number.' }
       return
     end
-    if email.blank? or !email.match(/.+(@berkeley.edu)/)
+    if email.blank? || !email.match(/.+(@berkeley.edu)/)
       redirect_to login_confirm_path, flash: { error: 'Please use your berkeley email to log-in.' }
       return
     end
@@ -27,8 +29,8 @@ class UsersController < ApplicationController
   end
 
   def profile_update
-    skipped = params.has_key? :skip
-    edited = params.has_key? :submit_edit
+    skipped = params.key? :skip
+    edited = params.key? :submit_edit
     unless skipped
       @user = Student.find_by_id(session[:current_user_id])
       @user.update!(profile_params)
@@ -48,7 +50,7 @@ class UsersController < ApplicationController
   private
 
   def require_login
-    unless session.has_key? :current_user_id and Student.find_by_id(session[:current_user_id]).present?
+    unless session.key?(:current_user_id) && Student.find_by_id(session[:current_user_id]).present?
       redirect_to root_path, flash: { error: 'Only students have access to profiles.' }
     end
   end

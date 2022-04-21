@@ -7,7 +7,7 @@ class AdminsController < ApplicationController
   def index; end
 
   def view_checkin_records
-    if (!params.has_key? :page) || (params[:page] < 1)
+    if (!params.key? :page) || (params[:page] < 1)
       redirect_to view_checkin_records_path(page: 1)
       # return is needed here, otherwise the app will continue execute
       # the following instructions after redirect

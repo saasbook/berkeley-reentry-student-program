@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # TL;DR: YOU SHOULD DELETE THIS FILE
 #
 # This file is used by web_steps.rb, which you should also delete
@@ -31,7 +33,7 @@ module NavigationHelpers
         path_components = Regexp.last_match(1).split(/\s+/)
         send(path_components.push('path').join('_').to_sym)
       rescue NoMethodError, ArgumentError
-        raise "Can't find mapping from \"#{page_name}\" to a path.\n" +
+        raise "Can't find mapping from \"#{page_name}\" to a path.\n" \
               "Now, go and add a mapping in #{__FILE__}"
       end
     end

@@ -1,9 +1,11 @@
+# frozen_string_literal: true
+
 class SessionsController < ApplicationController
   def google_auth
     # Get the official admins
     admins = ENV['ADMINS']
     staff = ENV['STAFF']
-    if admins.blank? or staff.blank?
+    if admins.blank? || staff.blank?
       redirect_to root_path, flash: { error: 'Something went wrong, please try again later.' }
       return
     end
@@ -30,14 +32,12 @@ class SessionsController < ApplicationController
       user.is_admin = user_is_admin
       user.is_staff = user_is_staff
       if user.save
+        session[:current_user_id] = user.id
         if user.is_student
-          session[:current_user_id] = user.id
           redirect_to login_confirm_path
         elsif user.is_admin
-          session[:current_user_id] = user.id
           redirect_to root_path, flash: { success: "Success! You've been logged-in!" }
         else # user must be staff
-          session[:current_user_id] = user.id
           redirect_to root_path, flash: { success: "Success! You've been logged-in!" }
         end
       else

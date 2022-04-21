@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 Rails.application.config.middleware.use OmniAuth::Builder do
   unless Rails.env.production?
     OmniAuth.config.test_mode = true
