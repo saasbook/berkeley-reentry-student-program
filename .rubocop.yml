@@ -1,0 +1,17 @@
+Style/Documentation:
+  Enabled: false
+
+Metrics:
+  Exclude:
+  - 'bin/*'
+  - 'db/*'
+
+Lint:
+  Exclude:
+  - 'bin/*'
+  - 'db/*'
+
+Layout:
+  Exclude:
+  - 'bin/*'
+  - 'db/*'
