@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Student < User
   has_many :appointments
   has_many :checkins
@@ -6,17 +8,14 @@ class Student < User
   validate :check_is_student
 
   def check_is_student
-    if is_student == false
-      raise "This user must be a student!!"
-    end
+    raise 'This user must be a student!!' if is_student == false
   end
 
   def upcoming_appts
-    appointments.where("time >= ?", Time.current).order(time: :desc)
+    appointments.where('time >= ?', Time.current).order(time: :desc)
   end
 
   def past_appts
-    appointments.where("time < ?", Time.current).order(time: :desc)
+    appointments.where('time < ?', Time.current).order(time: :desc)
   end
-
 end

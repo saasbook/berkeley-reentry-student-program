@@ -3,12 +3,12 @@
     <div class="col-md-6 offset-md-3">
       <div class="col-md-6 offset-md-3 mb-3">
         <%= f.label :major, class: "form-label" %>
-        <%= f.text_field :major, value: @user.major.presence.try(:html_safe), class: "form-control" %>
+        <%= f.text_field :major, value: @user.major.presence, class: "form-control" %>
         <div id="majorHelp" class="form-text">If you have more than one separate using commas.</div>
       </div>
       <div class="col-md-6 offset-md-3 mb-3">
         <%= f.label :identities, class: "form-label" %>
-        <%= f.text_field :identities, placeholder: "LGBTQIA+, First Generation, POC, ...", value: @user.identities.presence.try(:html_safe), class: "form-control" %>
+        <%= f.text_field :identities, placeholder: "LGBTQIA+, First Generation, POC, ...", value: @user.identities.presence, class: "form-control" %>
         <div id="identitiesHelp" class="form-text">Groups/communities that you identify with.</div>
       </div>
       <div class="col-md-6 offset-md-3 mb-3">
@@ -18,7 +18,7 @@
       </div>
       <div class="col-md-6 offset-md-3 mb-3">
         <%= f.label :pronouns, class: "form-label"  %>
-        <%= f.text_field :pronouns, placeholder: "They/Them/Theirs", value: @user.pronouns.presence.try(:html_safe), class: "form-control" %>
+        <%= f.text_field :pronouns, placeholder: "They/Them/Theirs", value: @user.pronouns.presence, class: "form-control" %>
         <div id="pronounsHelp" class="form-text">Your pronouns.</div>
       </div>
       <div class="form-text">Keep in mind, all of these fields are entirely <b>optional</b>.</div>

@@ -5,7 +5,7 @@
       <div class="row mb-3 justify-content-center">
         <div class="col-7 mb-5">
           <%= f.label :reason, "Please select a reason for check-in today &#x2705".html_safe, class: "form-label" %>
-          <%= f.select :reason, ['Peer Support', 'Counseling Appointment', 'Studying', 'OWLs Meeting', 'Other'], { :include_blank => 'Select One' }, {:required => true, class: "form-select form-control form-select-lg"} %>
+          <%= f.select :reason, @reasons, { :include_blank => 'Select One' }, {:required => true, class: "form-select form-control form-select-lg"} %>
         </div>
       </div>
       <%= link_to "Back", root_path, method: :get, class: "btn btn-secondary btn-lg" %>
