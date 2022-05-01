@@ -1,10 +1,6 @@
 <div class="container">
   <div class="<%= flash.empty? ? 'px-4 py-5 my-2 text-center' : 'px-4 pb-5 mb-5 text-center' %>">
-    <% flash.each do |type, msg| %>
-      <div class="<%=type.to_s === "success" ? 'alert alert-success mt-2 mb-4' : 'alert alert-danger mt-2 mb-4'%>">
-        <%= msg %>
-      </div>
-    <% end %>
+    <%= render "shared/flash_messages" %>
     <h1 class="display-4 fw-bold pb-3">Welcome!</h1>
     <p class="h3">Please Verify All the information below &#x2705</p>
       <%= form_with(model: @user, local: true) do |f| %>
@@ -34,7 +30,7 @@
             <div class="col-md-6 offset-md-3">
               <%=  f.submit "Submit", class: "btn btn-primary btn-lg ms-2 my-4"  %>
             </div>
-          <%  end %>
+          <% end %>
     </div>
   </div>
 </div>
