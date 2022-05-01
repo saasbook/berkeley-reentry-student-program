@@ -16,8 +16,8 @@
 4. Run `db:schema:load` & `rake db:migrate`
 5. Follow [these instructions](https://devcenter.heroku.com/articles/creating-apps) to create & setup a new Heroku app on the CLI
   - You must have PostgreSQL installed locally to run the rails server. Then, you must start the server via the command line
-    - For Mac: Run `brew services start postgresql`
-    - For Windows: Run `pg_ctl -D "C:\Program Files\PostgreSQL\9.6\data" start`
+    - **For Mac**: Run `brew services start postgresql`
+    - **For Windows**: Run `pg_ctl -D "C:\Program Files\PostgreSQL\9.6\data" start`
 6. Our code requires 4 environment variables to work correctly in production & local environments. 
   - _For local development_: You must set a non-empty string for the environment variables `ADMIN`, `STAFF`, `GOOGLE_CLIENT_ID`, and `GOOGLE_CLIENT_SECRET
     - **For Mac**: With Terminal open, run `open ~/.bash_profile`
