@@ -1,0 +1,31 @@
+<div class="container">
+  <div class="<%=flash.empty? ? 'px-4 py-5 my-2 text-center' : 'px-4 pb-5 mb-5 text-center' %>">
+    <%= render "shared/flash_messages" %>
+    <%= image_tag("reentry-owl.jpg", width: 130, height: 130, class: "d-block rounded mx-auto mb-4") %>
+    <% if @logged_out %>
+      <h1 class="display-5 fw-bold">Welcome to the Berkeley <br/> Reentry Student Program</h1>
+      <div class="d-grid mt-2 gap-2 d-sm-flex justify-content-sm-center pt-2">
+      <%= button_to '/auth/google_oauth2', class: "btn btn-primary btn-lg" do %>
+          <img width="20px" style="margin-bottom:3px; margin-right:5px" alt="Google sign-in" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/512px-Google_%22G%22_Logo.svg.png" />
+          Login with Google
+      <% end %>
+      </div>
+    <% else %>
+      <h1 class="display-5 fw-bold">Welcome to the Berkeley <br/> Reentry Student Program,</h1>
+      <h3 class="display-5 name-display mt-3"><%= sanitize @name %></h3>
+      <% if @user_type.include? 'Admin' %>
+        <%= link_to "Go to admin dashboard".html_safe, admins_path, class: "btn btn-primary mt-1 btn-lg px-4 gap-3" %>
+      <% elsif @user_type.include? 'Staff' %>
+        <%# pending %>
+      <% else %>
+        <div class="col-lg-6 mt-4 mx-auto">
+          <p class="lead mb-4">Check-in using this application, find and make appointments with staff, find news and updates &#x1F4AB</p>
+          <%= link_to "Check-in to Berkeley </br> Reentry Student Center".html_safe, checkin_path, class: "btn btn-primary mt-1 btn-lg px-4 gap-3" %>
+          <%= link_to "Make an Appointment </br> With a Counselor".html_safe, appointments_path, class: "btn btn-primary mt-1 btn-lg px-4 gap-3" %>
+        </div>
+        <%= link_to "Edit Profile Information".html_safe, user_profile_edit_path(:edit_profile => true), class: "btn btn-secondary btn-lg px-4 my-4 gap-3" %>
+      <% end %>
+      <%= link_to "Logout", logout_path, class: "btn btn-secondary btn-lg my-4" %>
+  <% end %>
+  </div>
+</div>
