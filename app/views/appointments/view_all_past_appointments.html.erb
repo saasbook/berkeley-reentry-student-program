@@ -1,0 +1,21 @@
+<div class="container">
+  <div class="<%=flash.empty? ? 'px-4 py-5 my-2' : 'px-4 pb-5 mb-5' %> text-center">
+    <% flash.each do |type, msg| %>
+      <div class="<%=type.to_s === "success" ? 'alert alert-success mt-2 mb-4' : 'alert alert-danger mt-2 mb-4'%>">
+        <%= msg.html_safe %>
+      </div>
+    <% end %>
+    <h1 class=" display-5 fw-bold">Past Appointments</h1>
+    <%= render "appointment_table", tid: "all_past_appointments", appointments: @past_appointments %>
+    <div class = "move-page">
+      <%= link_to "previous page".html_safe, view_all_past_appointments_path(page: params[:page].to_i - 1),
+      class: "btn btn-secondary mt-1 btn-lg px-4 gap-3 #{params[:page].to_i <= 1 ? 'disabled' : nil}" %>
+      <%= link_to "next page".html_safe, view_all_past_appointments_path(page: params[:page].to_i + 1), 
+        class: "btn btn-secondary mt-1 btn-lg px-4 gap-3 text-right #{!@has_next_page ? 'disabled' : nil}" %>
+    </div>
+  </div>
+  
+  <div class="text-left">
+    <%= link_to "back to appointment page".html_safe, appointments_path, class: "btn btn-secondary mt-1 btn-lg px-4 gap-3" %>
+  </div>
+</div>

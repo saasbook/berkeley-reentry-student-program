@@ -1,0 +1,45 @@
+<div class="container">
+  <div class="<%=flash.empty? ? 'px-4 py-5 my-2' : 'px-4 pb-5 mb-5' %> text-center">
+    <%= render "shared/flash_messages" %>
+    <h1 class=" display-5 fw-bold">Check-in Records</h1>
+    <table class="table table-striped col-md-12" id="checkin_records">
+      <thead>
+        <tr>
+          <th>Time</th>
+          <th>Last Name</th>
+          <th>First Name</th>
+          <th>SID</th>
+          <th>Reason</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @checkin_records.each do |record| %>
+          <tr>
+            <td>
+              <%= record.time.strftime("%Y-%m-%d %H:%M") %>
+            </td>
+            <td>
+              <%= record.student.last_name %>
+            </td>
+            <td>
+              <%= record.student.first_name %>
+            </td>
+            <td>
+              <%= record.student.sid %>
+            </td>
+            <td>
+              <%= record.reason %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <div class = "move-page">
+      <%= link_to "previous page".html_safe, view_checkin_records_path(page: params[:page].to_i - 1),
+      class: "btn btn-secondary mt-1 btn-lg px-4 gap-3 #{params[:page].to_i <= 1 ? 'disabled' : nil}" %>
+      <%= link_to "next page".html_safe, view_checkin_records_path(page: params[:page].to_i + 1), 
+        class: "btn btn-secondary mt-1 btn-lg px-4 gap-3 text-right #{!@has_next_page ? 'disabled' : nil}" %>
+    </div>
+    <%= link_to "back to admin dashboard".html_safe, admins_path, class: "btn btn-secondary mt-1 btn-lg px-4 gap-3" %>
+  </div>
+</div>

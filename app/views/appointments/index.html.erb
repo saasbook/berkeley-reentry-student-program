@@ -1,0 +1,33 @@
+<div class="container">
+  <div class="<%=flash.empty? ? 'px-4 py-5 my-2' : 'px-4 pb-5 mb-5' %> text-center">
+    <% flash.each do |type, msg| %>
+      <div class="<%=type.to_s === "success" ? 'alert alert-success mt-2 mb-4' : 'alert alert-danger mt-2 mb-4'%>">
+        <%= msg.html_safe %>
+      </div>
+    <% end %>
+    <h1 class="display-5 fw-bold">Appointment Page</h1>
+    </br>
+    <h3 class="text-start fw-bold">Upcoming Appointments</h3>
+    <% if @upcoming.size == 0 %>
+      <p class="lead mb-4">You don't have any upcoming appointment!</p>
+    <% else %>
+      <%= render "appointment_table", tid: "upcoming_appointments", appointments: @upcoming %>
+    <% end %>
+
+    <% if @user.is_student %>
+      <%= link_to "Book a new appointment".html_safe, appointments_student_profile_check_path, class: "btn btn-primary mt-1 btn-lg px-4 gap-3" %>
+    <% end %>
+
+    <h3 class="text-start fw-bold">Past Appointments</h3>
+    <% if @past.size == 0 %>
+      <p class="lead mb-4">You don't have any appointment before!</p>
+    <% else %>
+      <%= render "appointment_table", tid: "past_appointments", appointments: @past %>
+    <% end %>
+    <%= link_to "view all past appointments".html_safe, view_all_past_appointments_path(page: 1) %>
+  </div>
+  
+  <div class="text-left">
+    <%= link_to "back to landing page".html_safe, root_path, class: "btn btn-secondary mt-1 btn-lg px-4 gap-3" %>
+  </div>
+</div>
