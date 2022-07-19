@@ -1,0 +1,7 @@
+<div class="container">
+  <div class="<%= flash.empty? ? 'px-4 py-5 my-2 text-center' : 'px-4 pb-5 mb-5 text-center' %>">
+    <%= render "shared/flash_messages" %>
+    <h1 class="display-5 fw-bold pb-3">Edit Your Profile &#x1f4dd</h1>
+    <%= render 'profile_form' %>
+  </div>
+</div>

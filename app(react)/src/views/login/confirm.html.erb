@@ -1,0 +1,36 @@
+<div class="container">
+  <div class="<%= flash.empty? ? 'px-4 py-5 my-2 text-center' : 'px-4 pb-5 mb-5 text-center' %>">
+    <%= render "shared/flash_messages" %>
+    <h1 class="display-4 fw-bold pb-3">Welcome!</h1>
+    <p class="h3">Please Verify All the information below &#x2705</p>
+      <%= form_with(model: @user, local: true) do |f| %>
+        <div class="row mb-3">
+          <div class="col-md-6 offset-md-3">
+            <div class="col-md-6 offset-md-3">
+              <%= f.label :first_name, class: "form-label" %>
+              <%= f.text_field :first_name, value: @user.first_name, :required => true, class: "form-control" %>
+            </div>
+            <div class="col-md-6 offset-md-3">
+              <%= f.label :last_name, class: "form-label" %>
+              <%= f.text_field :last_name, value: @user.last_name, :required => true, class: "form-control" %>
+            </div>
+          <div class="col-md-6 offset-md-3">
+            <%= f.label :email, class: "form-label" %>
+            <%= f.email_field :email, value: @user.email, :required => true, class: "form-control" %>
+            <div id="emailHelp" class="form-text">Please ensure this is your <b>Berkeley Email</b>.</div>
+          </div>
+            <% unless @user.sid %>
+              <div class="col-md-6 offset-md-3 mt-3">
+                <%=  f.label :sid, "Student ID", class: "form-label"  %>
+                <%= f.text_field :sid, value: @user.sid, :required => true, class: "form-control" %>
+                <div id="sidHelp" class="form-text">Please enter your SID as it appears on your CalID.</div>
+              </div>
+            <% end %>
+            </div>
+            <div class="col-md-6 offset-md-3">
+              <%=  f.submit "Submit", class: "btn btn-primary btn-lg ms-2 my-4"  %>
+            </div>
+          <% end %>
+    </div>
+  </div>
+</div>
