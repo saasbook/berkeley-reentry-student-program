@@ -10,10 +10,10 @@
 
 ## First-Time Setup Instructions
 
-1. Fork & clone the repository locally!
+1. Clone the repository locally and then make your own branch!!
 2. Install Ruby version 3.0.3, and switch to that version using `rvm use 3.0.3`
 3. Run `bundle install --without production`
-4. Run `db:schema:load` & `rake db:migrate`
+4. Run `rake db:schema:load` & `rake db:migrate`
 5. Follow [these instructions](https://devcenter.heroku.com/articles/creating-apps) to create & setup a new Heroku app on the CLI
   - You must have PostgreSQL installed locally to run the rails server. Then, you must start the server via the command line
     - **For Mac**: Run `brew services start postgresql`
