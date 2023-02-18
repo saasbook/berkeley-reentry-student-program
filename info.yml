@@ -1,7 +1,7 @@
 project:
   name: 'berkeley-reentry-student-program'
-  owner: 'Reentry Student Program'
-  teamId: 'berkeley-reentry-student-program'
+  owner: 'CS169L-23'
+  teamId: '04'
   identities:
     pivotal: 'https://www.pivotaltracker.com/n/projects/2553425'
     heroku: 'https://sp23-04-reentry-project.herokuapp.com'
@@ -11,6 +11,8 @@ project:
       name: 'Keagan'
       surname: 'Wilson'
       githubUsername: 'gekerd'  
+      pivotalUsername: 'keaganwilson'
+      herokuEmail: 'keaganwilson@berkeley.edu'
     member2:
       name: 'Max'
       surname: 'Yang'
