@@ -1,0 +1,58 @@
+name: build
+
+on: [push, pull_request]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      CCTR: ./cc-test-reporter
+      BUNDLE_WITHOUT: production
+      TZ: America/Los_Angeles
+    steps:
+    - uses: actions/checkout@v1
+    - name: Install Ruby (3.0)
+      uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: 3.0.3
+        bundler-cache: true
+
+    - name: Set up Code Climate test-reporter
+      run: |
+        curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+        chmod +x ./cc-test-reporter
+        ./cc-test-reporter before-build
+
+    - name: Install bundler
+      run: |
+        gem install bundler
+    - name: Install dependencies
+      run: |
+        bundle install
+
+    - name: Set up PostgreSQL
+      run: |
+        sudo apt-get install postgresql libpq-dev
+        sudo service postgresql start
+        sudo -u postgres createuser --superuser "$USER"
+
+    - name: setup the database
+      run: |
+        bundle exec rake db:create db:migrate
+
+    - name: run Cucumber tests #and capture coverage
+      run: |
+        bundle exec cucumber
+        ./cc-test-reporter format-coverage --output coverage/codeclimate.$SUITE.json --input-type simplecov
+
+    - name: run RSpec tests #and capture coverage
+      run: |
+        bundle exec rspec
+        ./cc-test-reporter format-coverage --output coverage/codeclimate.$SUITE.json --input-type simplecov
+
+    - name: Publish code coverage
+      run: |
+        export GIT_BRANCH="${GITHUB_REF/refs\/heads\//}"
+        ./cc-test-reporter sum-coverage coverage/codeclimate.*.json
+        ./cc-test-reporter upload-coverage --id ${{ secrets.CC_TEST_REPORTER_ID }}
+        ./cc-test-reporter after-build --id ${{ secrets.CC_TEST_REPORTER_ID }}
