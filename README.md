@@ -1,4 +1,4 @@
-[![Bluejay Dashboard](https://img.shields.io/badge/Bluejay-Dashboard_04-blue.svg)](http://dashboard.bluejay.governify.io/dashboard/script/dashboardLoader.js?dashboardURL=https://reporter.bluejay.governify.io/api/v4/dashboards/tpa-CS169L-GH-cs169_berkeley-reentry-student-program/main)
+[![Bluejay Dashboard](https://img.shields.io/badge/Bluejay-Dashboard_04-blue.svg)](http://dashboard.bluejay.governify.io/dashboard/script/dashboardLoader.js?dashboardURL=https://reporter.bluejay.governify.io/api/v4/dashboards/tpa-CS169L-23-GH-cs169_berkeley-reentry-student-program/main)
 
 ![build](https://github.com/cs169/berkeley-reentry-student-program/actions/workflows/main.yml/badge.svg)
 
