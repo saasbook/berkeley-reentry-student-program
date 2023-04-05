@@ -84,4 +84,19 @@ b {
 .form-select {
   text-align-last: center;
 }
-
+#footer {
+  background-color: #003262;
+  color: #ccc;
+  margin-bottom: 0;
+  font-size: 13px;
+  margin: 36px 0;
+  display: block;
+  box-sizing: border-box;
+}
+.element-invisible {
+  position: absolute !important;
+  clip: rect(1px 1px 1px 1px);
+  clip: rect(1px,1px,1px,1px);
+  overflow: hidden;
+  height: 1px;
+}
