@@ -1,101 +1,113 @@
 <script src="https://kit.fontawesome.com/ef4c7bf5f9.js" crossorigin="anonymous"></script>
 <a id="skip-link"></a>
 <div class="container">
-  <div class="<%=flash.empty? ? 'px-4 py-5 my-2 text-center' : 'px-4 pb-5 mb-5 text-center' %>">
-    <%= render "shared/flash_messages" %>
-    <%= image_tag("reentry-owl.jpg", width: 130, height: 130, class: "d-block rounded mx-auto mb-4") %>
-    <% if @logged_out %>
-      <h1 class="display-5 fw-bold">Welcome to the Berkeley <br/> Reentry Student Program</h1>
-      <div class="d-grid mt-2 gap-2 d-sm-flex justify-content-sm-center pt-2">
-      <%= button_to '/auth/google_oauth2', class: "btn btn-primary btn-lg" do %>
-          <img width="20px" style="margin-bottom:3px; margin-right:5px" alt="Google sign-in" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/512px-Google_%22G%22_Logo.svg.png" />
-          Login with Google
-      <% end %>
-      </div>
-    <% else %>
-      <h1 class="display-5 fw-bold">Welcome to the Berkeley <br/> Reentry Student Program,</h1>
-      <h3 class="display-5 name-display mt-3"><%= sanitize @name %></h3>
-      <% if @user_type.include? 'Admin' %>
+    <div class="<%=flash.empty? ? 'px-4 py-5 my-2 text-center' : 'px-4 pb-5 mb-5 text-center' %>">
+        <%= render "shared/flash_messages" %>
+        <%= image_tag("reentry-owl.jpg", width: 130, height: 130, class: "d-block rounded mx-auto mb-4") %>
+        <% if @logged_out %>
+        <h1 class="display-5 fw-bold">Welcome to the Berkeley <br /> Reentry Student Program</h1>
+        <div class="d-grid mt-2 gap-2 d-sm-flex justify-content-sm-center pt-2">
+            <%= button_to '/auth/google_oauth2', class: "btn btn-primary btn-lg" do %>
+            <img width="20px" style="margin-bottom:3px; margin-right:5px" alt="Google sign-in" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/512px-Google_%22G%22_Logo.svg.png" />
+            Login with Google
+            <% end %>
+        </div>
+        <% else %>
+        <h1 class="display-5 fw-bold">Welcome to the Berkeley <br /> Reentry Student Program,</h1>
+        <h3 class="display-5 name-display mt-3"><%= sanitize @name %></h3>
+        <% if @user_type.include? 'Admin' %>
         <%= link_to "Go to admin dashboard".html_safe, admins_path, class: "btn btn-primary mt-1 btn-lg px-4 gap-3" %>
-      <% elsif @user_type.include? 'Staff' %>
+        <% elsif @user_type.include? 'Staff' %>
         <%# pending %>
-      <% else %>
+        <% else %>
         <div class="col-lg-6 mt-4 mx-auto">
-          <p class="lead mb-4">Check-in using this application, find and make appointments with staff, find news and updates &#x1F4AB</p>
-          <%= link_to "Check-in to Berkeley </br> Reentry Student Center".html_safe, checkin_path, class: "btn btn-primary mt-1 btn-lg px-4 gap-3" %>
-          <%= link_to "Make an Appointment </br> With a Counselor".html_safe, appointments_path, class: "btn btn-primary mt-1 btn-lg px-4 gap-3" %>
-          <%= link_to "Re-entry Scholarships" .html_safe, scholarships_path, class: "btn btn-primary mt-1 btn-lg px-4 gap-3"%>
+            <p class="lead mb-4">Check-in using this application, find and make appointments with staff, find news and updates &#x1F4AB</p>
+            <%= link_to "Check-in to Berkeley </br> Reentry Student Center".html_safe, checkin_path, class: "btn btn-primary mt-1 btn-lg px-4 gap-3" %>
+            <%= link_to "Make an Appointment </br> With a Counselor".html_safe, appointments_path, class: "btn btn-primary mt-1 btn-lg px-4 gap-3" %>
+            <%= link_to "Re-entry Scholarships" .html_safe, scholarships_path, class: "btn btn-primary mt-1 btn-lg px-4 gap-3"%>
         </div>
         <%= link_to "Edit Profile Information".html_safe, user_profile_edit_path(:edit_profile => true), class: "btn btn-secondary btn-lg px-4 my-4 gap-3" %>
-      <% end %>
-      <%= link_to "Logout", logout_path, class: "btn btn-secondary btn-lg my-4" %>
-	<footer id="footer" class="footer">
-   	 <div id="footer-main">
-   	 <div class="container">
-              <div class="row">
-          <div class="col-md-7">
-                          <div id="social-links">
-                <div class="item-list"><h3>Follow us:</h3><ul><li class="first"><a href="https://twitter.com/ReentryBerkeley" title="Twitter" rel="noreferrer" data-extlink=""><span class="fa fa-twitter"><span class="element-invisible">Twitter</span></span><span class="ext"><span class="element-invisible">(link is external)</span></span></a></li>
-<li><a href="https://www.youtube.com/channel/UCyrU9gfK7ckWLrmO9smmgvw" title="YouTube" rel="noreferrer" data-extlink=""><span class="fa fa-youtube-play"><span class="element-invisible">YouTube</span></span><span class="ext"><span class="element-invisible">(link is external)</span></span></a></li>
-<li class="last"><a href="https://www.instagram.com/ReentryBerkeley" title="Instagram" rel="noreferrer" data-extlink=""><span class="fa fa-instagram"><span class="element-invisible">Instagram</span></span><span class="ext"><span class="element-invisible">(link is external)</span></span></a></li>
-</ul></div>              </div>
-                      </div>
-          <div class="col-md-5">
-            <div id="footer-main-first" class="clearfix">
-                <div class="region region-footer">
-    <div class="block block-menu block--">
-
-      
-  <div class="block__content">
-    <ul class="nav nav-pills"><li class="first leaf active-trail active active menu-link-home"><a href="/home" class="active-trail active" aria-current="page">Home</a></li>
-<li class="leaf menu-link-donate"><a href="https://give.berkeley.edu/fund/FH2053000" title="" rel="noreferrer" data-extlink="">Donate</a></li>
-<li class="last leaf menu-link-contact-us"><a href="https://reentry.berkeley.edu/connect/contact-us" title="" rel="noreferrer">Contact Us</a></li>
-</ul>  </div>
-</div>
-  </div>
-            </div>
-            <div id="footer-main-last" class="clearfix">
-                <div class="region region-footer-third">
-    <div class="block block-block block--">
-
-      
-  <div class="block__content">
-    <p><span>Hours of Operation:</span></p>
-<p>Monday - Thursday 10am - 5pm</p>
-<p><a href="mailto:reentry@berkeley.edu" rel="noreferrer" data-extlink="">reentry@berkeley.edu<span class="mailto"><span class="element-invisible">(link sends e-mail)</span></span></a></p>
-<ul class="openberkeley-list-unbullet">
-<li>
-</li><li>
-  </li></ul></div>
-</div>
-  </div>
-            </div>
-          </div>
-        </div>
-          </div>
-  </div>
-  <div id="footer-bottom">
-    <div class="container">
-      <div class="row">
-              </div>
-      <div class="row">
-                  <div class="col-md-6">
-            <ul class="openberkeley-list-unbullet">
-                          <li id="openberkeley"><small><a href="https://open.berkeley.edu" data-extlink="">Powered by Open Berkeley<span class="ext"><span class="element-invisible">(link is external)</span></span></a></small></li>
-              <li id="accessibility-info"><small><a href="https://dac.berkeley.edu/web-accessibility" data-extlink="">Accessibility<span class="element-invisible"> Statement</span><span class="ext"><span class="element-invisible">(link is external)</span></span></a></small></li>
-              <li id="nondiscrimination"><small><a href="https://ophd.berkeley.edu/policies-and-procedures/nondiscrimination-policy-statement" data-extlink="">Nondiscrimination<span class="element-invisible"> Policy Statement</span><span class="ext"><span class="element-invisible">(link is external)</span></span></a></small></li>
-              <li id="privacy-statement"><small><a href="https://open.berkeley.edu/privacy-statement" data-extlink="">Privacy<span class="element-invisible"> Statement</span><span class="ext"><span class="element-invisible">(link is external)</span></span></a></small></li>
-                                      <li class="copyright"><small>Copyright © 2023 UC Regents; all rights reserved
-</small></li>
-                      </ul>
-          </div>
-          <div class="col-md-6">
-            <p><small class="back-to-top"><a href="#skip-link">Back to Top</a></small></p>
-          </div>
-              </div>
+        <% end %>
+        <%= link_to "Logout", logout_path, class: "btn btn-secondary btn-lg my-4" %>
     </div>
-  </div>
-</footer>
-  <% end %>
-  </div>
+    <% end %>
 </div>
+        <div class="cry">
+            <footer id="footer" class="footer">
+                <div id="footer-main">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-7">
+                                <div class="social-links">
+                                    <div class="item-list">
+                                        <h3>Follow us:</h3><ul>
+                                            <li class="first"><a href="https://twitter.com/ReentryBerkeley" title="Twitter" rel="noreferrer" data-extlink=""><span class="fa fa-twitter"><span class="element-invisible">Twitter</span></span><span class="ext"><span class="element-invisible">(link is external)</span></span></a></li>
+                                            <li><a href="https://www.youtube.com/channel/UCyrU9gfK7ckWLrmO9smmgvw" title="YouTube" rel="noreferrer" data-extlink=""><span class="fa fa-youtube-play"><span class="element-invisible">YouTube</span></span><span class="ext"><span class="element-invisible">(link is external)</span></span></a></li>
+                                            <li class="last"><a href="https://www.instagram.com/ReentryBerkeley" title="Instagram" rel="noreferrer" data-extlink=""><span class="fa fa-instagram"><span class="element-invisible">Instagram</span></span><span class="ext"><span class="element-invisible">(link is external)</span></span></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-5">
+                                <div id="footer-main-first" class="clearfix">
+                                    <div class="region region-footer">
+                                        <div class="block block-menu block--">
+
+
+                                            <div class="block__content social-links">
+                                                <ul class="nav nav-pills">
+                                                    <li class="first leaf active-trail active active menu-link-home"><a href="/" class="active-trail active" aria-current="page">Home</a></li>
+                                                    <li class="leaf menu-link-donate"><a href="https://give.berkeley.edu/fund/FH2053000" title="" rel="noreferrer" data-extlink="">Donate</a></li>
+                                                    <li class="last leaf menu-link-contact-us"><a href="https://reentry.berkeley.edu/connect/contact-us" title="" rel="noreferrer">Contact Us</a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="footer-main-last" class="clearfix">
+                                    <div class="region region-footer-third">
+                                        <div class="block block-block block--">
+
+
+                                            <div class="block__content social-links">
+                                                <p><span>Hours of Operation:</span></p>
+                                                <p>Monday - Thursday 10am - 5pm</p>
+                                                <p><a href="mailto:reentry@berkeley.edu" rel="noreferrer" data-extlink="">reentry@berkeley.edu<span class="mailto"><span class="element-invisible">(link sends e-mail)</span></span></a></p>
+                                                <ul class="openberkeley-list-unbullet">
+                                                    <li>
+                                                    </li>
+                                                    <li>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="footer-bottom">
+                    <div class="container">
+                        <div class="row">
+                            <div class="social-links col-md-6">
+                                <ul class="openberkeley-list-unbullet">
+
+                                    <li id="accessibility-info"><small><a href="https://dac.berkeley.edu/web-accessibility" data-extlink="">Accessibility<span class="element-invisible"> Statement</span><span class="ext"><span class="element-invisible">(link is external)</span></span></a></small></li>
+                                    <li id="nondiscrimination"><small><a href="https://ophd.berkeley.edu/policies-and-procedures/nondiscrimination-policy-statement" data-extlink="">Nondiscrimination<span class="element-invisible"> Policy Statement</span><span class="ext"><span class="element-invisible">(link is external)</span></span></a></small></li>
+                                    <li id="privacy-statement"><small><a href="https://open.berkeley.edu/privacy-statement" data-extlink="">Privacy<span class="element-invisible"> Statement</span><span class="ext"><span class="element-invisible">(link is external)</span></span></a></small></li>
+                                    <li class="copyright">
+                                        <small>
+                                            Copyright © 2023 UC Regents; all rights reserved
+                                        </small>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="col-md-6">
+                                <p style="float:right;margin:10px;"><small class="back-to-top"><a href="#skip-link">Back to Top</a></small></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
