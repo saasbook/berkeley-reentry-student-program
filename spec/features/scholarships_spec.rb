@@ -2,29 +2,37 @@
 
 require 'rails_helper'
 
-ADMIN_CREDENTIALS = {
-  "provider" => 'google_oauth2',
-  "uid" =>      '1000000000',
-  "info" =>     {
-    "name" =>       'Google Admin Developer',
-    "email" =>      'google_admin@berkeley.edu',
-    "first_name" => 'Google',
-    "last_name" =>  'Admin Developer'
+STUDENT_CREDENTIALS = {
+  'provider' => 'google_oauth2',
+  'uid' => '1000000000',
+  'info' => {
+    'name' => 'Google Test Developer',
+    'email' => 'google_student@berkeley.edu',
+    'first_name' => 'Google',
+    'last_name' => 'Test Developer'
   },
-  "credentials" => {
-    "token" => "credentials_token_1234567",
-    "refresh_token" => "credentials_refresh_token_45678"
+  'credentials' => {
+    'token' => 'credentials_token_1234567',
+    'refresh_token' => 'credentials_refresh_token_45678'
+>>>>>>> 8ec9eb6ca9a6632fc0bef81e4de96b924024f274
   }
 }
 
 RSpec.feature "Scholarships", type: :feature do
-
-  scenario "user can view scholarships index page" do
-    visit root_path
-    click_button "Login with Google"
-    # expect(page).to have_button("Login with Google")
-    expect(page).to have_link("Re-entry Scholarships", href: scholarships_path)
-    click_link "Re-entry Scholarships"
-    expect(current_path).to eq(scholarships_path)
-  end
+    before do
+        OmniAuth.config.add_mock(
+            :google_oauth2,
+            STUDENT_CREDENTIALS
+        )
+        @student = FactoryBot.create :student, email: 'google_student@berkeley.edu'
+    end
+    scenario "user can view scholsarships index page" do
+        visit root_path
+        click_button "Login with Google"
+        expect(page).to have_link("Re-entry Scholarships", href: scholarships_path)
+        click_link "Re-entry Scholarships"
+        expect(page).to have_content("Awards")
+        expect(current_path).to eq(scholarships_path)
+    end
+>>>>>>> 8ec9eb6ca9a6632fc0bef81e4de96b924024f274
 end
