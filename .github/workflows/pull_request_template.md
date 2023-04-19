@@ -28,4 +28,4 @@ This pull request fixes|implements (pick one...) ______.
 
 - [ ] Has this been deployed to a staging environment or reviewed by a customer?
 - [ ] Tag someone for code review (either a coach / team member)
-- [ ] I have renamed the branch to match PivotTracker's suggested one (necessary for BlueJay)
+- [ ] I have renamed the branch to match PivotTracker's suggested one (necessary for BlueJay) (e.g. `michael/12345-add-new-feature` Any branch name will do as long as the story ID is there. You can use `git checkout -b [new-branch-name]`)
