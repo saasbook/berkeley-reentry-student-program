@@ -1,4 +1,4 @@
-# spec/features/scholarships_spec.rb
+# spec/features/courses_spec.rb
 
 require 'rails_helper'
 
@@ -17,7 +17,7 @@ STUDENT_CREDENTIALS = {
   }
 }
 
-RSpec.feature "Scholarships", type: :feature do
+RSpec.feature "Courses", type: :feature do
     before do
         OmniAuth.config.add_mock(
             :google_oauth2,
@@ -25,12 +25,12 @@ RSpec.feature "Scholarships", type: :feature do
         )
         @student = FactoryBot.create :student, email: 'google_student@berkeley.edu'
     end
-    scenario "user can view scholsarships index page" do
+    scenario "user can view courses index page" do
         visit root_path
         click_button "Login with Google"
-        expect(page).to have_link("Re-entry Scholarships", href: scholarships_path)
-        click_link "Re-entry Scholarships"
-        expect(page).to have_content("Awards")
-        expect(current_path).to eq(scholarships_path)
+        expect(page).to have_link("Our Courses", href: courses_path)
+        click_link "Our Courses"
+        expect(page).to have_content("Transition Course:")
+        expect(current_path).to eq(courses_path)
     end
 end
