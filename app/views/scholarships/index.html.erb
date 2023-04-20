@@ -1,17 +1,18 @@
-<nav class="navbar navbar-expand-md navbar-light bg-light">
+<nav class="navbar navbar-expand-sm navbar-light bg-light">
   <div class="container">
+    <%= link_to "Home", root_path, method: :get, class: "btn btn-outline-primary"%>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#nav" aria-controls="nav" aria-label="Expand Navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
     <div class="collapse navbar-collapse" id="nav">
       <ul class="navbar-nav">
         <li class="nav-item">
-          <%= link_to "Home", root_path, method: :get, class: "btn btn-outline-primary"%>
-        </li>
-        <li>
           <%= link_to "Check In".html_safe, checkin_path, class: "nav-link"%>
         </li>
-        <li>
+        <li class="nav-item">
           <%= link_to "Make Appointments".html_safe, appointments_path, class: "nav-link"%>
         </li>
-        <li>
+        <li class="nav-item">
           <%= link_to "Scholarships", '#', method: :get, class: "nav-link active"%>
         </li>
       </ul>
