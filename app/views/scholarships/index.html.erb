@@ -5,7 +5,7 @@
     <p>The Re-entry Student Program offers two scholarships: <strong>Crankstart</strong> for newly admitted students, 
        and Osher for continuing students.  Applications for these scholarships are open during each fall term 
        and typically have deadlines around the end of September/early October.</p>
-    <p class="fw-bold text-black">Fall 2023 Crankstart & Osher Scholarships:  TBA</p>
+    <p class="fw-bold">Fall 2023 Crankstart & Osher Scholarships:  TBA</p>
   </div>
 <br></br>
   <div class="row">
@@ -42,13 +42,14 @@
           </p>
           <%= link_to "Apply for the Crankstart Re-entry Scholarship here!",
               "https://docs.google.com/forms/d/e/1FAIpQLSf_LvWvao0BBYmTwWMgqtcBgt3b6zavP9ZDVbva9PtYjqKWVg/viewform?usp=sf_link", 
-              class:"btn btn-outline-info"%>
+              class: "btn btn-outline-info",
+              target: "_blank"%>
         </div>
       </div>
     </div>
   </div>
   <br></br>
-    <div class="row">
+  <div class="row">
     <div class="card">
       <h4 class="card-header">Osher Re-entry Scholarship</h4>
       <div class="card-body">
@@ -80,14 +81,27 @@
           </p>
           <%= link_to "Apply for the Osher Re-entry Scholarship here!",
               "https://docs.google.com/forms/d/e/1FAIpQLSc7cIvvPNFeG-Fe7sE-aOaL4fieL74PjBGAVFPDHL-ddfeTaA/viewform?usp=sf_link", 
-              class:"btn btn-outline-info"%>
+              class: "btn btn-outline-info",
+              target: "_blank"%>
         </div>
       </div>
     </div>
   </div>
+  <hr class="col mt-5 mx-auto"/>
+  <h3 class="col-6-sm">Leadership Award</h3>
+  <div class="row">
+    <p>The Re-entry Student Program Leadership Award fund is designed to provide support to Re-entry Student Program 
+       peer advisors, advocates and interns. Student leaders will propose a service leadership project that will not only 
+       enhance your leadership in our campus community, but also advance our commitment of better meeting the current needs 
+       of re-entry students at Berkeley.
+    </p>
+    <p class="font-italic">Note: these funds are intended to support you and your educational expenses—this is not a program 
+      budget for your project.</p>
+  </div>
+
 
 </div>
-<hr class="col-lg-8 mt-5 mx-auto"/>
+<hr class="col mt-5 mx-auto"/>
 <div class="col-lg-6 mt-5 mx-auto" align="center">
   <%= link_to "Back", root_path, method: :get, class:"btn btn-secondary btn-lg my-4" %>
 </div>
