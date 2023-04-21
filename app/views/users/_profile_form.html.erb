@@ -25,8 +25,8 @@
     </div>
     <div class="col-md-6 offset-md-3">
       <% if params[:edit_profile] %>
-        <%= link_to "Back", root_path, class: "btn btn-secondary btn-lg ms-2 my-4" %>
-        <%= f.submit "Submit", name: "submit_edit", class: "btn btn-primary btn-lg ms-2 my-4"  %>
+        <%= link_to "Back", root_path, class: "btn btn-secondary btn-lg ms-2 my-4", style:"color:#003262" %>
+        <%= f.submit "Submit", name: "submit_edit", class: "btn btn-primary btn-lg ms-2 my-4 berkeley-color", style:"border-color:#003262"  %>
       <% else %>
         <%= f.submit "Skip", name: "skip", class: "btn btn-secondary btn-lg ms-2 my-4"  %>
         <%= f.submit "Submit", name: "submit", class: "btn btn-primary btn-lg ms-2 my-4"  %>
