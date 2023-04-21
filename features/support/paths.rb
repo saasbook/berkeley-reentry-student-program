@@ -21,6 +21,7 @@ module NavigationHelpers
     when /^the confirm page$/ then login_confirm_path
     when /^the admin dashboard$/ then admins_path
     when /^the scholarships page$/ then scholarships_path
+    when /^the courses page$/ then courses_path
 
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:
