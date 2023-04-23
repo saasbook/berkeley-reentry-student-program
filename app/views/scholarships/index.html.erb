@@ -1,0 +1,135 @@
+<nav class="navbar navbar-expand-sm navbar-light berkeley-color">
+  <div class="container">
+    <%= link_to "Home", root_path, method: :get, class: "btn btn-outline-primary", style: "color: grey; border-color: grey;"%>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#nav" aria-controls="nav" aria-label="Expand Navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="nav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <%= link_to "Check In".html_safe, checkin_path, class: "nav-link", style:"color: grey;"%>
+        </li>
+        <li class="nav-item">
+          <%= link_to "Make Appointments".html_safe, '#', method: :get, class: "nav-link", style:"color: grey;"%>
+        </li>
+        <li class="nav-item">
+          <%= link_to "Scholarships".html_safe, scholarships_path, class: "nav-link", style:"color: white;"%>
+        </li>
+        <li class="nav-item">
+          <%= link_to "Courses".html_safe, courses_path, class: "nav-link", style:"color: grey;"%>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<div class="container">
+<br></br><h1 class="display-5 fw-bold" style="color:#003262" align = "center">Scholarships &amp; Awards</h1><br></br>
+  <div class="row">
+    <h3 class="col-6-sm">Scholarship Opportunities</h3>
+    <p>The Re-entry Student Program offers two scholarships: <strong>Crankstart</strong> for newly admitted students, 
+       and Osher for continuing students.  Applications for these scholarships are open during each fall term 
+       and typically have deadlines around the end of September/early October.</p>
+    <p class="fw-bold">Fall 2023 Crankstart & Osher Scholarships:  TBA</p>
+  </div>
+<br></br>
+  <div class="row">
+    <div class="card">
+      <h4 class="card-header">Crankstart Re-entry Scholarship</h4>
+      <div class="card-body">
+        <div class="card-text">
+          <p>The Crankstart Re-entry Scholarship provides up to $5,000 awards to ten first-semester 
+             (if you began taking courses during summer, you may still apply) undergraduate re-entry students 
+             who demonstrate the potential and capacity to positively contribute to society beyond Berkeley.
+          </p>
+          <p>Applicants must meet the following criteria:
+            <ul>
+              <li>UC Berkeley re-entry Students having experienced a cumulative gap in their education of five or more years</li>
+              <li>Undergraduates pursuing their first baccalaureate degrees</li>
+              <li>Anticipate workforce participation for a significant period of time subsequent to graduation</li>
+              <li>All applicants must have filed a FAFSA and be eligible to receive federal aid, Dream aid included</li>
+              <li>Hold a minimum cumulative grade point average of 3.0 from all colleges attended</li>
+            </ul>
+          </p>
+          <p>Your application must include: 
+            <ol>
+              <li>A personal essay of no more than 3 pages (single or double-spaced accepted) 
+                  describing what it means to be a re-entry student, highlighting your personal achievements 
+                  through your work, school, family or community service in spite of obstacles and explain 
+                  how your leadership and perseverance made a difference. Please address the interruption to 
+                  your college academics and your plans for employment upon completion of all your schooling 
+                  as part of the essay. At the top of each page of your essay, print your full legal name.</li>
+              <li>Copies of transcripts from all colleges attended (unofficial accepted)</li>
+              <li>No more than 2 letters of recommendation* (can be from, for example, a former instructor, 
+                  supervisor or mentor who can speak to your ability to apply your Berkeley education to future 
+                  contributions to society)</li>
+            </ol>
+          </p>
+          <%= link_to "Apply for the Crankstart Re-entry Scholarship here!",
+              "https://docs.google.com/forms/d/e/1FAIpQLSf_LvWvao0BBYmTwWMgqtcBgt3b6zavP9ZDVbva9PtYjqKWVg/viewform?usp=sf_link", 
+              class: "btn btn-outline-info",
+              target: "_blank"%>
+        </div>
+      </div>
+    </div>
+  </div>
+  <br></br>
+  <div class="row">
+    <div class="card">
+      <h4 class="card-header">Osher Re-entry Scholarship</h4>
+      <div class="card-body">
+        <div class="card-text">
+          <p>The Osher Re-entry Scholarship Program awards several continuing (completed at least one semester at Berkeley) 
+          undergraduate re-entry students who demonstrate the potential and capacity to positively contribute to society 
+          beyond Berkeley with awards up to $5,000 for the academic year.
+          </p>
+          <p>Applicants must meet the following criteria:
+            <ul>
+              <li>Must be an undergraduate re-entry student at UC Berkeley who has experienced a considerable gap in the pursuit of 
+                  her or his education and who can look forward to significant years of workforce participation</li>
+              <li>Must have completed at least one regular term (fall or spring) at UC Berkeley</li>
+              <li>Must have a minimum cumulative grade point average of 3.0 from all colleges attended</li>
+              <li>All applicants must have completed a FAFSA and be eligible to receive financial aid, Dream aid included</li>
+            </ul>
+          </p>
+          <p>Your application must include: 
+            <ol>
+              <li>A personal essay of no more than 3 pages (single or double-spaced accepted) describing what it means to be 
+                a re-entry student, highlighting your personal achievements through your work, school, family or community service 
+                in spite of obstacles and explain how your leadership and perseverance made a difference. Please address the 
+                interruption to your college academics and your plans for employment upon completion of all your schooling as part 
+                of the essay. At the top of each page of your essay, print your full legal name.</li>
+              <li>Copies of transcripts from all colleges attended (unofficial accepted)</li>
+              <li>No more than 2 letters of recommendation* (can be from, for example, a former instructor, supervisor or mentor 
+                  who can speak to your ability to apply your Berkeley education to future contributions to society)</li>
+            </ol>
+          </p>
+          <%= link_to "Apply for the Osher Re-entry Scholarship here!",
+              "https://docs.google.com/forms/d/e/1FAIpQLSc7cIvvPNFeG-Fe7sE-aOaL4fieL74PjBGAVFPDHL-ddfeTaA/viewform?usp=sf_link", 
+              class: "btn btn-outline-info",
+              target: "_blank"%>
+        </div>
+      </div>
+    </div>
+  </div>
+  <hr class="col mt-5 mx-auto"/>
+  <h3 class="col-6-sm">Leadership Award</h3>
+  <div class="row">
+    <p>The Re-entry Student Program Leadership Award fund is designed to provide support to Re-entry Student Program 
+       peer advisors, advocates and interns. Student leaders will propose a service leadership project that will not only 
+       enhance your leadership in our campus community, but also advance our commitment of better meeting the current needs 
+       of re-entry students at Berkeley.
+    </p>
+    <p class="font-italic">Note: these funds are intended to support you and your educational expenses—this is not a program 
+      budget for your project.</p>
+  </div>
+
+
+</div>
+<hr class="col mt-5 mx-auto"/>
+<div class="col-lg-6 mt-5 mx-auto" align="center">
+  <%= link_to "Back", root_path, method: :get, class:"btn btn-secondary btn-lg my-4", style:"color:#003262" %>
+</div>
+</div>
+<button type="button" class="btn btn-danger btn-floating btn-lg btn-back-to-top">
+  <i class="fas fa-arrow-up"></i>
+</button>
