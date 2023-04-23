@@ -1,16 +1,16 @@
 $(document).ready(function() {
-    $('#back-to-top').hide();
+    $('.btn-back-to-top').hide();
 
     // show or hide button depending on scroll position
     $(window).scroll(function() {
         if ($(this).scrollTop() > 10) {
-            $('#back-to-top').fadeIn();
+            $('.btn-back-to-top').fadeIn();
         } else {
-            $('#back-to-top').fadeOut();
+            $('.btn-back-to-top').fadeOut();
         }
     });
 
-    $('#back-to-top').click(function() {
+    $('.btn-back-to-top').click(function() {
         $('body, html').animate({scrollTop: 0}, 400);
         return false;
     })
