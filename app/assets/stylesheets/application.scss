@@ -1,4 +1,5 @@
 @import "bootstrap";
+
 /*
  * This is a manifest file that'll be compiled into application.css, which will include all the files
  * listed below.
@@ -14,6 +15,18 @@
  *= require_tree .
  *= require_self
  */
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+}
+
+main {
+  flex-grow: 1;
+}
+
 h1 {
   font-family: 'Poppins', sans-serif;
   font-style: normal;
@@ -22,16 +35,19 @@ h1 {
   line-height: 120%;
   color: #04021D;
 }
+
 h2 {
   font-family: 'Poppins', sans-serif;
   font-style: normal;
   font-weight: 600;
 }
+
 h3 {
   font-family: 'Poppins', sans-serif;
   font-style: normal;
   font-weight: 500;
 }
+
 p {
   font-family: 'Poppins', sans-serif;
   font-style: normal;
@@ -41,6 +57,11 @@ p {
   /* Text / Dark - 60% */
   color: #686777;
 }
+
+li {
+  text-align: match-parent;
+}
+
 button {
   font-family: 'Poppins', sans-serif;
   font-style: normal;
@@ -48,40 +69,142 @@ button {
   font-size: 16px;
   line-height: 24px;
 }
+
 b {
   font-family: 'Poppins', sans-serif;
   font-style: normal;
   font-weight: bolder;
   color: #262626;
 }
+
 .btn-primary {
   background: #554AF0;
   border-radius: 12px;
-
 }
+
 .btn-primary:hover {
   background-color: #2112ee !important;
 }
+
 .btn-secondary {
   background: #eaeaea;
   border-radius: 12px;
   border-color: #eaeaea;
   color: #554AF0;
 }
+
 .form-text {
   font-family: 'Poppins', sans-serif;
   font-style: normal;
   font-weight: 400;
 }
+
 .form-label {
   font-family: 'Poppins', sans-serif;
   font-style: normal;
   font-weight: 500;
 }
-.name-display{
+
+.name-display {
   color: #554AF0;
 }
+
 .form-select {
   text-align-last: center;
 }
 
+#footer {
+  background-color: #003262;
+  box-sizing: border-box;
+  color: #ccc;
+  margin: 36px 0;
+  margin-bottom: 0;
+  font-size: 13px;
+  display: block;
+}
+
+.element-invisible {
+  position: absolute !important;
+  clip: rect(1px 1px 1px 1px);
+  clip: rect(1px, 1px, 1px, 1px);
+  overflow: hidden;
+  height: 1px;
+}
+
+.social-links ul li {
+  display: inline;
+  margin: 10px;
+  font-size: 18px;
+}
+
+.nav-pills>li+li {
+  margin-left: 2px;
+  float: left;
+}
+
+.nav>li {
+  position: relative;
+  display: block;
+}
+
+.nav-active {
+  color: white;
+}
+
+.nav-dull {
+  color: grey;
+}
+
+ul.nav,
+ul.navl li,
+ul.dropdown-menu,
+ul.dropdown-menu li {
+  list-style: none outside none !important;
+}
+
+.cry {
+  margin: 0;
+  padding: 0;
+  background: #003262;
+}
+
+#primary-nav>ul>li.menu-fields-menu-link {
+  position: static;
+}
+
+#primary-nav>ul>li.menu-fields-menu-link>.dropdown-menu {
+  left: 0;
+  padding: 0;
+  width: 100%;
+}
+
+#primary-nav>ul>li.menu-fields-menu-link>.dropdown-menu>li>.openberkeley-megamenu {
+  padding: 20px;
+  width: 100%;
+}
+
+.leaf a {
+  color: #999;
+  /* Set the generic color to a lighter gray */
+  transition: color 0.3s;
+  /* Add a transition effect for smooth color change */
+  text-decoration: none;
+  float: left;
+}
+
+.leaf a:hover {
+  color: #555;
+  /* Slightly darken the color when hovered over */
+}
+
+#footer-bottom ul li {
+  display: grid;
+}
+
+#footer-bottom {
+  margin-top: -15px;
+}
+
+.berkeley-color {
+  background-color: #003262;
+}
