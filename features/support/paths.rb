@@ -22,6 +22,7 @@ module NavigationHelpers
     when /^the admin dashboard$/ then admins_path
     when /^the scholarships page$/ then scholarships_path
     when /^the courses page$/ then courses_path
+    when /^the podcast page$/ then podcasts_path
 
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:
