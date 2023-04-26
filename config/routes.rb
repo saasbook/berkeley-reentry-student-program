@@ -12,6 +12,8 @@ Rails.application.routes.draw do
   get 'appointments', to: "appointments#advisors"
   # scholarships page
   get 'scholarships', to: "scholarships#index"
+  # podcast page
+  get 'podcasts', to: "podcasts#index"
   # courses page
   get 'courses', to: "courses#index"
   # the admin dashboard
