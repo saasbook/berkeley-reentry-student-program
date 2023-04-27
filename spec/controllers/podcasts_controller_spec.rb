@@ -15,7 +15,7 @@ STUDENT_CREDENTIALS = {
   }
 }
 
-RSpec.describe CoursesController, type: :controller do
+RSpec.describe PodcastsController, type: :controller do
   describe "GET #index" do
     context "when not logged in" do
       it "redirects to the root path" do
