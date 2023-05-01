@@ -40,8 +40,3 @@
 
 # Ignore application configuration
 /config/application.yml
-
-# Ignore all the DS_Stores
-/.DS_Store
-/app/views/.DS_Store
-/app/.DS_Store
