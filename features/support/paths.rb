@@ -20,6 +20,7 @@ module NavigationHelpers
     when /^the checkin page$/ then checkin_path
     when /^the confirm page$/ then login_confirm_path
     when /^the admin dashboard$/ then admins_path
+    when /^the scholarships page$/ then scholarships_path
 
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:
