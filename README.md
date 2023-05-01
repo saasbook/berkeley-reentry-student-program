@@ -12,13 +12,15 @@
 
 1. Fork & clone the repository locally!
 2. Install Ruby version 3.0.3, and switch to that version using `rvm use 3.0.3`
-3. Run `bundle install --without production`
-4. Run `db:schema:load` & `rake db:migrate`
-5. Follow [these instructions](https://devcenter.heroku.com/articles/creating-apps) to create & setup a new Heroku app on the CLI
-  - You must have PostgreSQL installed locally to run the rails server. Then, you must start the server via the command line
+3. You must have PostgreSQL installed locally to run the rails server. 
+    - **For Mac**: Run `brew install postgresql`
+   Then, you must start the server via the command line.
     - **For Mac**: Run `brew services start postgresql`
     - **For Windows**: Run `pg_ctl -D "C:\Program Files\PostgreSQL\9.6\data" start`
-6. Our code requires 4 environment variables to work correctly in production & local environments. 
+4. Run `bundle install --without production`
+5. Run `rake db:schema:load` & `rake db:migrate`
+6. Follow [these instructions](https://devcenter.heroku.com/articles/creating-apps) to create & setup a new Heroku app on the CLI
+7. Our code requires 4 environment variables to work correctly in production & local environments. 
   - _For local development_: You must set a non-empty string for the environment variables `ADMIN`, `STAFF`, `GOOGLE_CLIENT_ID`, and `GOOGLE_CLIENT_SECRET
     - **For Mac**: With Terminal open, run `open ~/.bash_profile`
     - At the bottom of the text file, add the following: `export ADMINS=string` & `export STAFF=string` where string is a comma-separated list of Berkeley       email addresses (these do not have to be real); i.e. `person@berkeley.edu,person2@berkeley.edu`
@@ -32,4 +34,4 @@
     - Add `ADMINS` & `STAFF` set to a comma-separated list of verified administrators and staff members for the app. For testing purposes, these variables       can both be set to the string `”none”`
     - Add `GOOGLE_CLIENT_SECRET` & `GOOGLE_CLIENT_ID` as provided by the instructions above. 
   - In order for the GitHub Actions build to pass, you must add a `CC_TEST_REPORTER_ID` as a repository secret on GitHub. To do this, first sign up for an account with codeclimate.com (quality, not velocity). Then, connect your repository and navigate to repo settings on the CodeClimate dashboard. Finally, copy the `test reporter ID` under the test coverage tab, and add it as a new repository secret under repository settings on GitHub. 
-7. That’s all! The app should now run on your local environment and any Heroku apps created from the codebase. 
+8. That’s all! The app should now run on your local environment and any Heroku apps created from the codebase. 
