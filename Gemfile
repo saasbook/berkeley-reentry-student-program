@@ -35,6 +35,8 @@ gem 'bootstrap', '~> 5.0.0'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 
+gem 'jquery-rails'
+
 # Use for Google Oauth 2.0
 gem 'omniauth-google-oauth2'
 
