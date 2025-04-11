@@ -1,0 +1,37 @@
+<%= form_with(model: scholarship, url: scholarship.persisted? ? update_scholarship_path(scholarship) : create_scholarship_path, method: scholarship.persisted? ? :patch : :post, local: true) do |form| %>
+  <% if scholarship.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(scholarship.errors.count, "error") %> prohibited this scholarship from being saved:</h2>
+      <ul>
+        <% scholarship.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field mb-3">
+    <%= form.label :name, class: "form-label" %>
+    <%= form.text_field :name, class: "form-control" %>
+  </div>
+
+  <div class="field mb-3">
+    <%= form.label :description, class: "form-label" %>
+    <%= form.text_area :description, class: "form-control", rows: 5 %>
+  </div>
+
+  <div class="field mb-3">
+    <%= form.label :status_text, class: "form-label" %>
+    <%= form.text_field :status_text, class: "form-control" %>
+  </div>
+
+  <div class="field mb-3">
+    <%= form.label :application_url, class: "form-label" %>
+    <%= form.url_field :application_url, class: "form-control" %>
+  </div>
+
+  <div class="actions mt-3">
+    <%= form.submit class: "btn btn-primary" %>
+    <%= link_to "Cancel", edit_scholarships_path, class: "btn btn-secondary" %>
+  </div>
+<% end %> 

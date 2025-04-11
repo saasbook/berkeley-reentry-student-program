@@ -11,6 +11,15 @@ class User < ApplicationRecord
     end
   end
 
+  def self.from_canvas(user_data)
+    where(email: user_data["email"]).first_or_initialize do |user|
+      user.first_name = user_data["first_name"]
+      user.last_name = user_data["last_name"]
+      user.email = user_data["email"]
+      user.sid = user_data["sis_user_id"]
+    end
+  end
+
   def name
     "#{first_name} #{last_name}"
   end

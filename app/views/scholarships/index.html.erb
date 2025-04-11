@@ -1,0 +1,50 @@
+<html lang="en">
+<div class="container">
+<br></br><h1 class="display-5 fw-bold" style="color:#003262" align = "center">Scholarships &amp; Awards</h1><br></br>
+  <div class="row">
+    <h2 class="col-6-sm">Scholarship Opportunities for Re-entry Students</h2>
+    <p>The Re-entry Student Program offers two scholarships: <b>Crankstart</b> for newly admitted students, 
+       and <b>Osher</b> for continuing students.</p>
+    <p>Applications for the 2024 Osher Scholarship opened in May 2024 and closed in July 2024.  
+    We will open the Osher Scholarship for continuing students again in <b>May 2025</b>. </p>
+    <p>Applications for the 2024 Crankstart Scholarship opened in August 2024 and 
+    closed in October 2024.  We will open the Crankstart Scholarship for new students again in August 2025. </p>
+  </div>
+<br></br>
+
+  <% @scholarships.each do |scholarship| %>
+    <div class="row mb-4"> <%# Add margin-bottom for spacing between scholarships %>
+      <div class="card">
+        <h3 class="card-header"><%= scholarship.name %></h3>
+        <div class="card-body">
+          <div class="card-text">
+            <%= simple_format(scholarship.description) %>
+
+            <%# Display the status text and link %>
+            <% if scholarship.application_url.present? %>
+              <%= link_to scholarship.status_text.presence || "Apply Now",
+                          scholarship.application_url,
+                          class: "btn btn-info",
+                          target: "_blank" %>
+            <% else %>
+              <p><b><%= scholarship.status_text.presence || "Information not available" %></b></p>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+
+  <% if @scholarships.empty? %>
+    <div class="row">
+      <p>There are currently no scholarships listed.</p>
+    </div>
+  <% end %>
+
+</div>
+<hr class="col mt-5 mx-auto"/>
+<div class="col-lg-6 mt-5 mx-auto" align="center">
+  <%= link_to "Back", root_path, method: :get, class:"btn btn-secondary btn-lg my-4", style:"color:#003262" %>
+</div>
+</div>
+</html>
