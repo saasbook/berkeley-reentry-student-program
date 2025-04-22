@@ -2,9 +2,9 @@
 
 FactoryBot.define do
   factory :appointment do
-    Time.zone = 'Pacific Time (US & Canada)'
+    Time.zone = "Pacific Time (US & Canada)"
     time { DateTime.now + 1.day }
-    location { 'ESS' }
+    location { "ESS" }
     association :staff, factory: :staff
     student { nil }
   end

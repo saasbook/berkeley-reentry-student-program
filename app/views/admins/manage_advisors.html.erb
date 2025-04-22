@@ -1,0 +1,51 @@
+<html lang="en">
+<head>
+  <%= stylesheet_link_tag 'https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css' %>
+</head>
+<body>
+  <div class="container mt-5">
+    <div class="<%=flash.empty? ? 'px-4 py-5 my-2' : 'px-4 pb-5 mb-5' %> text-center">
+      <%= render "shared/flash_messages" %>
+    </div>
+    <h1 class="display-5 fw-bold" align="center" style="color: #003262">Manage Advisors</h1>
+    <br>
+    <div class="mb-3">
+      <%= link_to "Add New Advisor", advisors_new_path, class: "btn btn-success mb-3" %>
+    </div>
+    <table id="advisors-table" class="display" style="width:100%">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Description</th>
+          <th>Calendar</th>
+          <th>Active</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @advisors.each do |advisor| %>
+          <tr>
+            <td><%= advisor.name %></td>
+            <td><%= advisor.description %></td>
+            <td><%= link_to advisor.calendar, advisor.calendar, target: "_blank" %></td>
+            <td><%= advisor.active ? "Yes" : "No" %></td>
+            <td>
+
+              <%= link_to "Edit", edit_advisor_path(advisor), class: "btn btn-primary btn-sm" %>
+              <%= link_to "Delete", delete_advisor_path(advisor), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger btn-sm" %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+
+  <%= javascript_include_tag 'https://code.jquery.com/jquery-3.6.0.min.js' %>
+  <%= javascript_include_tag 'https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js' %>
+  <script>
+    $(document).ready(function() {
+      $('#advisors-table').DataTable();
+    });
+  </script>
+</body>
+</html>

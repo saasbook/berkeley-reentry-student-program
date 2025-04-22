@@ -2,7 +2,7 @@
 
 FactoryBot.define do
   factory :announcement do
-    Time.zone = 'Pacific Time (US & Canada)'
+    Time.zone = "Pacific Time (US & Canada)"
     sequence(:title) { |n| "Announcement #{n} Title" }
     sequence(:content) { |n| "Announcement #{n} content" }
     issued_date { DateTime.now.to_date }

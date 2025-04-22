@@ -1,0 +1,119 @@
+<div class="container">
+  <div class="<%=flash.empty? ? 'px-4 py-5 my-2' : 'px-4 pb-5 mb-5' %> text-center">
+    <%= render "shared/flash_messages" %>
+    <h1 class="display-5 fw-bold">Manage Scholarships</h1>
+    
+    <table class="table table-striped col-md-12" id="scholarships_table">
+      <thead>
+        <tr>
+          <th>Select</th>
+          <th>Name</th>
+          <th>Description</th>
+          <th>Status</th>
+          <th>Application URL</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @scholarships.each do |scholarship| %>
+          <tr>
+            <td>
+              <input type="checkbox" name="selected_scholarships[]" value="<%= scholarship.id %>" class="scholarship-checkbox">
+            </td>
+            <td><%= scholarship.name %></td>
+            <td><%= truncate(scholarship.description, length: 100) %></td>
+            <td><%= scholarship.status_text %></td>
+            <td>
+              <% if scholarship.application_url.present? %>
+                <%= link_to "View Link", scholarship.application_url, target: "_blank" %>
+              <% else %>
+                No URL
+              <% end %>
+            </td>
+            <td>
+              <%= link_to "Edit", edit_scholarship_path(scholarship), class: "btn btn-warning btn-sm me-2" %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+
+    <div class="mt-4">
+      <div class="d-flex justify-content-center gap-3">
+        <%= link_to "Add New Scholarship", new_scholarship_path, class: "btn btn-primary btn-lg" %>
+        <button id="deleteButton" class="btn btn-danger btn-lg" disabled>
+          Delete Selected Scholarships
+        </button>
+      </div>
+    </div>
+
+    <%# Pagination %>
+    <div class="move-page">
+      <%= link_to "previous page".html_safe, edit_scholarships_path(page: params[:page].to_i - 1),
+          class: "btn btn-secondary mt-1 btn-lg px-4 gap-3 #{params[:page].to_i <= 1 ? 'disabled' : nil}" %>
+      <%= link_to "next page".html_safe, edit_scholarships_path(page: params[:page].to_i + 1), 
+          class: "btn btn-secondary mt-1 btn-lg px-4 gap-3 text-right #{!@has_next_page ? 'disabled' : nil}" %>
+    </div>
+
+    <%= link_to "back to admin dashboard".html_safe, admins_path, class: "btn btn-secondary mt-1 btn-lg px-4 gap-3" %>
+  </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const deleteButton = document.getElementById('deleteButton');
+  const checkboxes = document.querySelectorAll('.scholarship-checkbox');
+  
+  checkboxes.forEach(checkbox => {
+    checkbox.addEventListener('change', function() {
+      const checkedBoxes = document.querySelectorAll('.scholarship-checkbox:checked');
+      deleteButton.disabled = checkedBoxes.length === 0;
+      deleteButton.textContent = checkedBoxes.length > 1 ? 
+        `Delete Selected Scholarships (${checkedBoxes.length})` : 
+        'Delete Selected Scholarship';
+    });
+  });
+  
+  deleteButton.addEventListener('click', function() {
+    const checkedBoxes = document.querySelectorAll('.scholarship-checkbox:checked');
+    if (checkedBoxes.length > 0) {
+      const scholarshipNames = Array.from(checkedBoxes).map(checkbox => {
+        return checkbox.closest('tr').querySelector('td:nth-child(2)').textContent.trim();
+      });
+      
+      const message = checkedBoxes.length === 1 ? 
+        `Are you sure you want to delete '${scholarshipNames[0]}'?` :
+        `Are you sure you want to delete these ${checkedBoxes.length} scholarships?`;
+      
+      if (confirm(message)) {
+        const form = document.createElement('form');
+        form.method = 'POST';
+        form.action = '/scholarships/batch_delete';
+        
+        const methodInput = document.createElement('input');
+        methodInput.type = 'hidden';
+        methodInput.name = '_method';
+        methodInput.value = 'delete';
+        
+        const csrfToken = document.createElement('input');
+        csrfToken.type = 'hidden';
+        csrfToken.name = 'authenticity_token';
+        csrfToken.value = document.querySelector('meta[name="csrf-token"]').content;
+        
+        checkedBoxes.forEach(checkbox => {
+          const input = document.createElement('input');
+          input.type = 'hidden';
+          input.name = 'scholarship_ids[]';
+          input.value = checkbox.value;
+          form.appendChild(input);
+        });
+        
+        form.appendChild(methodInput);
+        form.appendChild(csrfToken);
+        document.body.appendChild(form);
+        form.submit();
+      }
+    }
+  });
+});
+</script>

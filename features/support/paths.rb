@@ -20,6 +20,9 @@ module NavigationHelpers
     when /^the checkin page$/ then checkin_path
     when /^the confirm page$/ then login_confirm_path
     when /^the admin dashboard$/ then admins_path
+    when /^the scholarships page$/ then scholarships_path
+    when /^the courses page$/ then courses_path
+    when /^the podcast page$/ then podcasts_path
 
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:
@@ -31,7 +34,7 @@ module NavigationHelpers
       begin
         page_name =~ /^the (.*) page$/
         path_components = Regexp.last_match(1).split(/\s+/)
-        send(path_components.push('path').join('_').to_sym)
+        send(path_components.push("path").join("_").to_sym)
       rescue NoMethodError, ArgumentError
         raise "Can't find mapping from \"#{page_name}\" to a path.\n" \
               "Now, go and add a mapping in #{__FILE__}"

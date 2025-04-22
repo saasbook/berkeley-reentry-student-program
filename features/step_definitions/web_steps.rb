@@ -20,10 +20,10 @@
 # * http://elabs.se/blog/15-you-re-cuking-it-wrong
 #
 
-require 'uri'
-require 'cgi'
-require File.expand_path(File.join(File.dirname(__FILE__), '..', 'support', 'paths'))
-require File.expand_path(File.join(File.dirname(__FILE__), '..', 'support', 'selectors'))
+require "uri"
+require "cgi"
+require File.expand_path(File.join(File.dirname(__FILE__), "..", "support", "paths"))
+require File.expand_path(File.join(File.dirname(__FILE__), "..", "support", "selectors"))
 
 module WithinHelpers
   def with_scope(locator, &block)
@@ -115,9 +115,9 @@ Then(%r{^(?:|I )should see /([^/]*)/$}) do |regexp|
   regexp = Regexp.new(regexp)
 
   if page.respond_to? :should
-    page.should have_xpath('//*', text: regexp)
+    page.should have_xpath("//*", text: regexp)
   else
-    assert page.has_xpath?('//*', text: regexp)
+    assert page.has_xpath?("//*", text: regexp)
   end
 end
 
@@ -133,16 +133,16 @@ Then(%r{^(?:|I )should not see /([^/]*)/$}) do |regexp|
   regexp = Regexp.new(regexp)
 
   if page.respond_to? :should
-    page.should have_no_xpath('//*', text: regexp)
+    page.should have_no_xpath("//*", text: regexp)
   else
-    assert page.has_no_xpath?('//*', text: regexp)
+    assert page.has_no_xpath?("//*", text: regexp)
   end
 end
 
 Then(/^the "([^"]*)" field(?: within (.*))? should contain "([^"]*)"$/) do |field, parent, value|
   with_scope(parent) do
     field = find_field(field)
-    field_value = field.tag_name == 'textarea' ? field.text : field.value
+    field_value = field.tag_name == "textarea" ? field.text : field.value
     if field_value.respond_to? :should
       field_value.should =~ /#{value}/
     else
@@ -154,7 +154,7 @@ end
 Then(/^the "([^"]*)" field(?: within (.*))? should not contain "([^"]*)"$/) do |field, parent, value|
   with_scope(parent) do
     field = find_field(field)
-    field_value = field.tag_name == 'textarea' ? field.text : field.value
+    field_value = field.tag_name == "textarea" ? field.text : field.value
     if field_value.respond_to? :should_not
       field_value.should_not =~ /#{value}/
     else
@@ -165,11 +165,11 @@ end
 
 Then(/^the "([^"]*)" field should have the error "([^"]*)"$/) do |field, error_message|
   element = find_field(field)
-  classes = element.find(:xpath, '..')[:class].split(' ')
+  classes = element.find(:xpath, "..")[:class].split(" ")
 
-  form_for_input = element.find(:xpath, 'ancestor::form[1]')
-  using_formtastic = form_for_input[:class].include?('formtastic')
-  error_class = using_formtastic ? 'error' : 'field_with_errors'
+  form_for_input = element.find(:xpath, "ancestor::form[1]")
+  using_formtastic = form_for_input[:class].include?("formtastic")
+  error_class = using_formtastic ? "error" : "field_with_errors"
 
   if classes.respond_to? :should
     classes.should include(error_class)
@@ -194,19 +194,19 @@ end
 
 Then(/^the "([^"]*)" field should have no error$/) do |field|
   element = find_field(field)
-  classes = element.find(:xpath, '..')[:class].split(' ')
+  classes = element.find(:xpath, "..")[:class].split(" ")
   if classes.respond_to? :should
-    classes.should_not include('field_with_errors')
-    classes.should_not include('error')
+    classes.should_not include("field_with_errors")
+    classes.should_not include("error")
   else
-    assert !classes.include?('field_with_errors')
-    assert !classes.include?('error')
+    assert !classes.include?("field_with_errors")
+    assert !classes.include?("error")
   end
 end
 
 Then(/^the "([^"]*)" checkbox(?: within (.*))? should be checked$/) do |label, parent|
   with_scope(parent) do
-    field_checked = find_field(label)['checked']
+    field_checked = find_field(label)["checked"]
     if field_checked.respond_to? :should
       field_checked.should be_true
     else
@@ -217,7 +217,7 @@ end
 
 Then(/^the "([^"]*)" checkbox(?: within (.*))? should not be checked$/) do |label, parent|
   with_scope(parent) do
-    field_checked = find_field(label)['checked']
+    field_checked = find_field(label)["checked"]
     if field_checked.respond_to? :should
       field_checked.should be_false
     else
@@ -239,7 +239,7 @@ Then(/^(?:|I )should have the following query string:$/) do |expected_pairs|
   query = URI.parse(current_url).query
   actual_params = query ? CGI.parse(query) : {}
   expected_params = {}
-  expected_pairs.rows_hash.each_pair { |k, v| expected_params[k] = v.split(',') }
+  expected_pairs.rows_hash.each_pair { |k, v| expected_params[k] = v.split(",") }
 
   if actual_params.respond_to? :should
     actual_params.should == expected_params

@@ -1,0 +1,10 @@
+<div class="container">
+  <div class="<%=flash.empty? ? 'px-4 py-5 my-2' : 'px-4 pb-5 mb-5' %> text-center">
+    <%= render "shared/flash_messages" %>
+    <h1 class="display-5 fw-bold">New Scholarship</h1>
+
+    <%= render 'admins/scholarships/form', scholarship: @scholarship %>
+
+    <%= link_to "Back to Scholarships", edit_scholarships_path, class: "btn btn-secondary mt-3" %>
+  </div>
+</div> 

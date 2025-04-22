@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe Checkin, type: :model do
   before do
@@ -10,8 +10,8 @@ RSpec.describe Checkin, type: :model do
     @all_sorted_records = Checkin.all.order(time: :desc)
   end
 
-  describe 'get_20_checkin_records' do
-    it 'n less than 1 should get the first 20 records in Checkin' do
+  describe "get_20_checkin_records" do
+    it "n less than 1 should get the first 20 records in Checkin" do
       n = -1
       records_from_method = Checkin.get_20_checkin_records(n)
       expect(records_from_method).to eq @all_sorted_records[0, 20]

@@ -1,0 +1,58 @@
+<html lang="en">
+<head>
+  <%= stylesheet_link_tag 'https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css' %>
+</head>
+<body>
+  <div class="container mt-5">
+    <div class="<%=flash.empty? ? 'px-4 py-5 my-2' : 'px-4 pb-5 mb-5' %> text-center">
+      <%= render "shared/flash_messages" %>
+    </div>
+    <h1 class="display-5 fw-bold" align="center" style="color: #003262">Manage Events</h1>
+    <br>
+    <div class="table-responsive">
+      <table id="eventsTable" class="display" style="width:100%">
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Date</th>
+            <th>Time</th>
+            <th>Location</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @events.each do |event| %>
+            <tr>
+              <td><%= event.title %></td>
+              <td><%= event.description %></td>
+              <td><%= event.date.strftime('%B %d, %Y') %></td>
+              <td><%= event.formatted_time %></td>
+              <td><%= event.location %></td>
+              <td>
+                <%= link_to "Edit", edit_admin_event_path(event), class: 'btn btn-primary btn-sm' %>
+                <%= link_to "Delete", admin_event_path(event), method: :delete, data: { confirm: 'Are you sure you want to delete this event?' }, class: 'btn btn-danger btn-sm' %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="mt-4">
+      <div class="d-flex justify-content-center gap-3">
+        <%= link_to "Back to Admin Dashboard".html_safe, admins_path, class: "btn btn-secondary btn-lg" %>
+        <%= link_to "Add New Event".html_safe, new_admin_event_path, class: "btn-lg btn-success" %>
+      </div>
+  </div>
+  <%= javascript_include_tag 'https://code.jquery.com/jquery-3.6.0.min.js' %>
+  <%= javascript_include_tag 'https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js' %>
+
+  <script>
+    $(document).ready(function() {
+      $('#eventsTable').DataTable();
+    });
+  </script>
+</body>
+</html>
