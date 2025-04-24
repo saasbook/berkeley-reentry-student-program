@@ -1,0 +1,62 @@
+<%= form_with(model: course, url: course.persisted? ? update_course_path(course) : create_course_path, method: course.persisted? ? :patch : :post, local: true) do |form| %>
+  <% if course.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(course.errors.count, "error") %> prohibited this course from being saved:</h2>
+      <ul>
+        <% course.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field mb-3">
+    <%= form.label :code, "Course Code (e.g., 'L&S 198')", class: "form-label" %>
+    <%= form.text_field :code, class: "form-control" %>
+  </div>
+  
+  <div class="field mb-3">
+    <%= form.label :title, "Course Title (e.g., 'Re-entry Transition Course for Adult Learners')", class: "form-label" %>
+    <%= form.text_field :title, class: "form-control" %>
+  </div>
+  
+  <div class="field mb-3">
+    <%= form.label :description, "Course Description", class: "form-label" %>
+    <%= form.text_area :description, class: "form-control", rows: 5 %>
+  </div>
+  
+  <div class="field mb-3">
+    <%= form.label :units, "Units (e.g., 'One Unit – Pass/Not Pass')", class: "form-label" %>
+    <%= form.text_field :units, class: "form-control" %>
+  </div>
+
+  <div class="field mb-3">
+    <%= form.label :semester, "Semester (e.g., 'Spring 2025')", class: "form-label" %>
+    <%= form.text_field :semester, class: "form-control" %>
+  </div>
+  
+  <div class="field mb-3">
+    <%= form.label :schedule, "Schedule (e.g., 'Wednesdays 3:00pm - 4:00 pm')", class: "form-label" %>
+    <%= form.text_field :schedule, class: "form-control" %>
+  </div>
+
+  <div class="field mb-3">
+    <%= form.label :ccn, "Course Control Number (CCN#)", class: "form-label" %>
+    <%= form.text_field :ccn, class: "form-control" %>
+  </div>
+  
+  <div class="field mb-3">
+    <%= form.label :location, "Location", class: "form-label" %>
+    <%= form.text_field :location, class: "form-control" %>
+  </div>
+  
+  <div class="field mb-3 form-check">
+    <%= form.check_box :available, class: "form-check-input" %>
+    <%= form.label :available, "Make this course available on the public courses page", class: "form-check-label" %>
+  </div>
+  
+  <div class="actions mt-3">
+    <%= form.submit class: "btn btn-primary" %>
+    <%= link_to "Cancel", manage_courses_path, class: "btn btn-secondary" %>
+  </div>
+<% end %>

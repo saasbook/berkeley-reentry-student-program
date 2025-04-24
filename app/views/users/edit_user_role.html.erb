@@ -1,0 +1,31 @@
+<div class="container mt-5">
+  <h1 class="display-5 fw-bold" align="center" style="color: #003262">Edit Advisor</h1>
+  <%= form_with model: @user, url: update_user_role_user_path(@user), method: :patch do |form| %>
+    <div class="mb-3">
+      <%= form.label :sid, class: "form-label" %>
+      <%= form.text_field :sid, class: "form-control", :readonly => true %>
+    </div>
+    <div class="mb-3">
+      <%= form.label :name, class: "form-label" %>
+      <%= form.text_field :name, class: "form-control", :readonly => true %>
+    </div>
+    <div class="mb-3">
+      <%= form.label :email, class: "form-label" %>
+      <%= form.text_field :email, class: "form-control", :readonly => true %>
+    </div>
+    <div class="mb-3">
+      <%= form.label :is_student, class: "form-label" %>
+      <%= form.check_box :is_student, class: "form-check-input" %>
+    </div>
+    <div class="mb-3">
+      <%= form.label :is_staff, class: "form-label" %>
+      <%= form.check_box :is_staff, class: "form-check-input" %>
+    </div>
+    <div class="mb-3">
+      <%= form.label :is_admin, class: "form-label" %>
+      <%= form.check_box :is_admin, class: "form-check-input" %>
+    </div>
+    <%= form.submit "Update Role", class: "btn btn-primary" %>
+    <%= link_to "Cancel", manage_user_roles_path, class: "btn btn-secondary" %>
+  <% end %>
+</div>

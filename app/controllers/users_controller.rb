@@ -8,18 +8,18 @@ class UsersController < ApplicationController
     @user = User.find_by(id: session[:current_user_id])
     sid = params[:user][:sid]
     email = params[:user][:email]
-    if sid.blank? || (sid.length != 10)
-      redirect_to login_confirm_path, flash: { error: 'Invalid Student ID Number.' }
+    if sid.blank? || sid.length < 8 || sid.length > 10 # TODO: check the format of sid in the future
+      redirect_to login_confirm_path, flash: { error: "Invalid Student ID Number." }
       return
     end
     if email.blank? || !email.match(/.+(@berkeley.edu)/)
-      redirect_to login_confirm_path, flash: { error: 'Please use your berkeley email to log-in.' }
+      redirect_to login_confirm_path, flash: { error: "Please use your berkeley email to log-in." }
       return
     end
     if @user.update(user_params)
       redirect_to user_profile_new_path
     else
-      redirect_to login_confirm_path, flash: { error: 'Something went wrong, please try again.' }
+      redirect_to login_confirm_path, flash: { error: "Something went wrong, please try again." }
     end
   end
 
@@ -36,7 +36,7 @@ class UsersController < ApplicationController
       @user.update!(profile_params)
     end
     if edited
-      redirect_to root_path, flash: { success: 'Success! Your profile has been updated.' }
+      redirect_to root_path, flash: { success: "Success! Your profile has been updated." }
     else
       redirect_to root_path, flash: { success: "Success! You've been logged-in!" }
     end
@@ -47,10 +47,22 @@ class UsersController < ApplicationController
     @user = Student.find_by_id(session[:current_user_id])
   end
 
-  private
+  def edit_user_role
+    @user = User.find(params[:id])
+  end
 
+  def update_user_role
+    @user = User.find(params[:id])
+    if @user.update(user_role_params)
+      redirect_to manage_user_roles_path, flash: { success: "User role updated successfully." }
+    else
+      redirect_to manage_user_roles_path, flash: { error: "Failed to update user role." }
+    end
+  end
+
+  private
   def require_login
-    redirect_to root_path, flash: { error: 'Only students have access to profiles.' } unless
+    redirect_to root_path, flash: { error: "Only students have access to profiles." } unless
       session.key?(:current_user_id) && Student.find_by_id(session[:current_user_id]).present?
   end
 
@@ -60,5 +72,9 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:first_name, :last_name, :email, :sid)
+  end
+
+  def user_role_params
+    params.require(:user).permit(:first_name, :last_name, :email, :sid, :is_admin, :is_advisor, :is_student)
   end
 end

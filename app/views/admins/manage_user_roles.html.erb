@@ -1,0 +1,53 @@
+<html lang="en">
+<head>
+  <%= stylesheet_link_tag 'https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css' %>
+</head>
+<body>
+  <div class="container mt-5">
+    <div class="<%=flash.empty? ? 'px-4 py-5 my-2' : 'px-4 pb-5 mb-5' %> text-center">
+      <%= render "shared/flash_messages" %>
+    </div>
+    <h1 class="display-5 fw-bold" align="center" style="color: #003262">Manage User Roles</h1>
+    <br>
+    <table id="users-table" class="display" style="width:100%">
+      <thead>
+        <tr>
+          <th>SID</th>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Is Student?</th>
+          <th>Is Staff?</th>
+          <th>Is Admin?</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @users.each do |user| %>
+          <tr>
+            <td><%= user.sid %></td>
+            <td><%= user.name%></td>
+            <td><%= user.email %></td>
+            <td><%= user.is_student ? "Yes" : "No" %></td>
+            <td><%= user.is_staff ? "Yes" : "No" %></td>
+            <td><%= user.is_admin ? "Yes" : "No" %></td>
+            <td><%= link_to "Edit", edit_user_role_path(user), class: "btn btn-primary btn-sm" %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+  <div class="mt-4">
+      <div class="d-flex justify-content-center gap-3">
+        <%= link_to "Back to Admin Dashboard".html_safe, admins_path, class: "btn btn-secondary" %>
+      </div>
+  </div>
+
+  <%= javascript_include_tag 'https://code.jquery.com/jquery-3.6.0.min.js' %>
+  <%= javascript_include_tag 'https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js' %>
+  <script>
+    $(document).ready(function() {
+      $('#users-table').DataTable();
+    });
+  </script>
+</body>
+</html>

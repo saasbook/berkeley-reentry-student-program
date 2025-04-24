@@ -1,8 +1,11 @@
 # frozen_string_literal: true
 
-require 'simplecov'
-require 'simplecov_json_formatter'
-SimpleCov.start 'rails'
+require "webmock/cucumber"
+
+WebMock.disable_net_connect!(allow_localhost: true, allow: "127.0.0.1:9515")
+require "simplecov"
+require "simplecov_json_formatter"
+SimpleCov.start "rails"
 SimpleCov.formatters = SimpleCov::Formatter::MultiFormatter.new([
                                                                   SimpleCov::Formatter::JSONFormatter,
                                                                   SimpleCov::Formatter::HTMLFormatter
@@ -14,7 +17,7 @@ SimpleCov.formatters = SimpleCov::Formatter::MultiFormatter.new([
 # newer version of cucumber-rails. Consider adding your own code to a new file
 # instead of editing this one. Cucumber will automatically load all features/**/*.rb
 # files.
-require 'cucumber/rails'
+require "cucumber/rails"
 
 # Capybara defaults to CSS3 selectors rather than XPath.
 # If you'd prefer to use XPath, just uncomment this line and adjust any
@@ -43,7 +46,7 @@ ActionController::Base.allow_rescue = false
 begin
   DatabaseCleaner.strategy = :transaction
 rescue NameError
-  raise 'You need to add database_cleaner to your Gemfile (in the :test group) if you wish to use it.'
+  raise "You need to add database_cleaner to your Gemfile (in the :test group) if you wish to use it."
 end
 # You may also want to configure DatabaseCleaner to use different strategies for certain features and scenarios.
 # See the DatabaseCleaner documentation for details. Example:
@@ -66,3 +69,11 @@ end
 Cucumber::Rails::Database.javascript_strategy = :truncation
 
 World(FactoryBot::Syntax::Methods)
+
+Before do
+  stub_request(:get, %r{#{ENV['CANVAS_URL']}/login/oauth2/auth})
+    .to_return(
+      status: 302,
+      headers: { "Location" => "/auth/canvas/callback?code=test_code" }
+    )
+end

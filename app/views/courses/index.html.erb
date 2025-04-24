@@ -1,0 +1,45 @@
+<html lang="en">
+<div class="container">
+  <h1 class="display-5 fw-bold text-center my-4" style="color: #003262;">Courses</h1>
+  
+  <% if @courses.empty? %>
+    <div class="alert alert-info">
+      No courses are currently available. Please check back later.
+    </div>
+  <% else %>
+    <% @courses.each do |course| %>
+      <div class="card mb-4">
+        <div class="card-header">
+          <h2 style="color: #003262;"><%= course.title %> (<%= course.code %>)</h2>
+        </div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-md-8">
+              <p><%= course.description %></p>
+              
+              <div class="mt-3">
+                <strong>Units:</strong> <%= course.units %><br>
+                <% if course.semester.present? %>
+                  <strong>Semester:</strong> <%= course.semester %><br>
+                  <strong>Schedule:</strong> <%= course.schedule %>
+                  <% if course.ccn.present? %> (CCN#: <%= course.ccn %>)<% end %><br>
+                  <strong>Location:</strong> <%= course.location %>
+                <% end %>
+              </div>
+            </div>
+            <div class="col-md-4 text-center">
+              <% if course.code == "L&S 198" %>
+                <img src="<%= asset_path('198_info.png') %>" class="img-fluid mt-2" alt="Course information" rescue nil %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+
+  <div class="text-center mt-5 mb-4">
+    <%= link_to "Back", root_path, class: "btn btn-secondary btn-lg", style: "color: white;" %>
+  </div>
+</div>
+</html>

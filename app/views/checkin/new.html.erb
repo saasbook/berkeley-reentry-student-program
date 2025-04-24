@@ -1,15 +1,26 @@
-<div class="container ">
+<html lang="en">
+<div class="container">
   <div class="px-4 py-3 my-5 text-center">
-    <h2 class="display-5 fw-bold pb-4">Check-in to the Berkeley Reentry <br> Student Program Study Space</h2>
-    <%= form_with model: Checkin.new, url: checkin_path do |f| %>
+    <h1 class="display-5 fw-bold pb-4" style="color: #003262;">Check-in to the <br> Berkeley RSP <br> Community Space</h2>
+    <%= form_with model: @checkin, url: checkin_path, local: true do |f| %>
       <div class="row mb-3 justify-content-center">
         <div class="col-7 mb-5">
           <%= f.label :reason, "Please select a reason for check-in today &#x2705".html_safe, class: "form-label" %>
-          <%= f.select :reason, @reasons, { :include_blank => 'Select One' }, {:required => true, class: "form-select form-control form-select-lg"} %>
+          <%= select_tag "checkin[reason]", 
+              options_for_select(@reasons, @default_reason),
+              class: "form-select form-control form-select-lg",
+              id: "checkin_reason",
+              required: true,
+              data: { default: @default_reason } %>
         </div>
       </div>
-      <%= link_to "Back", root_path, method: :get, class: "btn btn-secondary btn-lg" %>
-      <%= f.submit "Submit", class: "btn btn-primary btn-lg ms-2" %>
-  <% end %>
+      <div class="row justify-content-center">
+        <div class="col-auto">
+          <%= link_to "Back", root_path, class: "btn btn-secondary btn-lg", style: "color:#003262" %>
+          <%= f.submit "Submit", class: "btn btn-primary btn-lg ms-2 berkeley-color" %>
+        </div>
+      </div>
+    <% end %>
   </div>
 </div>
+</html>

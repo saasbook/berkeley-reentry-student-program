@@ -1,0 +1,10 @@
+<div class="container">
+  <div class="<%=flash.empty? ? 'px-4 py-5 my-2' : 'px-4 pb-5 mb-5' %> text-center">
+    <%= render "shared/flash_messages" %>
+    <h1 class="display-5 fw-bold">Edit Course</h1>
+
+    <%= render 'admins/courses/form', course: @course %>
+
+    <%= link_to "Back to Courses", manage_courses_path, class: "btn btn-secondary mt-3" %>
+  </div>
+</div>

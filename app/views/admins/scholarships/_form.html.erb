@@ -1,0 +1,37 @@
+<%= form_with(model: scholarship, url: scholarship.persisted? ? update_scholarship_path(scholarship) : create_scholarship_path, method: scholarship.persisted? ? :patch : :post, local: true) do |form| %>
+  <% if scholarship.errors.any? %>
+    <div id="error_explanation" class="alert alert-danger">
+      <h5><%= pluralize(scholarship.errors.count, "error") %> prohibited this scholarship from being saved:</h5>
+      <ul>
+        <% scholarship.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field mb-3">
+    <%= form.label :name, class: "form-label fw-bold" %>
+    <%= form.text_field :name, class: "form-control", placeholder: "Enter scholarship name" %>
+  </div>
+
+  <div class="field mb-3">
+    <%= form.label :description, class: "form-label fw-bold" %>
+    <%= form.text_area :description, class: "form-control", rows: 5, placeholder: "Enter scholarship description" %>
+  </div>
+
+  <div class="field mb-3">
+    <%= form.label :status_text, class: "form-label fw-bold" %>
+    <%= form.text_field :status_text, class: "form-control", placeholder: "e.g., Open, Closed, Coming Soon" %>
+  </div>
+
+  <div class="field mb-3">
+    <%= form.label :application_url, class: "form-label fw-bold" %>
+    <%= form.url_field :application_url, class: "form-control", placeholder: "https://example.com/apply" %>
+  </div>
+
+  <div class="actions d-flex justify-content-between mt-4">
+    <%= form.submit class: "btn btn-primary" %>
+    <%= link_to "Cancel", manage_scholarships_path, class: "btn btn-secondary" %>
+  </div>
+<% end %> 

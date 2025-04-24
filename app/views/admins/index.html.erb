@@ -4,7 +4,14 @@
     <%= image_tag("reentry-owl.jpg", width: 130, height: 130, class: "d-block rounded mx-auto mb-4") %>
     <h1 class=" display-5 fw-bold">Admin Dashboard</h1>
     <div class="d-grid mt-2 gap-2 d-sm-flex justify-content-sm-center pt-2">
-      <%= link_to "view check-in records".html_safe, view_checkin_records_path, class: "btn btn-primary mt-1 btn-lg px-4 gap-3" %>
+      <%= link_to "View Check-in Records".html_safe, view_checkin_records_path, class: "btn btn-primary mt-1 btn-lg px-4 gap-3" %>
+      <%= link_to "Manage Events".html_safe, admin_events_path, class: "btn btn-primary mt-1 btn-lg px-4 gap-3" %>
+      <%= link_to "Manage Scholarships".html_safe, manage_scholarships_path, class: "btn btn-primary mt-1 btn-lg px-4 gap-3" %>
+    </div>
+    <div class="d-grid mt-2 gap-2 d-sm-flex justify-content-sm-center pt-2">
+      <%= link_to "Manage Advisors".html_safe, manage_advisors_path, class: "btn btn-primary mt-1 btn-lg px-4 gap-3" %>
+      <%= link_to "Manage Courses".html_safe, manage_courses_path, class: "btn btn-primary mt-1 btn-lg px-4 gap-3" %>
+      <%= link_to "Manage User Role".html_safe, manage_user_roles_path, class: "btn btn-primary mt-1 btn-lg px-4 gap-3" %>
     </div>
   </div>
 </div>

@@ -1,0 +1,23 @@
+<div class="container mt-5">
+  <h1 class="display-5 fw-bold" align="center" style="color: #003262">Add New Advisor</h1>
+  <%= form_with model: @advisor, local: true do |form| %>
+    <div class="mb-3">
+      <%= form.label :name, class: "form-label" %>
+      <%= form.text_field :name, class: "form-control" %>
+    </div>
+    <div class="mb-3">
+      <%= form.label :description, class: "form-label" %>
+      <%= form.text_area :description, class: "form-control" %>
+    </div>
+    <div class="mb-3">
+      <%= form.label :calendar, class: "form-label" %>
+      <%= form.text_field :calendar, class: "form-control" %>
+    </div>
+    <div class="mb-3">
+      <%= form.label :active, class: "form-label" %>
+      <%= form.check_box :active, class: "form-check-input" %>
+    </div>
+    <%= form.submit "Create Advisor", class: "btn btn-primary" %>
+    <%= link_to "Cancel", manage_advisors_path, class: "btn btn-secondary" %>
+  <% end %>
+</div>

@@ -24,6 +24,8 @@ default: &default
 development:
   <<: *default
   database: berkeley_reentry_student_program_development
+  username: <%= ENV["berkeley_reentry_student_program"] %>
+  password: <%= ENV["BERKELEY_REENTRY_STUDENT_PROGRAM_DATABASE_PASSWORD"] %>
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.

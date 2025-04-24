@@ -1,6 +1,9 @@
 name: build
 
-on: [push, pull_request]
+on:
+  - push
+  - pull_request
+  - workflow_dispatch
 
 jobs:
   build:
@@ -11,10 +14,10 @@ jobs:
       TZ: America/Los_Angeles
     steps:
     - uses: actions/checkout@v1
-    - name: Install Ruby (3.0)
+    - name: Install Ruby (3.2.7)
       uses: ruby/setup-ruby@v1
       with:
-        ruby-version: 3.0.3
+        ruby-version: 3.2.7
         bundler-cache: true
 
     - name: Set up Code Climate test-reporter
